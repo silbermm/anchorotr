@@ -12,7 +12,7 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
         <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
-        <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>
+        <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>        
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -35,13 +35,13 @@
                                     <li data-bind="css:{active: currentMenuLink()=='dinner'}"> 
                                         <a href="#/menus/dinner"> Dinner Menu </a>
                                     </li>
-                                    <li>
+                                    <li data-bind="css:{active: currentMenuLink()=='wine'}">
                                         <a href="#/menus/wine"> Wine List </a>
                                     </li>
-                                    <li>
+                                    <li data-bind="css:{active: currentMenuLink()=='cocktails'}">
                                         <a href="#/menus/cocktails"> House Cocktails </a>
                                     </li>
-                                    <li>
+                                    <li data-bind="css:{active: currentMenuLink()=='happyHour'}">
                                         <a href="#/menus/happyHour"> Happy Hour </a>
                                     </li>
                                     <li data-bind="css: {active: currentView()=='locationTemplate'}">
@@ -90,11 +90,11 @@
                         <ul class="inline">
                             <li> (513) 421-8111 </li>
                             <li>
-                            <ul class="hours">
-                            <li> Tue-Thur: 11:30-2:30, 5-10 </li>
-                            <!-- <li> Open daily at 1pm </li> -->
-                            <li> Fri-Sat: 11:30-2:30, 5-11 </li>
-                            </ul>
+                                <ul class="hours">
+                                    <li> Tue-Thur: 11:30-2:30, 5-10 </li>
+                                    <!-- <li> Open daily at 1pm </li> -->
+                                    <li> Fri-Sat: 11:30-2:30, 5-11 </li>
+                                </ul>
                             </li>
                             <!--
                             <div class="hours">
@@ -127,7 +127,7 @@
                                     <a href="#/about"> About </a>
                                 </li>
                                 <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                    <a href="#/reserve"> Reservations </a>
+                                    <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>                                   
                                 </li>
                             </ul>	
                         </div>
@@ -142,47 +142,21 @@
                             <li data-bind="css:{active: currentMenuLink()=='dinner'}">
                                 <a href="#/menus/dinner"> Dinner </a>
                             </li>	
-                            <li>
+                            <li data-bind="css:{active: currentMenuLink()=='wine'}">
                                 <a href="#/menus/wine" > Wine List </a>
                             </li>
-                            <li>
+                            <li data-bind="css:{active: currentMenuLink()=='cocktails'}">
                                 <a href="#/menus/cocktails"> House Cocktails </a>
                             </li>
-                            <li>
+                            <li data-bind="css:{active: currentMenuLink()=='happyHour'}">
                                 <a href="#/menus/happyHour"> Happy Hour </a>
                             </li>
                         </ul>	
                     </div>
                 </div>	
                 <div class="container" id="menu-border"></div>		
-                <div data-bind='template : {name : currentView, data: currentModel}' > </div>
-                <div id="footer" class="row-fluid ui-view">
-                    <div class="thin-line" > </div>
-                    <div class="thick-line"> </div>	
-                    <div class="social container">
-                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-facebook icon-light"></i>
-                            </span>
-                        </a>	
-
-                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-twitter icon-light"></i>
-                            </span>	
-                        </a>
-
-                        <a data-bind="click: showMailModal"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-envelope icon-light"></i>
-                            </span>	
-                        </a>
-
-                    </div>
-                </div>
+                <div data-bind='template : {name : currentView, data: currentModel}' > </div>                
+                <div data-bind='template: {name : "footer"}'></div>                
             </div>	
         </div>
 
@@ -190,7 +164,7 @@
 
         <script type="text/html" id="homeTemplate">
             <div class="row-fluid ui-view" id="landing-imgs">
-                <img src="<c:url value='/resources/img/landing.jpg' />" />
+            <img src="<c:url value='/resources/img/landing.jpg' />" />
             </div>
         </script>
 
@@ -200,6 +174,10 @@
             <img src="https://maps.googleapis.com/maps/api/staticmap?size=800x400&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
             </div>
             </div>		
+        </script>
+
+        <script type="text/html" id="reserveTemplate">
+            <h1 data-bind="text:$parent.currentView"></h1>
         </script>
 
         <script type="text/html" id="aboutTemplate">
@@ -260,6 +238,8 @@
             </div>
             </div>
         </script>
+
+
 
         <script type="text/html" id="foodMenuTemplate">
             <div class="row-fluid ui-view" id="lunch-page" data-bind="with: $root.menuViewModel">
@@ -362,7 +342,7 @@
 
             <!-- MAINS -->
             <div class="row-fluid">
-            <div class="span12 food-container" data-bind="if:mainsCol1.length>0">
+            <div class="span12 food-container" data-bind="if:mainsCol1().length>0">
             <div class="food-menu-title"> MAINS</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
@@ -466,33 +446,33 @@
         </script>
 
         <script type="text/html" id="footer">
-            <div id="footer" class="row-fluid ui-view">
-                    <div class="thin-line" > </div>
-                    <div class="thick-line"> </div>	
-                    <div class="social container">
-                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-facebook icon-light"></i>
-                            </span>
-                        </a>	
+            <div class="pagefooter" class="row-fluid ui-view">
+            <div class="thin-line" > </div>
+            <div class="thick-line"> </div>	
+            <div class="social container">
+            <a href="https://www.facebook.com/theanchorotr" target="_blank">
+            <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-facebook icon-light"></i>
+            </span>
+            </a>	
 
-                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-twitter icon-light"></i>
-                            </span>	
-                        </a>
+            <a href="https://twitter.com/theanchorotr" target="_blank"> 
+            <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-twitter icon-light"></i>
+            </span>	
+            </a>
 
-                        <a data-bind="click: showMailModal"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-envelope icon-light"></i>
-                            </span>	
-                        </a>
+            <a data-bind="click: showMailModal"> 
+            <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-envelope icon-light"></i>
+            </span>	
+            </a>
 
-                    </div>
-                </div>
+            </div>
+            </div>
         </script>
 
         <form>

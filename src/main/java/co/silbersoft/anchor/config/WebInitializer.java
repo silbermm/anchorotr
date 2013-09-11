@@ -13,39 +13,44 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     /*
     @Override
     public void onStartup(ServletContext sc) throws ServletException {
-        // Create the 'root' Spring application context
-        AnnotationConfigWebApplicationContext rootContext =
-                new AnnotationConfigWebApplicationContext();
-        rootContext.register(null);
+         AnnotationConfigWebApplicationContext rootContext =
+        new AnnotationConfigWebApplicationContext();
+      rootContext.register(WebConfig.class);
 
-        // Manage the lifecycle of the root application context
-        sc.addListener(new ContextLoaderListener(rootContext));
+      // Manage the lifecycle of the root application context
+      sc.addListener(new ContextLoaderListener(rootContext));
 
-        // Register and map the dispatcher servlet
-        ServletRegistration.Dynamic dispatcher =
-                sc.addServlet("dispatcher", new DispatcherServlet(rootContext));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
-    }
-    */ 
+
+      // Register and map the dispatcher servlet
+      ServletRegistration.Dynamic dispatcher =
+        sc.addServlet("dispatcher", new DispatcherServlet(rootContext));
+      dispatcher.setLoadOnStartup(1);
+      dispatcher.addMapping("/");
+    }*/
+    
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{WebConfig.class}; 
+        return new Class[]{
+            AppContext.class
+        };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{WebConfig.class};
+       return new Class[]{ WebConfig.class };
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+       return new String[]{"/"};
     }
 
     @Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new HiddenHttpMethodFilter(), new CharacterEncodingFilter(), new OpenSessionInViewFilter()};
+        return new Filter[]{
+            new HiddenHttpMethodFilter(), 
+            new CharacterEncodingFilter(), 
+            new OpenSessionInViewFilter()};
     }
 }

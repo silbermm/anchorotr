@@ -40,7 +40,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.pageTitle("Location | The Anchor-OTR");
             master.currentView("locationTemplate");
             master.currentModel(master.locationViewModel);
-            master.currentMenuLink("");
+            master.currentMenuLink("location");
             master.hideSubMenu();
         });
 
@@ -57,9 +57,14 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentView("aboutTemplate");
             master.currentModel(master.aboutViewModel);
             master.hideSubMenu();
-            master.currentMenuLink("");
+            master.currentMenuLink("about");
         });
-
+        this.get("#/reserve", function(){
+           master.pageTitle("Reservations");
+           master.currentView("reserveTemplate");
+           master.hideSubMenu();
+           master.currentMenuLink("reserve");
+        });
         this.get("#/menus/lunch", function() {
             master.menuViewModel.getLunchMenu();
             master.pageTitle("Lunch Menu");
@@ -76,6 +81,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
         });
+      
 
 
         this.get("", function() {
