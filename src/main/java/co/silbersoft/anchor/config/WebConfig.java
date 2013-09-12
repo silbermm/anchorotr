@@ -1,5 +1,6 @@
 package co.silbersoft.anchor.config;
 
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -38,7 +39,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-    */ 
+    */
 
     @Bean
     public MessageSource getMessageSource() {
@@ -57,5 +58,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return internalViewResolver;
     }
 
-    
+
 }
+

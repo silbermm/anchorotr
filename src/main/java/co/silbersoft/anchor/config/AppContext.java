@@ -55,6 +55,6 @@ public class AppContext {
         p.setProperty("hibernate.hbm2ddl.auto", config().getString("hibernate.hbm2ddl.auto"));
         return p;
     }
-    
-    
+
+
 }

@@ -28,8 +28,8 @@ public class HomeController {
     public String index(){
         return "index";
     }
-    
-    @RequestMapping(value = "login", method = RequestMethod.GET)    
+
+    @RequestMapping(value="login", method=RequestMethod.GET)
     public String login(@RequestParam(value = "error", required = false) String error, ModelMap model){
         if(error != null && error.equals("authFailed")){
             model.addAttribute("error", "true");

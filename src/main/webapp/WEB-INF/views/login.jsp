@@ -18,6 +18,7 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
         <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
         <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>        
+
     </head>
     <body>
         <c:url var="postLoginUrl" value="/j_spring_security_check" />
@@ -42,7 +43,6 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center muted ">&copy; Copyright 2013 - The Anchor-OTR </p>
         </section>
 
     </body>

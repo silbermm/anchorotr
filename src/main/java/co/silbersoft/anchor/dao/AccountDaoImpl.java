@@ -40,7 +40,7 @@ public class AccountDaoImpl extends AbstractDao<Account> implements AccountDao {
         q.setString("username", username);
         return (Account) q.uniqueResult();
     }
-    
+
     private JdbcTemplate jdbcTemplate;
     @Autowired
     ShaPasswordEncoder passwordEncoder;
