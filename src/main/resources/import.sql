@@ -1,3 +1,12 @@
+DROP TABLE IF EXISTS authorities;
+Drop table if exists users;
+
+create table users(username varchar(50) not null primary key,password varchar(200) not null,enabled boolean not null);
+create table authorities (username varchar(50) not null,authority varchar(50) not null,constraint fk_authorities_users foreign key(username) references users(username));
+create unique index ix_auth_username on authorities (username,authority);
+
+INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62','t');
+INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator');
 
 DELETE FROM menu;
 INSERT INTO menu (menu_id,name) VALUEs (1,'lunch');

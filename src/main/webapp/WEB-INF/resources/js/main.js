@@ -82,7 +82,13 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.showSubMenu();
         });
       
+        this.get("#/login", function(){
+           window.location.href = $("#baseUrl").val() + "login"; 
+        });
 
+        this.get("#/logout", function() {
+           window.location.href = $("#baseUrl").val() +  "j_spring_security_logout";                 
+        });
 
         this.get("", function() {
             this.redirect("#/home");

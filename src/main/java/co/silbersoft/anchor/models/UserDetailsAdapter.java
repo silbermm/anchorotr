@@ -46,10 +46,11 @@ public class UserDetailsAdapter implements UserDetails {
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         for (Role role : account.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
+        }        
         return authorities;
     }
 
+    // Provide a setter since the underlying Account doesn't support passwords
     public void setPassword(String password) {
         this.password = password;
     }

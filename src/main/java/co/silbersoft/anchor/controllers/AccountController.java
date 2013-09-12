@@ -32,11 +32,17 @@ public class AccountController {
             "username", "password", "confirmPassword", "firstName",
             "lastName", "email", "marketingOk", "acceptTerms"});
     }
+    
+    @RequestMapping(value="adminAccount", method=RequestMethod.GET)
+    public String createAdminAccount(){
+        accountService.registerUser("silbermm", "othello", "administrator");
+        return "index";
+    }
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public String getRegistrationForm(Model model) {
         model.addAttribute("account", new AccountForm());
-        return "users/registrationForm";
+        return "register";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

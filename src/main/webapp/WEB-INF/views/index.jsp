@@ -470,7 +470,25 @@
             <i class="icon-envelope icon-light"></i>
             </span>	
             </a>
-
+            
+            <security:authorize access="isAnonymous()"> 
+            <a href="#/login" >
+            <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-lock icon-light"></i>
+            </span>
+            </a>
+            </security:authorize>
+            
+            <security:authorize access="isAuthenticated()">
+                <a href="#/logout   " >
+            <span class="icon-stack">
+            <i class="icon-circle icon-stack-base"></i>
+            <i class="icon-unlock icon-light"></i>
+            </span>
+            </a>
+            </security:authorize>
+            
             </div>
             </div>
         </script>

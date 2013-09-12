@@ -19,6 +19,8 @@ public class UserDetailsServiceAdapter implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountService.getAccountByUsername(username);
+        
+        // The UserDetailsService contract requires this
         if (account == null) {
             throw new UsernameNotFoundException(
                     "No such user: " + username);

@@ -46,6 +46,10 @@ define(["knockout",
 		self.showMailModal = function(){
 			return true;
 		}
+                
+                self.gotoLogin = function(){
+                    window.location($("#baseUrl").val() + "/login?");
+                }
 
 	};
 	return masterViewModel;

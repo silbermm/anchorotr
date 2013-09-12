@@ -20,7 +20,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @EnableTransactionManagement
 @ImportResource(value = {"/WEB-INF/spring-security.xml"})
-@ComponentScan(basePackages = {"co.silbersoft.anchor"})
+@ComponentScan(basePackages = {"co.silbersoft.anchor.controllers"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override

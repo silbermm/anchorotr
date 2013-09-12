@@ -93,6 +93,15 @@ public class Account {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+    
+    @Column
+    public String getPassword(){
+        return this.password;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
 
     @Column
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -117,14 +126,5 @@ public class Account {
     
     public void setRoles(Set<Role> authorities){
         this.authorites = authorities;
-    }
-
-    @Column()
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
