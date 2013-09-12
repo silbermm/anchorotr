@@ -27,15 +27,6 @@ public class AccountService {
     }
 
     @Transactional(readOnly = false)
-    public boolean createUser(Account account) {
-        if (accountDao.findByUsername(account.getUsername()) != null) {
-            return false;
-        }
-        accountDao.create(account);
-        return true;
-    }
-
-    @Transactional(readOnly = false)
     public boolean createUser(Account account, String pass) {
         if (accountDao.findByUsername(account.getUsername()) != null) {
             return false;

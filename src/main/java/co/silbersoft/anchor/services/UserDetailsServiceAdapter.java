@@ -3,7 +3,6 @@ package co.silbersoft.anchor.services;
 import co.silbersoft.anchor.dao.UserDetailsDao;
 import co.silbersoft.anchor.models.Account;
 import co.silbersoft.anchor.models.UserDetailsAdapter;
-import co.silbersoft.anchor.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

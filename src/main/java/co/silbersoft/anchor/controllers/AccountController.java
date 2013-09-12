@@ -23,20 +23,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/users")
 public class AccountController {
 
-    private static final String VN_REG_FORM = "users/registrationForm";
-    private static final String VN_REG_OK = "redirect:registration_ok";
+    private static final String VN_REG_FORM = "register";
+    private static final String VN_REG_OK = "redirect:register_ok";
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.setAllowedFields(new String[]{
             "username", "password", "confirmPassword", "firstName",
-            "lastName", "email", "marketingOk", "acceptTerms"});
+            "lastName", "email"});
     }
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public String getRegistrationForm(Model model) {
         model.addAttribute("account", new AccountForm());
-        return "users/registrationForm";
+        return "register";
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
