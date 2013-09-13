@@ -2,9 +2,6 @@ package co.silbersoft.anchor.test;
 
 import co.silbersoft.anchor.config.AppContext;
 import co.silbersoft.anchor.config.WebConfig;
-import co.silbersoft.anchor.dao.AccountDao;
-import co.silbersoft.anchor.models.Account;
-import co.silbersoft.anchor.models.Role;
 import co.silbersoft.anchor.services.AccountService;
 import java.util.Date;
 import java.util.HashSet;
@@ -13,6 +10,9 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -32,32 +32,18 @@ public class TestWebUserAndAuth {
         if (accountService.getAccountByUsername("silbermm") != null) {
             Assert.isTrue(true);
         } else {
-            Account a = new Account();
-            a.setDateCreated(new Date());
-            a.setEmail("silbermm@gmail.com");
-            a.setEnabled(true);
-            a.setFirstName("Matt");
-            a.setLastName("Silbernagel");
-            a.setUsername("silbermm");
+            Set<GrantedAuthority> s = new HashSet();
+            s.add(new SimpleGrantedAuthority("user"));            
+            User u = new User("silbermm", "password", s);
+            accountService.registerUser("silbermm", "password","user");
 
-            Role r = new Role();
-            r.setName("Administrator");
-            Set<Role> roles = new HashSet<Role>();
-            roles.add(r);
-
-            a.setRoles(roles);
-
-            //accountDao.create(a);
-            accountService.createUser(a, "othello");
-
-            Account users = accountService.getAccountByUsername("silbermm");
+            User users = accountService.getAccountByUsername("silbermm");
             log.debug("Users silbermm exists in the database!");
-            log.debug(users.getFullName());
+            log.debug(users.getUsername());
             Assert.notNull(users);
         }
     }
     @Autowired
     AccountService accountService;
-    @Autowired
-    AccountDao accountDao;
+    
 }

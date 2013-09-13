@@ -17,16 +17,7 @@
         <sec:intercept-url pattern="/**" method="GET" access="permitAll" />
         <sec:logout logout-success-url="/" />
     </sec:http>
-	
-    <!--
-    <sec:authentication-manager >
-        <sec:authentication-provider user-service-ref="userDetailsService">
-            <sec:password-encoder ref="passwordEncoder">
-                <sec:salt-source ref="saltSource" />
-            </sec:password-encoder>
-        </sec:authentication-provider>            
-    </sec:authentication-manager>
-    -->
+
     <sec:authentication-manager>
         <sec:authentication-provider >
             <sec:jdbc-user-service data-source-ref="dataSource" /> 
@@ -47,8 +38,5 @@
     </beans:bean>
 
     <sec:global-method-security pre-post-annotations="enabled" />
-
-    <beans:bean id="userDetailsService" class="co.silbersoft.anchor.services.UserDetailsServiceAdapter" />
-    
-    
+        
 </beans:beans>

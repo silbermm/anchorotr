@@ -1,14 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.silbersoft.anchor.controllers;
 
 import co.silbersoft.anchor.forms.AccountForm;
-import co.silbersoft.anchor.models.Account;
 import co.silbersoft.anchor.services.AccountService;
+import java.util.HashSet;
+import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,18 +49,15 @@ public class AccountController {
     public String postRegistrationForm(@ModelAttribute("account") @Valid AccountForm form, BindingResult result) {
         convertPasswordError(result);
         accountService.registerAccount(
-                toAccount(form), form.getPassword(), result);
+                toUser(form), form.getPassword(), result);
         return (result.hasErrors() ? VN_REG_FORM : VN_REG_OK);
     }
 
-    private static Account toAccount(AccountForm form) {
-        Account account = new Account();
-        account.setUsername(form.getUsername());
-        account.setFirstName(form.getFirstName());
-        account.setLastName(form.getLastName());
-        account.setEmail(form.getEmail());
-        account.setEnabled(true);
-        return account;
+    private static User toUser(AccountForm form) {
+        Set<GrantedAuthority> s = new HashSet();
+        s.add(new SimpleGrantedAuthority("user"));
+        User u = new User(form.getUsername(), form.getPassword(), s);
+        return u;
     }
 
     private static void convertPasswordError(BindingResult result) {
