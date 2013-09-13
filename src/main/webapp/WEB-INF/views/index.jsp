@@ -300,8 +300,6 @@
             </div>
 
 
-
-
             <div class="row-fluid">
             <!-- STARTERS -->
             <div class="span6 food-container" data-bind="if:starters().length>0">
@@ -339,6 +337,42 @@
             </ul>
             </div>
             </div>
+
+
+            <!-- COCKTAILS -->
+            <div class="row-fluid">
+            <div class="span12 food-container" data-bind="if:cocktailsCol1().length>0">
+            <div class="food-menu-title"> House Cocktails </div>
+            <div class="food-menu-title-ornament-container">
+            <div class="food-menu-title-ornament"></div>
+            </div>
+            <div class="fmc-double-column">
+            <ul class="food-menu-list" data-bind="foreach:cocktailsCol1">
+            <li>
+            <div class="food-item-first-line">
+            <div class="food-item-title" data-bind="text:itemname"></div>
+            <div class="food-item-line" > </div>	
+            <div class="food-item-price" data-bind="text:price"></div>
+            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
+            </div>
+            </li>	
+            </ul>
+            </div>
+            <div class="fmc-double-column fmcdc-last">
+            <ul class="food-menu-list" data-bind="foreach:cocktailsCol2">
+            <li>
+            <div class="food-item-first-line">
+            <div class="food-item-title" data-bind="text:itemname"></div>
+            <div class="food-item-line" > </div>	
+            <div class="food-item-price" data-bind="text:price"></div>
+            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
+            </div>
+            </li>	
+            </ul>
+            </div> 
+            </div>
+            </div>
+
 
             <!-- MAINS -->
             <div class="row-fluid">
@@ -470,25 +504,25 @@
             <i class="icon-envelope icon-light"></i>
             </span>	
             </a>
-            
+
             <security:authorize access="isAnonymous()"> 
-            <a href="#/login" >
-            <span class="icon-stack">
-            <i class="icon-circle icon-stack-base"></i>
-            <i class="icon-lock icon-light"></i>
-            </span>
-            </a>
+                <a href="#/login" >
+                <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-lock icon-light"></i>
+                </span>
+                </a>
             </security:authorize>
-            
+
             <security:authorize access="isAuthenticated()">
                 <a href="#/logout   " >
-            <span class="icon-stack">
-            <i class="icon-circle icon-stack-base"></i>
-            <i class="icon-unlock icon-light"></i>
-            </span>
-            </a>
+                <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-unlock icon-light"></i>
+                </span>
+                </a>
             </security:authorize>
-            
+
             </div>
             </div>
         </script>

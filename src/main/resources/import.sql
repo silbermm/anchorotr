@@ -5,7 +5,7 @@ create table users(username varchar(50) not null primary key,password varchar(20
 create table authorities (username varchar(50) not null,authority varchar(50) not null,constraint fk_authorities_users foreign key(username) references users(username));
 create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62','t');
+INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62',1);
 INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator');
 
 DELETE FROM menu;
@@ -114,6 +114,7 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTED C
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STEAMED LEMON CAKE',NULL,'DESERTS',7,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('HOT FUDGE SUNDAE',NULL,'DESERTS',7,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SEASONAL CRISP','with ice cream','DESERTS',9,2);
+
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PARKSIDE GIMLET','Hindricks''s gin, fresh lime, mint syrup, cucumber',NULL,10,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STOWAWAY','Hangar One Mandarin vodka, fresh lime, mint syrup',NULL,9,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BOATHOUSE PUNCH','Watershed Gin, St.Germain, Aperol, fresh citrus juices, rose Prosecco',NULL,9,4);
@@ -121,3 +122,4 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FAIR HAR
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SMALL CRAFT ADVISORY','Cazadores Tequila Blanco, citrus juices, jalapeno syrup',NULL,10,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTY DOG','Tito''s vodka, fresh grapefruit juice',NULL,9,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STING RAY','Buffalo Trace bourbon, Carpano Antica, lime juice, ginger syrup',NULL,10,4);
+

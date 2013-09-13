@@ -81,6 +81,14 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
         });
+        this.get("#/menus/cocktails", function() {
+           master.menuViewModel.getCocktails(); 
+           master.pageTitle("House Cocktails");
+           master.currentView("foodMenuTemplate");
+           master.currentMenuLink("cocktails");
+           master.currentModel(master.menuViewModel);
+           master.showSubMenu();
+        });
       
         this.get("#/login", function(){
            window.location.href = $("#baseUrl").val() + "login"; 

@@ -6,7 +6,7 @@ define(["knockout"], function(ko){
 		self.itemdesc = ko.observable(menuitem.itemDesc);
 		self.catagory = ko.observable(menuitem.catagory);
 		self.price = ko.observable(menuitem.price);
-		self.menuid	= ko.observable(menuitem.menuid);
+		self.menuid = ko.observable(menuitem.menuid);
 	}
 	return MenuItem;
 });
