@@ -12,7 +12,12 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
         <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
-        <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>        
+        <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>  
+
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn6M_PmJLrNR8-BkJL0aEvcpBRG69sdPc&sensor=true">
+        </script>
+        
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -50,8 +55,8 @@
                                     <li data-bind="css: {active: currentView()=='aboutTemplate'}">
                                         <a href="#/about">About </a>
                                     </li>
-                                    <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                        <a href="#/reserve">Reserve </a>
+                                    <li>
+                                        <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>
                                     </li>
                                 </ul>			
                             </li>
@@ -154,9 +159,17 @@
                         </ul>	
                     </div>
                 </div>	
-                <div class="container" id="menu-border"></div>		
-                <div data-bind='template : {name : currentView, data: currentModel}' > </div>                
-                <div data-bind='template: {name : "footer"}'></div>                
+                <div class="container" id="menu-border"></div>	
+                
+                
+                
+                <div data-bind='template : {name : currentView, 
+                     data: currentModel,
+                     beforeRemove: hideElement,
+                     afterAdd: showElement}' > 
+                </div>     
+
+                <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
 
@@ -167,12 +180,18 @@
             <img src="<c:url value='/resources/img/landing.jpg' />" />
             </div>
         </script>
+        
+        
 
         <script type="text/html" id="locationTemplate">
             <div class="row-fluid ui-view" id="location-page">
-            <div class="map">
-            <img src="https://maps.googleapis.com/maps/api/staticmap?size=800x400&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
+                     
+            <div class="map"> 
+            <a href="https://www.google.com/maps/preview#!q=Anchor+OTR%2C+Cincinnati%2C+OH%2C+North+America&data=!4m10!1m9!4m8!1m3!1d120951!2d-84.5404014!3d39.1363401!3m2!1i816!2i938!4f13.1" target="_blank" >
+                <img src="https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
+            </a>
             </div>
+            
             </div>		
         </script>
 
@@ -244,7 +263,85 @@
         <script type="text/html" id="foodMenuTemplate">
             <div class="row-fluid ui-view" id="lunch-page" data-bind="with: $root.menuViewModel">
             <div class="container">
-            <div class="row-fluid" data-bind="if:lunchSpecial().length>0">
+
+            <div class="row-fluid" data-bind="if:happyHour">
+            <div class="span12">
+            <h3> COMING SOON! </h3>
+            </div>
+            </div>
+
+            <!-- WINE LIST -->
+            <div class="row-fluid" data-bind="if:sparklingWine().length >0">
+            <div class="span6 food-menu-container" data-bind="fadeVisible:sparklingWine().length >0">
+            <div class="food-menu-title"> Champagne </div>
+            <div class="food-menu-title-ornament-container">
+            <div class="food-menu-title-ornament"></div>	
+            </div>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:sparklingWine" class="food-item-tbl">
+            <tr> 
+            <td><span data-bind="text:itemdesc"></span></td>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="span6" data-bind="fadeVisible:roseWine().length>0">
+            <div class="food-menu-title"> ROSÉ </div>
+            <div class="food-menu-title-ornament-container">
+            <div class="food-menu-title-ornament"></div>	
+            </div>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:roseWine" class="food-item-tbl">
+            <tr> 
+            <td><span data-bind="text:itemdesc"></span></td>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+
+            <div class="row-fluid" data-bind="fadeVisible:redWine().length >0"> 
+            <div class="span6 food-menu-container" data-bind="if:redWine().length >0">
+            <div class="food-menu-title"> RED </div>
+            <div class="food-menu-title-ornament-container">
+            <div class="food-menu-title-ornament"></div>	
+            </div>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:redWine" class="food-item-tbl">
+            <tr> 
+            <td><span data-bind="text:itemdesc"></span></td>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+            </tbody>
+            </table>
+            </div>
+            <div class="span6" data-bind="fadeVisible:whiteWine().length>0">
+            <div class="food-menu-title"> WHITE </div>
+            <div class="food-menu-title-ornament-container">
+            <div class="food-menu-title-ornament"></div>	
+            </div>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:whiteWine" class="food-item-tbl">
+            <tr> 
+            <td><span data-bind="text:itemdesc"></span></td>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+
+            <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">
             <!-- LUNCH SPECIAL -->
             <div class="span12">
             <div class="food-menu-container food-menu-container-border middle-callout"> 
@@ -265,12 +362,24 @@
             </div>	
             </div>			
 
-            <div class="row-fluid">
-            <div class="span6 food-menu-container" data-bind="if:rawBar().length>0">
+            <div class="row-fluid"  data-bind="fadeVisible:rawBar().length>0">
+            <div class="span6 food-menu-container" data-bind="fadeVisible:rawBar().length>0">
             <div class="food-menu-title"> RAW BAR </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
-            </div>	
+            </div>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:rawBar" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
+            <!--        
             <ul class="food-menu-list" data-bind="foreach:rawBar">
             <li>
             <div class="food-item-first-line">
@@ -280,12 +389,25 @@
             </div>
             </li>	
             </ul>
+            -->
             </div>
-            <div class="span6 food-menu-container" data-bind="if:platters().length>0">
+            <div class="span6 food-menu-container" data-bind="fadeVisible:platters().length>0">
             <div class="food-menu-title"> PLATTERS </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
-            </div>
+            </div> 
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:platters" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
+            <!--
             <ul class="food-menu-list" data-bind="foreach:platters">
             <li>
             <div class="food-item-first-line">
@@ -296,180 +418,187 @@
             </div>
             </li>	
             </ul>
+            -->
             </div>		
             </div>
 
 
-            <div class="row-fluid">
+            <div class="row-fluid" data-bind="fadeVisible:starters().length>0">
             <!-- STARTERS -->
-            <div class="span6 food-container" data-bind="if:starters().length>0">
+            <div class="span6 food-container" data-bind="fadeVisible:starters().length>0">
             <div class="food-menu-title"> STARTERS </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
-            <ul class="food-menu-list" data-bind="foreach:starters">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:starters" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>	
 
             <!-- SALADS -->
-            <div class="span6 food-container" data-bind="if:salads().length>0">
+            <div class="span6 food-container" data-bind="fadeVisible:salads().length>0">
             <div class="food-menu-title"> SALADS</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
-            <ul class="food-menu-list" data-bind="foreach:salads">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:salads" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
             </div>
 
 
             <!-- COCKTAILS -->
-            <div class="row-fluid">
-            <div class="span12 food-container" data-bind="if:cocktailsCol1().length>0">
+            <div class="row-fluid" data-bind="fadeVisible:cocktailsCol1().length>0">
+            <div class="span12 food-container" data-bind="fadeVisible:cocktailsCol1().length>0">
             <div class="food-menu-title"> House Cocktails </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
             <div class="fmc-double-column">
-            <ul class="food-menu-list" data-bind="foreach:cocktailsCol1">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:cocktailsCol1" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
             <div class="fmc-double-column fmcdc-last">
-            <ul class="food-menu-list" data-bind="foreach:cocktailsCol2">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:cocktailsCol2" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div> 
             </div>
             </div>
 
 
             <!-- MAINS -->
-            <div class="row-fluid">
-            <div class="span12 food-container" data-bind="if:mainsCol1().length>0">
+            <div class="row-fluid" data-bind="fadeVisible:mainsCol1().length>0">
+            <div class="span12 food-container" >
             <div class="food-menu-title"> MAINS</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
             <div class="fmc-double-column">
-            <ul class="food-menu-list" data-bind="foreach:mainsCol1">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:mainsCol1" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
             <div class="fmc-double-column fmcdc-last">
-            <ul class="food-menu-list" data-bind="foreach:mainsCol2">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:mainsCol2" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
             </div>	
             </div>
 
-            <div class="row-fluid">	
+            <div class="row-fluid" data-bind="fadeVisible:sides().length>0">	
             <!-- SIDES -->
-            <div class="span6 food-container" data-bind="if:sides().length>0">
+            <div class="span6 food-container" data-bind="fadeVisible:sides().length>0">
             <div class="food-menu-title"> SIDES</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
-            <ul class="food-menu-list" data-bind="foreach:sides">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:sides" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
 
             <!-- DESERTS -->
-            <div class="span6 food-container" data-bind="if:deserts().length>0">
+            <div class="span6 food-container" data-bind="fadeVisible:deserts().length>0">
             <div class="food-menu-title"> DESERTS</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
-            <ul class="food-menu-list" data-bind="foreach:deserts">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" "> </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:deserts" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>
             </div>
 
             <div class="row-fluid">
             <!-- BEVERAGES -->
-            <div class="span6 food-container" data-bind="if:beverages().length>0">
+            <div class="span6 food-container" data-bind="fadeVisible:beverages().length>0">
             <div class="food-menu-title">BEVERAGES</div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
-            <ul class="food-menu-list" data-bind="foreach:beverages">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" 
-            data-bind="if:itemdesc,text:itemdesc">
-
-            </div>
-            </div>
-            </li>	
-            </ul>
+            <table class="table table-condensed">
+            <tbody data-bind="foreach:beverages" class="food-item-tbl">
+            <tr>
+            <td><span data-bind="text:itemname"></span></td>
+            <td class="pull-right"><span data-bind="text:price"> </span></td>
+            </tr>
+            <tr>
+            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+            </tr>
+            </tbody>
+            </table>
             </div>	
             </div>		
             </div>
-            <div class="row-fluid">
+            <div class="row-fluid" data-bind="fadeVisible:showWarning">
             <div class="aside-container">
             <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
             <img class="food-menu-container-image" src="<c:url value='/resources/img/shark-small.gif' />"    style="opacity: 1;">

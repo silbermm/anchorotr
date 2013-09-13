@@ -1,5 +1,4 @@
 requirejs.config({
-    
     "baseUrl": "/anchor/resources/js/lib",
     "paths": {
         ko: "knockout",
@@ -21,6 +20,20 @@ requirejs.config({
 });
 define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], function(ko, Sammy, $, master) {
     var master = new master();
+
+    ko.bindingHandlers.fadeVisible = {
+        init: function(element, valueAccessor) {
+            // Initially set the element to be instantly visible/hidden depending on the value
+            var value = valueAccessor();
+            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+        },
+        update: function(element, valueAccessor) {
+            // Whenever the value subsequently changes, slowly fade the element in or out
+            var value = valueAccessor();
+            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
+        }
+    };
+
     ko.applyBindings(master, document.getElementById("topHtml"));
     ko.bindingHandlers.stopBinding = {
         init: function() {
@@ -59,11 +72,11 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.hideSubMenu();
             master.currentMenuLink("about");
         });
-        this.get("#/reserve", function(){
-           master.pageTitle("Reservations");
-           master.currentView("reserveTemplate");
-           master.hideSubMenu();
-           master.currentMenuLink("reserve");
+        this.get("#/reserve", function() {
+            master.pageTitle("Reservations");
+            master.currentView("reserveTemplate");
+            master.hideSubMenu();
+            master.currentMenuLink("reserve");
         });
         this.get("#/menus/lunch", function() {
             master.menuViewModel.getLunchMenu();
@@ -72,6 +85,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentMenuLink("lunch");
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
+            master.menuViewModel.showWarning(true);
         });
         this.get("#/menus/dinner", function() {
             master.menuViewModel.getDinnerMenu();
@@ -80,22 +94,42 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentMenuLink("dinner");
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
+            master.menuViewModel.showWarning(true);
         });
         this.get("#/menus/cocktails", function() {
-           master.menuViewModel.getCocktails(); 
-           master.pageTitle("House Cocktails");
-           master.currentView("foodMenuTemplate");
-           master.currentMenuLink("cocktails");
-           master.currentModel(master.menuViewModel);
-           master.showSubMenu();
+            master.menuViewModel.getCocktails();
+            master.pageTitle("House Cocktails");
+            master.currentView("foodMenuTemplate");
+            master.currentMenuLink("cocktails");
+            master.currentModel(master.menuViewModel);
+            master.showSubMenu();
+            master.menuViewModel.showWarning(false);
         });
-      
-        this.get("#/login", function(){
-           window.location.href = $("#baseUrl").val() + "login"; 
+        this.get("#/menus/wine", function() {
+            master.menuViewModel.getWineList();
+            master.pageTitle("Wine List");
+            master.currentView("foodMenuTemplate");
+            master.currentMenuLink("wine");
+            master.currentModel(master.menuViewModel);
+            master.showSubMenu();
+            master.menuViewModel.showWarning(false);
+        })
+        this.get("#/menus/happyHour"), function() {
+            master.menuViewModel.getHappyHour();
+            master.pageTitle("Happy Hour");
+            master.currentView("foodMenuTemplate");
+            master.currentMenuLink("happyHour");
+            master.currentModel(master.menuViewModel);
+            master.showSubMenu();
+            master.menuViewModel.showWarning(false);
+        }
+
+        this.get("#/login", function() {
+            window.location.href = $("#baseUrl").val() + "login";
         });
 
         this.get("#/logout", function() {
-           window.location.href = $("#baseUrl").val() +  "j_spring_security_logout";                 
+            window.location.href = $("#baseUrl").val() + "j_spring_security_logout";
         });
 
         this.get("", function() {

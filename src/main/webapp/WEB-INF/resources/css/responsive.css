@@ -16,6 +16,7 @@
 body, html {
     margin: 0;
     padding: 0;
+    height:100%;
     font-family: 'Quicksand', sans-serif;
     color: #2E2922;
     background: url(../img/background_offwhite.jpg);
@@ -173,6 +174,8 @@ body, html {
     margin: 0px auto;
 }
 
+#map-canvas { height: 100% }
+
 /******* About Us ***********/
 .about-photos {
     width: 700px;
@@ -249,6 +252,29 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+.food-item-tbl {
+    text-transform: uppercase;
+    color: #2E2922;
+    font-size: 12px;
+    font-family: 'Palatino LT W01 Bold';
+    -sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.food-item-tbl-desc {
+    font-family: 'Palatino LT W01 Italic';
+    font-size: 13px;
+    -sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative;
+    bottom:11px;
+    text-transform: lowercase;
+}
+
+
 
 .food-item-title {
     text-transform: uppercase;
@@ -446,28 +472,15 @@ body, html {
         top: 9em;
     }
 }
+
+@media (max-width: 800px) {
+   .map {
+        width: 400px;
+        margin: 0px auto;
+    }
+}
+
 /*
-@media (min-width: 1px) {
-    #mobile-menubar,#mobile-logo {
-        display:block;
-        }
-
-        #desktop-menubar {
-                display:none;
-        }
-}
-
-@media (min-width: 716px) {
-    #mobile-menubar,#mobile-logo {
-        display:block;
-        }
-
-        #desktop-menubar {
-                display:none;
-        }
-}
-
-
 @media (min-width: 717px) {
   #mobile-menubar,#mobile-logo {
                 display:none;

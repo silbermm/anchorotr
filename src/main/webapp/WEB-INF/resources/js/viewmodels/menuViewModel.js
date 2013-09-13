@@ -3,6 +3,8 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
         var self = this;
         self.baseUrl = $("#baseUrl").val();
 
+        self.showWarning = ko.observable(false);
+        
         self.active = ko.observable(false);
         self.rawBar = ko.observableArray();
         self.platters = ko.observableArray();
@@ -13,11 +15,18 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
         self.beverages = ko.observableArray();
         self.lunchSpecial = ko.observableArray();
         
+        self.happyHour = ko.observable(false);
+
         self.cocktailsCol1 = ko.observableArray();
         self.cocktailsCol2 = ko.observableArray();
-               
+
         self.mainsCol1 = ko.observableArray();
         self.mainsCol2 = ko.observableArray();
+
+        self.sparklingWine = ko.observableArray();
+        self.whiteWine = ko.observableArray();
+        self.redWine = ko.observableArray();
+        self.roseWine = ko.observableArray();
 
         self.getLunchMenu = function() {
             cleanMenus();
@@ -81,27 +90,40 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
             });
         }
 
-        self.getCocktails = function(){
+        self.getCocktails = function() {
             cleanMenus();
             console.log("getting cocktails");
             $.getJSON(self.baseUrl + '/menus/4', function(data) {
-               
+
                 var mappedItems = $.map(data, function(menuitem) {
                     return new MenuItem(menuitem);
                 });
-                
-                var half = mappedItems.length /2;
+
+                var half = mappedItems.length / 2;
                 var leftover = mappedItems.length % 2;
                 var firstColumn = half + leftover;
-                
+
                 $.each(mappedItems, function(idx, val) {
-                    if(idx + 1 <= firstColumn) {
+                    if (idx + 1 <= firstColumn) {
                         self.cocktailsCol1.push(val);
                     } else {
                         self.cocktailsCol2.push(val);
                     }
-                })               
+                })
             });
+        }
+
+        self.getWineList = function() {
+            cleanMenus();
+            getMenu(3, 'WHITE', self.whiteWine);
+            getMenu(3, 'RED', self.redWine);
+            getMenu(3, 'SPARKLING%20AND%20CHAMPAGNE', self.sparklingWine);
+            getMenu(3, 'ROSE', self.roseWine);
+        }
+        
+        self.getHappyHour = function() {
+            cleanMenus();
+            self.happyHour(true);
         }
 
         var getMenu = function(menuId, catagory, observable) {
@@ -126,6 +148,11 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
             self.mainsCol2.removeAll();
             self.cocktailsCol1.removeAll();
             self.cocktailsCol2.removeAll();
+            self.sparklingWine.removeAll();
+            self.whiteWine.removeAll();
+            self.redWine.removeAll();
+            self.roseWine.removeAll();
+            self.happyHour(false);
         }
     };
 

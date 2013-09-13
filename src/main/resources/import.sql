@@ -16,8 +16,8 @@ INSERT INTO menu (menu_id,name) VALUES (4,'house cocktails');
 INSERT INTO menu (menu_id,name) VALUES (5, 'happy hour');
 
 DELETE FROM menuitem;
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('East Coast Oysters',NULL,'RAW BAR',12,1);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('West Coast Oysters',NULL,'RAW BAR',12,1);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('East Coast Oysters',NULL,'RAW BAR','MP',1);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('West Coast Oysters',NULL,'RAW BAR','MP',1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Little Neck Clams',NULL,'RAW BAR',1.5,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('Crab Claws',NULL,'RAW BAR',15,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('Peel and Eat Shrimp 1/2lb',NULL,'RAW BAR',12,1);
@@ -25,7 +25,7 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('Peel and
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('Bait and Tackle','8 east coast oysters, 4 little neck clams, peel & eat shrimp, 4 chilled mussels, 2 jonah crab claws','PLATTERS',40,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('Hook, Line and Sinker','6 east and 6 west coast oysters, 6 little neck clams, peel & eat shrimp, 8 chilled mussels, 4 jonah crab claws, ¬Ω lobster','PLATTERS',75,1);
 
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('New England Clam Chowder',NULL,'STARTERS',8,1);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_Id) VALUES('New England Clam Chowder',NULL,'STARTERS','5/8',1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BOQUERONES','basil pesto bruschetta','STARTERS',8,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PEI MUSSELS','shallots and burnt orange','STARTERS',9,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Fried Oysters','house made tartar sauce','STARTERS',9,1);
@@ -47,8 +47,8 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PAN FRIE
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PAN ROASTED SKATE','lemon caper sauce','MAINS',14,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LINGUINI WITH CLAMS','pancetta and red pepper flakes','MAINS',14,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FISH & CHIPS',NULL,'MAINS',15,1);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LOBSTER ROLL','served with french fries','MAINS',20,1);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE FISH OF THE DAY','served grilled or fried','MAINS',20,1);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LOBSTER ROLL','served with french fries','MAINS','MP',1);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE FISH OF THE DAY','served grilled or fried','MAINS','MP',1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BURGER*','add fried oyster +2','MAINS',12,1);
 
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FRENCH FRIES',NULL,'SIDES',6,1);
@@ -71,8 +71,8 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Coke, Di
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Root Beer',NULL,'BEVERAGES',2.5,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Sparkling Water',NULL,'BEVERAGES',3,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('The Anchor Bloody Mary with house made pickles','add chilled shrimp +2.5,add oyster +2,add lobster claw +4','BEVERAGES',9,1);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('East Coast Oysters',NULL,'RAW BAR',12,2);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('West Coast Oysters',NULL,'RAW BAR',12,2);
+
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('West Coast Oysters',NULL,'RAW BAR','MP',2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Little Neck Clams',NULL,'RAW BAR',1.5,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Crab Claws',NULL,'RAW BAR',15,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Peel and Eat Shrimp 1/2lb',NULL,'RAW BAR',12,2);
@@ -98,10 +98,10 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('TROUT BL
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('JUMBO LUMP CRAB SPAGHETTI','with basil pesto','MAINS',19,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('DAY BOAT SEA SCALLOPS','with miso corn salad','MAINS',24,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SHELLFISH BOUILLABAISSE',NULL,'MAINS',25,2);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LOBSTER ROLL','with french fries','MAINS',0,2);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FILET FISH OF THE DAY',NULL,'MAINS',0,2);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE FISH OF THE DAY','served grilled/fried/Thai style','MAINS',0,2);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE MAINE LOBSTER','served grilled or boiled with sweet pea pancakes','MAINS',0,2);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LOBSTER ROLL','with french fries','MAINS','MP',2);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FILET FISH OF THE DAY',NULL,'MAINS','MP',2);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE FISH OF THE DAY','served grilled/fried/Thai style','MAINS','MP',2);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WHOLE MAINE LOBSTER','served grilled or boiled with sweet pea pancakes','MAINS','MP',2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BURGER*','with french fries,add fried oyster +2','MAINS',14,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FLAT IRON STEAK*',NULL,'MAINS',19,2);
 
@@ -122,4 +122,50 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FAIR HAR
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SMALL CRAFT ADVISORY','Cazadores Tequila Blanco, citrus juices, jalapeno syrup',NULL,10,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTY DOG','Tito''s vodka, fresh grapefruit juice',NULL,9,4);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STING RAY','Buffalo Trace bourbon, Carpano Antica, lime juice, ginger syrup',NULL,10,4);
+
+
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Il Follo Prosecco Cuvee Rosé, Veneto, Italy','NV','SPARKLING AND CHAMPAGNE','11/44',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Raventós i Blanc Cava Reserva Brut, Spain','''09','SPARKLING AND CHAMPAGNE','47',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Laurent-Perrier Champagne, France','NV','SPARKLING AND CHAMPAGNE','80',3 );
+
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Condesa Eylo, Verdejo, Rueda, Spain','''10','WHITE','7/28',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Fattoria Laila, Verdicchio, Marche, Italy','''11','WHITE','33',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Labbé Abymes, Jacquère, Vin de Savoie, France','''12','WHITE','33',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. du Haut Bourg, Muscadet, Loire Valley, France','''11','WHITE','9/36',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Skuttlebutt, Sauvignon Blanc/Semillon, Margaret River, Australia','''12','WHITE','10/42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château Lamothe de Haux, Bordeaux Blanc, France','''11','WHITE','42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Bott Geyl, Pinot d’Alsace, “Métiss,” France','''10','WHITE','42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Cantina del Taburno, Falanghina, Italy','''12','WHITE','42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Seifried, Pinot Gris, Nelson, New Zealand','''11','WHITE','11/44',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Marques de Caceres, Deusa Nai, Albariño, Rias Baixas, Spain','''11','WHITE','44',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Sivas-Sonoma, Chardonnay, California','''11','WHITE','12/45',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Ulacia, Getariako, Txakolina, Basque, Spain','''12','WHITE','13/46',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Laroche, Petit Chablis, Chardonnay, France','''10','WHITE','52',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('August Kesseler, Riesling Kabinett, Germany','''11','WHITE','54',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Les Argiles Vouvray, Chenin Blanc, France','''11','WHITE','62',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Zuani Vigne, Bianco, Collio, Italy','''12','WHITE','64',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Acha Blanca, Albariño, California','''12','WHITE','64',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Tinel-Blondelet, Sauvignon Blanc, Sancerre "La Croix Canat" France','''10','WHITE','66',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Rijckaert, Burgundy, St. Veran, Chardonnay, Vielles Vignes, France','''10','WHITE','67',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WALT "La Brisa" Chardonnay, Sonoma, California','''10','WHITE','98',3 );
+
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château Mas Neuf, Rosé "Rhône Paradox," Rhone Valley, France','''12','ROSE','8/34',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('El Coto Rosado, Grenache & Tempranillo, Rioja, Spain','''12','ROSE','8/34',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Alexander Valley, Rosé, Sangiovese, California','''12','ROSE','42',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Heitz, Grignolino Rosé, Napa, California','''12','ROSE','52',3);
+
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Tortoise Creek, Carignan, "Vielles Vignes", Pays d’Hérault, France','''12','RED','29',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Corte alla Flora, Podere del Giuggiolo, Sangiovese, Toscano, Italy','''10','RED','8/34',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Arido, Malbec, Mendoza, Argentina','''09','RED','34',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Leese-Fitch, Cabernet Sauvignon, California','''11','RED','9/36',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Sevona Estate, Pinot Noir, Santa Barbara County, California','''10','RED','52',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Felino Vina Cobos, Malbec, Mendoza, Argentina','''11','RED','54',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Lang & Reed, North Coast, Cabernet Franc, California','''10','RED','62',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('North Valley, Pinot Noir, Soter Vineyards, Oregon','''11','RED','74',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('"Viña Ardanza Reserva", Temprañillo/Garnacha, Rioja, Spain','''04','RED','86',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château de Vaudieu, Châteauneuf du Pape, Val de Dieu, France','''10','RED','108',3 );
+
+
+
+
 
