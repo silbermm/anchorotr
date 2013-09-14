@@ -1,10 +1,15 @@
-define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
+define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], function(ko, $, MenuItem, Catagory) {
     var menuViewModel = function() {
         var self = this;
         self.baseUrl = $("#baseUrl").val();
 
         self.showWarning = ko.observable(false);
-        
+
+        self.catagories = ko.observableArray();
+
+        self.deleteObject = ko.observable();
+        self.deleteObjectName = ko.observable();
+
         self.active = ko.observable(false);
         self.rawBar = ko.observableArray();
         self.platters = ko.observableArray();
@@ -14,7 +19,7 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
         self.deserts = ko.observableArray();
         self.beverages = ko.observableArray();
         self.lunchSpecial = ko.observableArray();
-        
+
         self.happyHour = ko.observable(false);
 
         self.cocktailsCol1 = ko.observableArray();
@@ -28,8 +33,48 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
         self.redWine = ko.observableArray();
         self.roseWine = ko.observableArray();
 
+        self.editItem = function() {
+            console.log(this);
+        }
+
+        self.deleteItem = function() {
+            self.deleteObject(this);
+            self.deleteObjectName(this.itemname());
+            // show modal to ask if sure...
+            $('#removeItemModal').modal('show');
+        }
+
+        self.actuallyDelete = function() {
+            console.log(self.deleteObject().catagory());
+            if (self.deleteObject().catagory() === 'RAW BAR') {
+                self.rawBar.remove(self.deleteObject());
+            }
+            if (self.deleteObject().catagory() === 'PLATTERS') {
+                self.platters.remove(self.deleteObject());
+            }
+            if (self.deleteObject().catagory() === 'SPARKLING AND CHAMPAGNE') {
+                // remove from database...
+                $.ajax({
+                    type: "DELETE",
+                    url: self.baseUrl + "/menus/items",
+                    data: ko.toJSON(self.deleteObject())
+                }).done(function(msg) {
+                    self.sparklingWine.remove(self.deleteObject());
+                    self.deleteObject();
+                }).fail(function(jqXHR, textStatus) {
+                    console.log(jqXHR.responseText);
+                })
+                $("#removeItemModal").modal('hide');
+            }
+        }
+
+        self.addItem = function(menuId, catagory) {
+            console.log(menuId + " " + catagory);
+        }
+
         self.getLunchMenu = function() {
             cleanMenus();
+            console.log(self.catagories);
             console.log("attempting to get lunch menu...");
             getMenu(1, 'RAW%20BAR', self.rawBar);
             getMenu(1, 'PLATTERS', self.platters);
@@ -47,7 +92,6 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
                 var half = mappedItems.length / 2;
                 var leftover = mappedItems.length % 2;
                 var firstColumn = half + leftover;
-
 
                 console.log("firstColumn should be " + firstColumn);
                 $.each(mappedItems, function(idx, val) {
@@ -120,11 +164,21 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
             getMenu(3, 'SPARKLING%20AND%20CHAMPAGNE', self.sparklingWine);
             getMenu(3, 'ROSE', self.roseWine);
         }
-        
+
         self.getHappyHour = function() {
             cleanMenus();
             self.happyHour(true);
         }
+
+        self.showSparklingRow = ko.computed(function() {
+            if (self.sparklingWine().length > 0) {
+                return true;
+            }
+            if (self.roseWine().length > 0) {
+                return true;
+            }
+            return false;
+        })
 
         var getMenu = function(menuId, catagory, observable) {
             $.getJSON(self.baseUrl + '/menus/' + menuId + "/" + catagory, function(data) {
@@ -154,6 +208,17 @@ define(["knockout", "jquery", "../models/menuitem"], function(ko, $, MenuItem) {
             self.roseWine.removeAll();
             self.happyHour(false);
         }
+
+        var getCatagories = function(menuId) {
+            self.catagories.removeAll();
+            $.getJSON(self.baseUrl + '/menus/' + menuId + "/catagories", function(data) {
+                var mappedItems = $.map(data, function(cat) {
+                    self.catagories.push(cat);
+                });
+            })
+        }
+
+
     };
 
     return menuViewModel;

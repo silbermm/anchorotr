@@ -47,6 +47,27 @@ public class MenuService {
         } 
     }
     
+    @Transactional
+    public List<String> getCatagoriesForMenu(Long menuid){
+        try {
+            return menuItemDao.findCatagoriesByMenu(menuid);
+        }catch(RuntimeException e){
+            throw new GenericDataException(e.getMessage());
+        } catch(Exception e){
+            throw new GenericDataException(e.getMessage());
+        } 
+    }
+    
+    @Transactional(readOnly=false)
+    public void deleteMenuItem(MenuItem m){
+        try {
+            menuItemDao.delete(m);
+        }catch(RuntimeException e){
+            throw new GenericDataException(e.getMessage());
+        } catch(Exception e){
+            throw new GenericDataException(e.getMessage());
+        } 
+    }
     
    @Autowired MenuDao menuDao;
    @Autowired MenuItemDao menuItemDao;

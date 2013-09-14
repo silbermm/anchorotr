@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html id="topHtml">
     <head>     
@@ -10,14 +11,14 @@
         <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/32e3358a-7cdb-4ede-bd45-eb874aa3d12e.css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
-        <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
-        <script data-main="<c:url value='/resources/js/main' />" src="<c:url value='/resources/js/lib/require.js' />"></script>  
+        <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/responsive.css" >
+        <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/img/favicon.png">
+        <script data-main="${pageContext.request.contextPath}/resources/js/main" src="${pageContext.request.contextPath}/resources/js/lib/require.js"></script>  
 
         <script type="text/javascript"
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn6M_PmJLrNR8-BkJL0aEvcpBRG69sdPc&sensor=true">
         </script>
-        
+
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -69,7 +70,7 @@
         <div id="mobile-logo" class="visible-phone visible-tablet hidden-desktop">	
             <div class="row-fluid">
                 <div class="span12 text-center">		
-                    <img src="<c:url value='/resources/img/AnchorLarge.png' />" />
+                    <a href="#/home"> <img src="${pageContext.request.contextPath}/resources/img/AnchorLarge.png" /> </a>
                 </div>
             </div>
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
@@ -89,7 +90,7 @@
                         </ul>	
                     </div>	
                     <div class="span4 text-center" id="center-logo">
-                        <img src="<c:url value='/resources/img/AnchorLarge.png' />" />
+                        <a href="#/home"> <img src="${pageContext.request.contextPath}/resources/img/AnchorLarge.png" /> </a>
                     </div>
                     <div class="span4 info-columns" id="right-text">
                         <ul class="inline">
@@ -118,7 +119,7 @@
                         <div class="span4" >
                             <ul class="inline text-right">
                                 <li data-bind="css: {active: isMenuView}"> 
-                                    <a href="" data-bind="click:toggleSubMenu">Menus</a>
+                                    <a href="" data-bind="click:showSubMenu">Menus</a>
                                 </li>
                                 <li data-bind="css: {active: currentView()=='locationTemplate'}">
                                     <a href="#/location"> Location </a>
@@ -160,9 +161,9 @@
                     </div>
                 </div>	
                 <div class="container" id="menu-border"></div>	
-                
-                
-                
+
+
+
                 <div data-bind='template : {name : currentView, 
                      data: currentModel,
                      beforeRemove: hideElement,
@@ -177,21 +178,21 @@
 
         <script type="text/html" id="homeTemplate">
             <div class="row-fluid ui-view" id="landing-imgs">
-            <img src="<c:url value='/resources/img/landing.jpg' />" />
+            <img src="${pageContext.request.contextPath}/resources/img/landing.jpg" />
             </div>
         </script>
-        
-        
+
+
 
         <script type="text/html" id="locationTemplate">
             <div class="row-fluid ui-view" id="location-page">
-                     
+
             <div class="map"> 
             <a href="https://www.google.com/maps/preview#!q=Anchor+OTR%2C+Cincinnati%2C+OH%2C+North+America&data=!4m10!1m9!4m8!1m3!1d120951!2d-84.5404014!3d39.1363401!3m2!1i816!2i938!4f13.1" target="_blank" >
-                <img src="https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
+            <img src="https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
             </a>
             </div>
-            
+
             </div>		
         </script>
 
@@ -206,17 +207,17 @@
             <ul class="inline">
             <li>
             <a class="thumbnail">
-            <img src="<c:url value='/resources/img/about1.jpg' />">
+            <img src="${pageContext.request.contextPath}/resources/img/about1.jpg">
             </a>
             </li>
             <li>
             <a class="thumbnail">
-            <img src="<c:url value='/resources/img/about2.jpg' />">
+            <img src="${pageContext.request.contextPath}/resources/img/about2.jpg">
             </a>
             </li>
             <li>
             <a class="thumbnail">
-            <img src="<c:url value='/resources/img/about3.jpg' />">
+            <img src="${pageContext.request.contextPath}/resources/img/about3.jpg">
             </a>
             </li>
             </ul>	
@@ -264,7 +265,7 @@
             <div class="row-fluid ui-view" id="lunch-page" data-bind="with: $root.menuViewModel">
             <div class="container">
 
-            <div class="row-fluid" data-bind="if:happyHour">
+            <div class="row-fluid" data-bind="if:happyHour()">
             <div class="span12">
             <h3> COMING SOON! </h3>
             </div>
@@ -272,8 +273,14 @@
 
             <!-- WINE LIST -->
             <div class="row-fluid" data-bind="if:sparklingWine().length >0">
-            <div class="span6 food-menu-container" data-bind="fadeVisible:sparklingWine().length >0">
-            <div class="food-menu-title"> Champagne </div>
+            
+            <!-- Sparkling and Champagne -->
+            <div class="span6 food-menu-container" data-bind="fadeVisible:showSparklingRow">
+            <div class="food-menu-title"> Champagne 
+            <security:authorize access="hasRole('Administrator')">
+                    <a class="pointer" data-bind="click: addItem(3, 'Sparkling and Champagne')"> <i class="icon-plus-sign"></i> Add New </a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
             </div>
@@ -281,13 +288,23 @@
             <tbody data-bind="foreach:sparklingWine" class="food-item-tbl">
             <tr> 
             <td><span data-bind="text:itemdesc"></span></td>
-            <td><span data-bind="text:itemname"></span></td>
+            <td><span data-bind="text:itemname"><span data-bind="text: $index"></span></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                    <span>
+                        <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                        <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                    </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr> <td colspan="3" style="border-top:none"> </td> </tr>
             </tbody>
             </table>
             </div>
+    
+            <!-- ROSE -->
             <div class="span6" data-bind="fadeVisible:roseWine().length>0">
             <div class="food-menu-title"> ROSÉ </div>
             <div class="food-menu-title-ornament-container">
@@ -598,10 +615,11 @@
             </div>	
             </div>		
             </div>
+    
             <div class="row-fluid" data-bind="fadeVisible:showWarning">
             <div class="aside-container">
             <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
-            <img class="food-menu-container-image" src="<c:url value='/resources/img/shark-small.gif' />"    style="opacity: 1;">
+            <img class="food-menu-container-image" src="${pageContext.request.contextPath}/resources/img/shark-small.gif" style="opacity: 1;">
             <div class="aside-text">There is a risk associated with consumption of raw oysters or any raw protein</div>
             </div>
             </div>
@@ -656,8 +674,23 @@
             </div>
         </script>
 
+        <!-- Modal -->
+        <div id="removeItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="removeItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="removeItemModalLabel">Are you sure?</h3>
+            </div>
+            <div class="modal-body">
+                <p>This will remove <span data-bind="text:deleteObjectName"></span> from the database. Are you sure you want to do this?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+                <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
+            </div>
+        </div>
+
         <form>
-            <input id="baseUrl" type="hidden" value="<c:url value='/' />" />
+            <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
     </body>
-</html>
+</html>ss
