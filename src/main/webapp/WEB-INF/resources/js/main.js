@@ -1,5 +1,5 @@
 requirejs.config({
-    "baseUrl": "/anchor/resources/js/lib",
+    "baseUrl": "/resources/js/lib",
     "paths": {
         ko: "knockout",
         jquery: "jquery-1.9.0.min",
