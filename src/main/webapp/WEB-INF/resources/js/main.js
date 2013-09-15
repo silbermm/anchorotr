@@ -114,7 +114,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.showSubMenu();
             master.menuViewModel.showWarning(false);
         })
-        this.get("#/menus/happyHour"), function() {
+        this.get("#/menus/happyHour", function() {
             master.menuViewModel.getHappyHour();
             master.pageTitle("Happy Hour");
             master.currentView("foodMenuTemplate");
@@ -122,7 +122,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(false);
-        }
+        });
 
         this.get("#/login", function() {
             window.location.href = $("#baseUrl").val() + "login";

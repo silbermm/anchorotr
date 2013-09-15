@@ -123,7 +123,7 @@ body, html {
 }
 
 #submenu ul{
-    width: 580px;
+    width: 591px;
     margin: 0px auto;
     position: relative;
 }
@@ -428,7 +428,7 @@ body, html {
 }
 
 .pagefooter .social {
-    width: 148px;
+    width: 151px;
     height: 150px;
     margin: 0px auto;
     padding-top: 20px;
@@ -466,6 +466,14 @@ body, html {
 
 .login{padding-top: 65px;}
 .center{float: none; margin-left: auto; margin-right: auto;}
+
+.red {
+    color: red;
+}
+
+.pointer {
+    cursor: pointer;
+}
 
 @media (max-width: 1148px) {
     #desktop-menubar .info-columns{

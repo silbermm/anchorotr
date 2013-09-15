@@ -5,7 +5,7 @@ create table users(username varchar(50) not null primary key,password varchar(20
 create table authorities (username varchar(50) not null,authority varchar(50) not null,constraint fk_authorities_users foreign key(username) references users(username));
 create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62',1);
+INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62','t');
 INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator');
 
 DELETE FROM menu;
@@ -124,37 +124,37 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTY DO
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STING RAY','Buffalo Trace bourbon, Carpano Antica, lime juice, ginger syrup',NULL,10,4);
 
 
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Il Follo Prosecco Cuvee Rosé, Veneto, Italy','NV','SPARKLING AND CHAMPAGNE','11/44',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Raventós i Blanc Cava Reserva Brut, Spain','''09','SPARKLING AND CHAMPAGNE','47',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Il Follo Prosecco Cuvee RosÔøΩ, Veneto, Italy','NV','SPARKLING AND CHAMPAGNE','11/44',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('RaventÔøΩs i Blanc Cava Reserva Brut, Spain','''09','SPARKLING AND CHAMPAGNE','47',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Laurent-Perrier Champagne, France','NV','SPARKLING AND CHAMPAGNE','80',3 );
 
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Condesa Eylo, Verdejo, Rueda, Spain','''10','WHITE','7/28',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Fattoria Laila, Verdicchio, Marche, Italy','''11','WHITE','33',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Labbé Abymes, Jacquère, Vin de Savoie, France','''12','WHITE','33',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('LabbÔøΩ Abymes, JacquÔøΩre, Vin de Savoie, France','''12','WHITE','33',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. du Haut Bourg, Muscadet, Loire Valley, France','''11','WHITE','9/36',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Skuttlebutt, Sauvignon Blanc/Semillon, Margaret River, Australia','''12','WHITE','10/42',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château Lamothe de Haux, Bordeaux Blanc, France','''11','WHITE','42',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Bott Geyl, Pinot d’Alsace, “Métiss,” France','''10','WHITE','42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('ChÔøΩteau Lamothe de Haux, Bordeaux Blanc, France','''11','WHITE','42',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Bott Geyl, Pinot dÔøΩAlsace, ÔøΩMÔøΩtiss,ÔøΩ France','''10','WHITE','42',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Cantina del Taburno, Falanghina, Italy','''12','WHITE','42',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Seifried, Pinot Gris, Nelson, New Zealand','''11','WHITE','11/44',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Marques de Caceres, Deusa Nai, Albariño, Rias Baixas, Spain','''11','WHITE','44',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Marques de Caceres, Deusa Nai, AlbariÔøΩo, Rias Baixas, Spain','''11','WHITE','44',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Sivas-Sonoma, Chardonnay, California','''11','WHITE','12/45',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Ulacia, Getariako, Txakolina, Basque, Spain','''12','WHITE','13/46',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Laroche, Petit Chablis, Chardonnay, France','''10','WHITE','52',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('August Kesseler, Riesling Kabinett, Germany','''11','WHITE','54',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Les Argiles Vouvray, Chenin Blanc, France','''11','WHITE','62',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Zuani Vigne, Bianco, Collio, Italy','''12','WHITE','64',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Acha Blanca, Albariño, California','''12','WHITE','64',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Acha Blanca, AlbariÔøΩo, California','''12','WHITE','64',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Tinel-Blondelet, Sauvignon Blanc, Sancerre "La Croix Canat" France','''10','WHITE','66',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Dm. Rijckaert, Burgundy, St. Veran, Chardonnay, Vielles Vignes, France','''10','WHITE','67',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('WALT "La Brisa" Chardonnay, Sonoma, California','''10','WHITE','98',3 );
 
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château Mas Neuf, Rosé "Rhône Paradox," Rhone Valley, France','''12','ROSE','8/34',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('ChÔøΩteau Mas Neuf, RosÔøΩ "RhÔøΩne Paradox," Rhone Valley, France','''12','ROSE','8/34',3);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('El Coto Rosado, Grenache & Tempranillo, Rioja, Spain','''12','ROSE','8/34',3);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Alexander Valley, Rosé, Sangiovese, California','''12','ROSE','42',3);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Heitz, Grignolino Rosé, Napa, California','''12','ROSE','52',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Alexander Valley, RosÔøΩ, Sangiovese, California','''12','ROSE','42',3);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Heitz, Grignolino RosÔøΩ, Napa, California','''12','ROSE','52',3);
 
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Tortoise Creek, Carignan, "Vielles Vignes", Pays d’Hérault, France','''12','RED','29',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Tortoise Creek, Carignan, "Vielles Vignes", Pays dÔøΩHÔøΩrault, France','''12','RED','29',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Corte alla Flora, Podere del Giuggiolo, Sangiovese, Toscano, Italy','''10','RED','8/34',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Arido, Malbec, Mendoza, Argentina','''09','RED','34',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Leese-Fitch, Cabernet Sauvignon, California','''11','RED','9/36',3 );
@@ -162,8 +162,8 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Sevona E
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Felino Vina Cobos, Malbec, Mendoza, Argentina','''11','RED','54',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Lang & Reed, North Coast, Cabernet Franc, California','''10','RED','62',3 );
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('North Valley, Pinot Noir, Soter Vineyards, Oregon','''11','RED','74',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('"Viña Ardanza Reserva", Temprañillo/Garnacha, Rioja, Spain','''04','RED','86',3 );
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Château de Vaudieu, Châteauneuf du Pape, Val de Dieu, France','''10','RED','108',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('"ViÔøΩa Ardanza Reserva", TempraÔøΩillo/Garnacha, Rioja, Spain','''04','RED','86',3 );
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('ChÔøΩteau de Vaudieu, ChÔøΩteauneuf du Pape, Val de Dieu, France','''10','RED','108',3 );
 
 
 
