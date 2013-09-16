@@ -9,6 +9,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         self.deleteObject = ko.observable();
         self.deleteObjectName = ko.observable();
+        self.currentMenu = ko.observable();
 
         self.active = ko.observable(false);
         self.rawBar = ko.observableArray();
@@ -54,10 +55,18 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
             }
             if (self.deleteObject().catagory() === 'SPARKLING AND CHAMPAGNE') {
                 // remove from database...
+                var jsonObject = "{id:"+self.deleteObject().id()+
+                        ",itemName:"self.deleteObject().itemname()+
+                        ",itemDesc:"+self.deleteObject().itemdesc()+
+                        ",catagory:"+self.deleteObject().catagory()+
+                        ",price:"+self.deleteObject().price()+
+                        ",menuId:"+
+                console.log(jsonObject);
                 $.ajax({
+                    contentType: "application/json",
                     type: "DELETE",
                     url: self.baseUrl + "/menus/items",
-                    data: ko.toJSON(self.deleteObject())
+                    data: jsonObject
                 }).done(function(msg) {
                     self.sparklingWine.remove(self.deleteObject());
                     self.deleteObject();
