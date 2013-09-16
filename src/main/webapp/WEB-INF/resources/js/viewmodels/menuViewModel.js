@@ -46,6 +46,12 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
         }
 
         self.actuallyDelete = function() {
+            var jsonObject = "{id:"+self.deleteObject().id()+
+                        ",itemName:"+self.deleteObject().itemname()+
+                        ",itemDesc:"+self.deleteObject().itemdesc()+
+                        ",catagory:"+self.deleteObject().catagory()+
+                        ",price:"+self.deleteObject().price()+
+                        ",menuId:";
             console.log(self.deleteObject().catagory());
             if (self.deleteObject().catagory() === 'RAW BAR') {
                 self.rawBar.remove(self.deleteObject());
@@ -53,29 +59,37 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
             if (self.deleteObject().catagory() === 'PLATTERS') {
                 self.platters.remove(self.deleteObject());
             }
-            if (self.deleteObject().catagory() === 'SPARKLING AND CHAMPAGNE') {
-                // remove from database...
-                var jsonObject = "{id:"+self.deleteObject().id()+
-                        ",itemName:"self.deleteObject().itemname()+
-                        ",itemDesc:"+self.deleteObject().itemdesc()+
-                        ",catagory:"+self.deleteObject().catagory()+
-                        ",price:"+self.deleteObject().price()+
-                        ",menuId:"+
-                console.log(jsonObject);
-                $.ajax({
-                    contentType: "application/json",
+            if (self.deleteObject().catagory() === 'SPARKLING AND CHAMPAGNE') {                
+                self.ajaxCall({
                     type: "DELETE",
-                    url: self.baseUrl + "/menus/items",
-                    data: jsonObject
-                }).done(function(msg) {
-                    self.sparklingWine.remove(self.deleteObject());
-                    self.deleteObject();
-                }).fail(function(jqXHR, textStatus) {
-                    console.log(jqXHR.responseText);
-                })
+                    url: "/menus/items/" + self.deleteObject().id(),                    
+                    success: function() {
+                        self.sparklingWine.remove(self.deleteObject());
+                        self.deleteObject();
+                    },
+                });              
                 $("#removeItemModal").modal('hide');
             }
         }
+
+        self.ajaxCall = function(ajaxCall) {
+            ajaxCall = ajaxCall || {};            
+            $.ajax({
+                type: ajaxCall.type || "GET",
+                url: ajaxCall.url || "",                
+                contentType: "application/json",
+                dataType: "json"
+            }).done(function(msg) {
+                console.log(msg);                
+                ajaxCall.success();
+            }).fail(function(jqXHR, textStatus) {
+                console.log(jqXHR.responseText);
+            });
+
+            //props.params = props.params || {};
+            //props.id = props.id || 1;
+            //props.callback = props.callback || function() {           
+        };
 
         self.addItem = function(menuId, catagory) {
             console.log(menuId + " " + catagory);
@@ -190,7 +204,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
         })
 
         var getMenu = function(menuId, catagory, observable) {
-            $.getJSON(self.baseUrl + '/menus/' + menuId + "/" + catagory, function(data) {
+            $.getJSON('/menus/' + menuId + "/" + catagory, function(data) {
                 var mappedItems = $.map(data, function(menuitem) {
                     return new MenuItem(menuitem);
                 });
@@ -220,7 +234,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         var getCatagories = function(menuId) {
             self.catagories.removeAll();
-            $.getJSON(self.baseUrl + '/menus/' + menuId + "/catagories", function(data) {
+            $.getJSON('/menus/' + menuId + "/catagories", function(data) {
                 var mappedItems = $.map(data, function(cat) {
                     self.catagories.push(cat);
                 });

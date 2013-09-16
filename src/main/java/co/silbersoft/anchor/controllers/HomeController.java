@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,17 +58,19 @@ public class HomeController {
         return menuService.getAllByMenuAndCatagory(id, catagory);
     }
     
-    @RequestMapping(value="menus/{id}/catagories", method=RequestMethod.GET)
+    @RequestMapping(value="menus/{id}/catagories",method=RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<String> getCatagories(@PathVariable Long id){
         return menuService.getCatagoriesForMenu(id);
     }
     
-    @RequestMapping(value="menus/items", method=RequestMethod.DELETE)
+    
+    @RequestMapping(value="menus/items/{id}",method=RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Map<String,String> deleteMenuItem(@RequestBody MenuItem menuItem){
+    public @ResponseBody Map<String,String> deleteMenuItem(@PathVariable Long id){
+        menuService.deleteMenuItem(id);
         Map<String, String> error = new HashMap();
-        error.put("item", menuItem.getItemName());
+        error.put("removed", id.toString());
         return error;
         //menuService.deleteMenuItem(menuItem);
     }
