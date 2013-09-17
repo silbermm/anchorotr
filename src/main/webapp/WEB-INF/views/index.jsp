@@ -4,21 +4,16 @@
 <!DOCTYPE html>
 <html id="topHtml">
     <head>     
-        <title data-bind="text: $root.pageTitle"></title>
+        <title data-bind="text: $root.pageTitle">The Anchor-OTR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/32e3358a-7cdb-4ede-bd45-eb874aa3d12e.css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/resources/css/responsive.css" >
-        <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/img/favicon.png">
-        <script data-main="${pageContext.request.contextPath}/resources/js/main" src="${pageContext.request.contextPath}/resources/js/lib/require.js"></script>  
-
-        <script type="text/javascript"
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn6M_PmJLrNR8-BkJL0aEvcpBRG69sdPc&sensor=true">
-        </script>
-
+        <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
+        <link rel="shortcut icon" href="/resources/img/favicon.ico" >
+        <script data-main="/resources/js/main" src="/resources/js/lib/require.js"> </script>
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -30,7 +25,7 @@
                         <span class="icon-bar"></span>
                     </a>
 
-                    <a class="brand" href="#">The Anchor-OTR</a>				
+                    <a class="brand" href="#"><i class="icon-anchor"></i>The Anchor-OTR</a>				
                     <div class="nav-collapse collapse">	
                         <ul class="nav">
                             <li class="dropdown">
@@ -70,7 +65,7 @@
         <div id="mobile-logo" class="visible-phone visible-tablet hidden-desktop">	
             <div class="row-fluid">
                 <div class="span12 text-center">		
-                    <a href="#/home"> <img src="${pageContext.request.contextPath}/resources/img/AnchorLarge.png" /> </a>
+                    <a href="#/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
                 </div>
             </div>
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
@@ -90,7 +85,7 @@
                         </ul>	
                     </div>	
                     <div class="span4 text-center" id="center-logo">
-                        <a href="#/home"> <img src="${pageContext.request.contextPath}/resources/img/AnchorLarge.png" /> </a>
+                        <a href="#/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
                     </div>
                     <div class="span4 info-columns" id="right-text">
                         <ul class="inline">
@@ -102,12 +97,6 @@
                                     <li> Fri-Sat: 11:30-2:30, 5-11 </li>
                                 </ul>
                             </li>
-                            <!--
-                            <div class="hours">
-                                <span class="top"> Tuesday - Thursday: 11:30am-2:30pm,5pm-10pm </span>
-                                <span class="bottom"> Fri - Sat: 11:30am-2:30pm, 5pm-11pm </span>
-                            </div>
-                            -->
                         </ul>	
                     </div>
                 </div>
@@ -923,4 +912,4 @@
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
     </body>
-</html>ss
+</html>
