@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,8 +73,17 @@ public class HomeController {
         Map<String, String> error = new HashMap();
         error.put("removed", id.toString());
         return error;
-        //menuService.deleteMenuItem(menuItem);
     }
+    
+    @RequestMapping(value="menus/items", method=RequestMethod.POST,headers ={"Accept=application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Map<String,String> addMenuItem(@RequestBody MenuItem menuItem){
+        menuService.createMenuItem(menuItem);
+        Map<String, String> error = new HashMap();
+        error.put("added", menuItem.getItemName());
+        return error;
+    }
+    
     
     
     @ExceptionHandler(GenericDataException.class)

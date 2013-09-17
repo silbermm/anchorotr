@@ -186,11 +186,31 @@
 
         <script type="text/html" id="locationTemplate">
             <div class="row-fluid ui-view" id="location-page">
-
+            <div class="container">
+            <ul class="inline text-center">
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/location1.jpg">
+            </a>
+            </li>
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/location2.jpg">
+            </a>
+            </li>
+            </ul>
             <div class="map"> 
             <a href="https://www.google.com/maps/preview#!q=Anchor+OTR%2C+Cincinnati%2C+OH%2C+North+America&data=!4m10!1m9!4m8!1m3!1d120951!2d-84.5404014!3d39.1363401!3m2!1i816!2i938!4f13.1" target="_blank" >
-            <img src="https://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
+            <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x200&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
             </a>
+            <br />
+            <br />
+            <br />
+            <p clas="text-center">
+               Looking for parking? 
+               <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
+            </p>
+            </div>
             </div>
 
             </div>		
@@ -273,12 +293,12 @@
 
             <!-- WINE LIST -->
             <div class="row-fluid" data-bind="if:sparklingWine().length >0">
-            
+
             <!-- Sparkling and Champagne -->
-            <div class="span6 food-menu-container" data-bind="fadeVisible:showSparklingRow">
+            <div class="span6 food-menu-container" data-bind="fadeVisible:showSparklingRow" >
             <div class="food-menu-title"> Champagne 
             <security:authorize access="hasRole('Administrator')">
-                    <a class="pointer" data-bind="click: addItem(3, 'Sparkling and Champagne')"> <i class="icon-plus-sign"></i> Add New </a>
+                <a class="pointer" data-bind="click:function () { addItem('SPARKLING AND CHAMPAGNE'); }"> <i class="icon-plus-sign"></i></a>
             </security:authorize>
             </div>
             <div class="food-menu-title-ornament-container">
@@ -292,10 +312,10 @@
             <td class="pull-right"><span data-bind="text:price"> </span></td>
             <security:authorize access="hasRole('Administrator')"> 
                 <td>
-                    <span>
-                        <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                        <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                    </span>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
                 </td>
             </security:authorize>
             </tr>
@@ -303,10 +323,13 @@
             </tbody>
             </table>
             </div>
-    
+
             <!-- ROSE -->
-            <div class="span6" data-bind="fadeVisible:roseWine().length>0">
-            <div class="food-menu-title"> ROSÉ </div>
+            <div class="span6"  data-bind="fadeVisible:roseWine().length>0" >
+            <div class="food-menu-title"> ROSÉ 
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('ROSE'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize></div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
             </div>
@@ -316,6 +339,14 @@
             <td><span data-bind="text:itemdesc"></span></td>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr> <td colspan="3" style="border-top:none"> </td> </tr>
             </tbody>
@@ -325,7 +356,10 @@
 
             <div class="row-fluid" data-bind="fadeVisible:redWine().length >0"> 
             <div class="span6 food-menu-container" data-bind="if:redWine().length >0">
-            <div class="food-menu-title"> RED </div>
+            <div class="food-menu-title"> RED 
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('RED'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize></div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
             </div>
@@ -335,13 +369,24 @@
             <td><span data-bind="text:itemdesc"></span></td>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr> <td colspan="3" style="border-top:none"> </td> </tr>
             </tbody>
             </table>
             </div>
-            <div class="span6" data-bind="fadeVisible:whiteWine().length>0">
-            <div class="food-menu-title"> WHITE </div>
+            <div class="span6" data-bind="fadeVisible:whiteWine().length>0" >
+            <div class="food-menu-title"> WHITE 
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('WHITE'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize></div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
             </div>
@@ -351,6 +396,14 @@
             <td><span data-bind="text:itemdesc"></span></td>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr> <td colspan="3" style="border-top:none"> </td> </tr>
             </tbody>
@@ -358,11 +411,16 @@
             </div>
             </div>
 
-            <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">
+
+            <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">          
             <!-- LUNCH SPECIAL -->
             <div class="span12">
             <div class="food-menu-container food-menu-container-border middle-callout"> 
-            <div class="food-menu-title">LUNCH SPECIAL</div>
+            <div class="food-menu-title">LUNCH SPECIAL
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('LUNCH SPECIAL'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -372,16 +430,28 @@
             <div class="food-item-title" data-bind="text:itemname"></div>
             </div>
             <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            <div class="food-item-price" data-bind="text:price"></div>
+            <div class="food-item-price">
+            <span data-bind="text:price"> </span>
+            <security:authorize access="hasRole('Administrator')"> 
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+            </security:authorize>
+            </div>
             </li>
             </ul>
             </div>
             </div>	
             </div>			
 
-            <div class="row-fluid"  data-bind="fadeVisible:rawBar().length>0">
+            <div class="row-fluid" data-bind="fadeVisible:rawBar().length>0">
             <div class="span6 food-menu-container" data-bind="fadeVisible:rawBar().length>0">
-            <div class="food-menu-title"> RAW BAR </div>
+            <div class="food-menu-title"> RAW BAR 
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('RAW BAR'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>	
             </div>
@@ -390,6 +460,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -409,7 +487,11 @@
             -->
             </div>
             <div class="span6 food-menu-container" data-bind="fadeVisible:platters().length>0">
-            <div class="food-menu-title"> PLATTERS </div>
+            <div class="food-menu-title"> PLATTERS
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('PLATTERS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div> 
@@ -418,6 +500,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -443,7 +533,11 @@
             <div class="row-fluid" data-bind="fadeVisible:starters().length>0">
             <!-- STARTERS -->
             <div class="span6 food-container" data-bind="fadeVisible:starters().length>0">
-            <div class="food-menu-title"> STARTERS </div>
+            <div class="food-menu-title"> STARTERS 
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('STARTERS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -452,6 +546,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -462,7 +564,11 @@
 
             <!-- SALADS -->
             <div class="span6 food-container" data-bind="fadeVisible:salads().length>0">
-            <div class="food-menu-title"> SALADS</div>
+            <div class="food-menu-title"> SALADS
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('SALADS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -471,6 +577,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -484,7 +598,11 @@
             <!-- COCKTAILS -->
             <div class="row-fluid" data-bind="fadeVisible:cocktailsCol1().length>0">
             <div class="span12 food-container" data-bind="fadeVisible:cocktailsCol1().length>0">
-            <div class="food-menu-title"> House Cocktails </div>
+            <div class="food-menu-title"> House Cocktails
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('COCKTAILS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -494,6 +612,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -507,6 +633,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -521,7 +655,11 @@
             <!-- MAINS -->
             <div class="row-fluid" data-bind="fadeVisible:mainsCol1().length>0">
             <div class="span12 food-container" >
-            <div class="food-menu-title"> MAINS</div>
+            <div class="food-menu-title"> MAINS
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('MAINS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -531,6 +669,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -544,6 +690,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -557,7 +711,11 @@
             <div class="row-fluid" data-bind="fadeVisible:sides().length>0">	
             <!-- SIDES -->
             <div class="span6 food-container" data-bind="fadeVisible:sides().length>0">
-            <div class="food-menu-title"> SIDES</div>
+            <div class="food-menu-title"> SIDES
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('SIDES'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -566,6 +724,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -576,7 +742,11 @@
 
             <!-- DESERTS -->
             <div class="span6 food-container" data-bind="fadeVisible:deserts().length>0">
-            <div class="food-menu-title"> DESERTS</div>
+            <div class="food-menu-title"> DESERTS
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('DESERTS'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -585,6 +755,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -597,7 +775,11 @@
             <div class="row-fluid">
             <!-- BEVERAGES -->
             <div class="span6 food-container" data-bind="fadeVisible:beverages().length>0">
-            <div class="food-menu-title">BEVERAGES</div>
+            <div class="food-menu-title">BEVERAGES
+            <security:authorize access="hasRole('Administrator')">
+                <a class="pointer" data-bind="click:function () { addItem('BEVERAGES'); }"> <i class="icon-plus-sign"></i></a>
+            </security:authorize>
+            </div>
             <div class="food-menu-title-ornament-container">
             <div class="food-menu-title-ornament"></div>
             </div>
@@ -606,6 +788,14 @@
             <tr>
             <td><span data-bind="text:itemname"></span></td>
             <td class="pull-right"><span data-bind="text:price"> </span></td>
+            <security:authorize access="hasRole('Administrator')"> 
+                <td>
+                <span>
+                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                </span>
+                </td>
+            </security:authorize>
             </tr>
             <tr>
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
@@ -615,7 +805,7 @@
             </div>	
             </div>		
             </div>
-    
+
             <div class="row-fluid" data-bind="fadeVisible:showWarning">
             <div class="aside-container">
             <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
@@ -686,6 +876,46 @@
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
                 <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
+            </div>
+        </div>
+
+        <div id="addItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="addItemModalLabel">Add a new Menu Item</h3>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        <label class="control-label" for="itemName">Name</label>
+                        <div class="controls">
+                            <input type="text" id="itemName" data-bind="value:addMenuObject().itemname" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemDesc">Description (Optional)</label>
+                        <div class="controls">
+                            <input type="text" id="itemDesc" data-bind="value:addMenuObject().itemdesc" placeholder="Description...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemCatagory">Catagory</label>
+                        <div class="controls">
+                            <input type="text" id="itemCatagory" data-bind="value:addMenuObject().catagory" disabled >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemPrice">Price</label>
+                        <div class="controls">
+                            <input type="text" id="itemPrice" data-bind="value:addMenuObject().price" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelAdd">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
             </div>
         </div>
 

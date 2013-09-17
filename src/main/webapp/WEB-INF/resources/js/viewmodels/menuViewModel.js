@@ -11,6 +11,8 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
         self.deleteObjectName = ko.observable();
         self.currentMenu = ko.observable();
 
+        self.addMenuObject = ko.observable(new MenuItem());
+
         self.active = ko.observable(false);
         self.rawBar = ko.observableArray();
         self.platters = ko.observableArray();
@@ -41,62 +43,114 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
         self.deleteItem = function() {
             self.deleteObject(this);
             self.deleteObjectName(this.itemname());
-            // show modal to ask if sure...
             $('#removeItemModal').modal('show');
         }
 
         self.actuallyDelete = function() {
-            var jsonObject = "{id:"+self.deleteObject().id()+
-                        ",itemName:"+self.deleteObject().itemname()+
-                        ",itemDesc:"+self.deleteObject().itemdesc()+
-                        ",catagory:"+self.deleteObject().catagory()+
-                        ",price:"+self.deleteObject().price()+
-                        ",menuId:";
-            console.log(self.deleteObject().catagory());
-            if (self.deleteObject().catagory() === 'RAW BAR') {
-                self.rawBar.remove(self.deleteObject());
-            }
-            if (self.deleteObject().catagory() === 'PLATTERS') {
-                self.platters.remove(self.deleteObject());
-            }
-            if (self.deleteObject().catagory() === 'SPARKLING AND CHAMPAGNE') {                
-                self.ajaxCall({
-                    type: "DELETE",
-                    url: "/menus/items/" + self.deleteObject().id(),                    
-                    success: function() {
-                        self.sparklingWine.remove(self.deleteObject());
-                        self.deleteObject();
-                    },
-                });              
-                $("#removeItemModal").modal('hide');
-            }
+            $.ajax({
+                type: "DELETE",
+                url: "/menus/items/" + self.deleteObject().id(),
+                contentType: "application/json",
+                dataType: "json",
+            }).done(function(msg){
+                console.log(self.deleteObject().catagory());
+                 switch (self.deleteObject().catagory()) {
+                        case "SPARKLING AND CHAMPAGNE":
+                            self.sparklingWine.remove(self.deleteObject());
+                        case "ROSE":
+                            self.roseWine.remove(self.deleteObject());
+                        case "RED":
+                            self.redWine.remove(self.deleteObject());
+                        case "WHITE":
+                            self.whiteWine.remove(self.deleteObject());
+                        case "LUNCH SPECIAL":
+                            self.lunchSpecial.remove(self.deleteObject());
+                        case "RAW BAR":
+                            self.rawBar.remove(self.deleteObject());
+                        case "PLATTERS":
+                            self.platters.remove(self.deleteObject());
+                        case "STARTERS":
+                            self.starters.remove(self.deleteObject());
+                        case "SALADS":
+                            self.salads.remove(self.deleteObject());
+                        case "COCKTAILS":
+                            self.cocktailsCol1.remove(self.deleteObject());
+                            self.cocktailsCol2.remove(self.deleteObject());
+                        case "MAINS":
+                            self.mainsCol1.remove(self.deleteObject());
+                            self.mainsCol2.remove(self.deleteObject());
+                        case "SIDES":
+                            self.sides.remove(self.deleteObject());
+                        case "DESERTS":
+                            self.deserts.remove(self.deleteObject());
+                        case "BEVERAGES":
+                            self.beverages.remove(self.deleteObject());
+                        
+                    }
+            });           
+            $("#removeItemModal").modal('hide');
+        }
+       
+        self.addItem = function(catagory) {
+            self.addMenuObject().catagory(catagory);
+            self.addMenuObject().menuid(self.currentMenu());
+            $('#addItemModal').modal('show');
+
         }
 
-        self.ajaxCall = function(ajaxCall) {
-            ajaxCall = ajaxCall || {};            
+        self.cancelAdd = function() {
+            self.addMenuObject(new MenuItem());
+        }
+
+        self.actuallyAdd = function() {
+            var jsonObject = convertMenuItemToJson(self.addMenuObject());
+            console.log(jsonObject);
             $.ajax({
-                type: ajaxCall.type || "GET",
-                url: ajaxCall.url || "",                
+                type: "POST",
+                url: "/menus/items",
                 contentType: "application/json",
-                dataType: "json"
+                dataType: "json",
+                data: jsonObject
             }).done(function(msg) {
-                console.log(msg);                
-                ajaxCall.success();
+                switch (self.addMenuObject().catagory()) {
+                    case("SPARKLING AND CHAMPAGNE"):
+                        self.sparklingWine.push(self.addMenuObject());
+                    case("ROSE"):
+                        self.roseWine.push(self.addMenuObject());
+                    case("RED"):
+                        self.redWine.push(self.addMenuObject());
+                    case("WHITE"):
+                        self.whiteWine.push(self.addMenuObject());
+                    case("LUNCH SPECIAL"):
+                        self.lunchSpecial.push(self.addMenuObject());
+                    case("RAW BAR"):
+                        self.rawBar.push(self.addMenuObject());
+                    case("PLATTERS"):
+                        self.platters.push(self.addMenuObject());
+                    case("STARTERS"):
+                        self.starters.push(self.addMenuObject());
+                    case("SALADS"):
+                        self.salads.push(self.addMenuObject());
+                    case("COCKTAILS"):
+                        self.cocktailsCol2.push(self.addMenuObject());
+                    case("MAINS"):
+                        self.mainsCol2.push(self.addMenuObject());
+                    case("SIDES"):
+                        self.sides.push(self.addMenuObject());
+                    case("DESERTS"):
+                        self.deserts.push(self.addMenuObject());
+                    case ("BEVERAGES"):
+                        self.beverages.push(self.addMenuObject());
+                }
             }).fail(function(jqXHR, textStatus) {
                 console.log(jqXHR.responseText);
             });
-
-            //props.params = props.params || {};
-            //props.id = props.id || 1;
-            //props.callback = props.callback || function() {           
-        };
-
-        self.addItem = function(menuId, catagory) {
-            console.log(menuId + " " + catagory);
+            $('#addItemModal').modal('hide');
         }
 
         self.getLunchMenu = function() {
             cleanMenus();
+            self.currentMenu(1);
             console.log(self.catagories);
             console.log("attempting to get lunch menu...");
             getMenu(1, 'RAW%20BAR', self.rawBar);
@@ -108,7 +162,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
             getMenu(1, 'BEVERAGES', self.beverages);
             getMenu(1, 'LUNCH%20SPECIAL', self.lunchSpecial);
 
-            $.getJSON(self.baseUrl + '/menus/1/MAINS', function(data) {
+            $.getJSON('/menus/1/MAINS', function(data) {
                 var mappedItems = $.map(data, function(menuitem) {
                     return new MenuItem(menuitem);
                 });
@@ -129,15 +183,15 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         self.getDinnerMenu = function() {
             cleanMenus();
+            self.currentMenu(2);
             console.log("attempting to get dinner menu...");
             getMenu(2, 'RAW%20BAR', self.rawBar);
             getMenu(2, 'PLATTERS', self.platters);
             getMenu(2, 'STARTERS', self.starters);
             getMenu(2, 'SALADS', self.salads);
-            //getMenu(2, 'MAINS', self.mains);
             getMenu(2, 'SIDES', self.sides);
             getMenu(2, 'DESERTS', self.deserts);
-            $.getJSON(self.baseUrl + '/menus/2/MAINS', function(data) {
+            $.getJSON('/menus/2/MAINS', function(data) {
                 var dinnerMappedItems = $.map(data, function(menuitem) {
                     return new MenuItem(menuitem);
                 });
@@ -159,8 +213,9 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         self.getCocktails = function() {
             cleanMenus();
+            self.currentMenu(4);
             console.log("getting cocktails");
-            $.getJSON(self.baseUrl + '/menus/4', function(data) {
+            $.getJSON('/menus/4', function(data) {
 
                 var mappedItems = $.map(data, function(menuitem) {
                     return new MenuItem(menuitem);
@@ -182,6 +237,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         self.getWineList = function() {
             cleanMenus();
+            self.currentMenu(3);
             getMenu(3, 'WHITE', self.whiteWine);
             getMenu(3, 'RED', self.redWine);
             getMenu(3, 'SPARKLING%20AND%20CHAMPAGNE', self.sparklingWine);
@@ -230,6 +286,7 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
             self.redWine.removeAll();
             self.roseWine.removeAll();
             self.happyHour(false);
+            self.currentMenu();
         }
 
         var getCatagories = function(menuId) {
@@ -239,6 +296,16 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
                     self.catagories.push(cat);
                 });
             })
+        }
+
+        var convertMenuItemToJson = function(menuItem) {
+            var data = {};
+            data.itemName = menuItem.itemname();
+            data.itemDesc = menuItem.itemdesc();
+            data.catagory = menuItem.catagory();
+            data.price = menuItem.price();
+            data.menu = self.currentMenu();
+            return JSON.stringify(data);
         }
 
 

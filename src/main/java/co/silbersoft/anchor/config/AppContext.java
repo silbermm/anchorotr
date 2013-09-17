@@ -12,8 +12,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
+@EnableWebMvc
 @ComponentScan(basePackages = {"co.silbersoft.anchor"})
 public class AppContext {
 

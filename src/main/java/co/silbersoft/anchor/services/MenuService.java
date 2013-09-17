@@ -86,6 +86,17 @@ public class MenuService {
         }
     }
     
+    @Transactional(readOnly=false)
+    public void createMenuItem(MenuItem item){
+        try{
+            menuItemDao.create(item);
+        }catch(RuntimeException e){
+            throw new GenericDataException(e.getMessage());
+        } catch(Exception e){
+            throw new GenericDataException(e.getMessage());
+        }
+    }
+    
    @Autowired MenuDao menuDao;
    @Autowired MenuItemDao menuItemDao;
 }

@@ -35,7 +35,7 @@ public class AccountController {
     
     @RequestMapping(value="adminAccount", method=RequestMethod.GET)
     public String createAdminAccount(){
-        accountService.registerUser("silbermm", "othello", "administrator");
+        accountService.registerUser("admin", "@nchor0tr", "administrator");
         return "index";
     }
 

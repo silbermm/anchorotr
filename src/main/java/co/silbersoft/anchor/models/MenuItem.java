@@ -1,6 +1,5 @@
 package co.silbersoft.anchor.models;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="menuitem")
-@JsonAutoDetect
 public class MenuItem implements Serializable {
     
     private Long id;

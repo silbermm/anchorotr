@@ -7,6 +7,8 @@ create unique index ix_auth_username on authorities (username,authority);
 
 INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62','t');
 INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator');
+INSERT INTO users (username, password, enabled) VALUES('admin', '7f6a223111da9f8831925b172a8976a70ae9192491dd993f8f7384cf2e849b87','t');
+INSERT INTO authorities (username, authority) VALUES ('admin', 'Administrator');
 
 DELETE FROM menu;
 INSERT INTO menu (menu_id,name) VALUEs (1,'lunch');
@@ -115,13 +117,13 @@ INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STEAMED 
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('HOT FUDGE SUNDAE',NULL,'DESERTS',7,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SEASONAL CRISP','with ice cream','DESERTS',9,2);
 
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PARKSIDE GIMLET','Hindricks''s gin, fresh lime, mint syrup, cucumber',NULL,10,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STOWAWAY','Hangar One Mandarin vodka, fresh lime, mint syrup',NULL,9,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BOATHOUSE PUNCH','Watershed Gin, St.Germain, Aperol, fresh citrus juices, rose Prosecco',NULL,9,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FAIR HARBOR','Kraken rum, ginger beer, lime, pomegranate juice',NULL,8,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SMALL CRAFT ADVISORY','Cazadores Tequila Blanco, citrus juices, jalapeno syrup',NULL,10,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTY DOG','Tito''s vodka, fresh grapefruit juice',NULL,9,4);
-INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STING RAY','Buffalo Trace bourbon, Carpano Antica, lime juice, ginger syrup',NULL,10,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('PARKSIDE GIMLET','Hindricks''s gin, fresh lime, mint syrup, cucumber','COCKTAILS',10,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STOWAWAY','Hangar One Mandarin vodka, fresh lime, mint syrup','COCKTAILS',9,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('BOATHOUSE PUNCH','Watershed Gin, St.Germain, Aperol, fresh citrus juices, rose Prosecco','COCKTAILS',9,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('FAIR HARBOR','Kraken rum, ginger beer, lime, pomegranate juice','COCKTAILS',8,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SMALL CRAFT ADVISORY','Cazadores Tequila Blanco, citrus juices, jalapeno syrup','COCKTAILS',10,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('SALTY DOG','Tito''s vodka, fresh grapefruit juice','COCKTAILS',9,4);
+INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('STING RAY','Buffalo Trace bourbon, Carpano Antica, lime juice, ginger syrup','COCKTAILS',10,4);
 
 
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id) VALUES('Il Follo Prosecco Cuvee Ros�, Veneto, Italy','NV','SPARKLING AND CHAMPAGNE','11/44',3 );
