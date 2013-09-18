@@ -2,10 +2,15 @@ package co.silbersoft.anchor.config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,11 +24,39 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = {"co.silbersoft.anchor"})
 public class AppContext {
 
+    private static final Logger log = LoggerFactory.getLogger(AppContext.class);
+    
+    @Value("#{ systemEnvironment['DATABASE_URL'] }")
+    private String DATABASE_URL;
+    
     @Bean
     public Config config() {
         return ConfigFactory.load().withFallback(ConfigFactory.systemProperties());
     }
 
+    @Bean
+    public URI dbUrl(){
+        log.debug(DATABASE_URL + " ------------------- ");
+        try {
+            return new URI(DATABASE_URL);
+        } catch (URISyntaxException ex) {
+            log.error("unable to get DATABASE_URL from the environment");
+            return null;
+        }
+    }
+    
+    @Bean(destroyMethod ="close")
+    public DataSource dataSource(){
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setDriverClassName("org.postgresql.Driver");
+        basicDataSource.setUrl("jdbc:postgresql://" + dbUrl().getHost() + ":" + dbUrl().getPort() + dbUrl().getPath());
+        basicDataSource.setUsername(dbUrl().getUserInfo().split(":")[0]);
+        basicDataSource.setPassword(dbUrl().getUserInfo().split(":")[1]);
+        basicDataSource.setMaxWait(1);
+        return basicDataSource;
+    }
+    
+    /*
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
@@ -34,6 +67,7 @@ public class AppContext {
         basicDataSource.setMaxWait(config().getLong("db.maxwait"));
         return basicDataSource;
     }
+    */ 
 
     @Bean
     public SessionFactory sessionFactory() {
