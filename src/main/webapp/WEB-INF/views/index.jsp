@@ -13,7 +13,7 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
         <link rel="shortcut icon" href="/resources/img/favicon.ico" >
-        <script data-main="/resources/js/main" src="/resources/js/lib/require.js"> </script>
+        <script data-main="/resources/js/main" src="/resources/js/lib/require.js"></script>
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -73,6 +73,14 @@
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
                 <div data-bind='template: {name : "footer"}'></div>
             </div>
+
+            <div class="row-fluid" id="reservations">
+                <div class="container">
+                    <script type="text/javascript" 
+                    src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=wide&hover=1"></script>                   
+                </div>
+            </div>
+
         </div>
 
         <div id="desktop-menubar" class="row-fluid hidden-phone hidden-tablet visible-desktop">
@@ -122,7 +130,7 @@
                                     <a href="#/about"> About </a>
                                 </li>
                                 <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                    <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>                                   
+                                    <a href="#/reserve"> Reservations </a>                                   
                                 </li>
                             </ul>	
                         </div>
@@ -151,7 +159,14 @@
                 </div>	
                 <div class="container" id="menu-border"></div>	
 
-
+                <div class="row-fluid" id="reservations">
+                    <div class="container">
+                        <div class="center">
+                        <script type="text/javascript" 
+                            src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=wide&hover=1"></script>                   
+                        </div>
+                    </div>
+                </div>
 
                 <div data-bind='template : {name : currentView, 
                      data: currentModel,
@@ -165,7 +180,7 @@
 
 
 
-        <script type="text/html" id="homeTemplate">
+        <script type="text/html" id="homeTemplate">                       
             <div class="row-fluid ui-view" id="landing-imgs">
             <img src="${pageContext.request.contextPath}/resources/img/landing.jpg" />
             </div>
@@ -196,8 +211,8 @@
             <br />
             <br />
             <p clas="text-center">
-               Looking for parking? 
-               <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
+            Looking for parking? 
+            <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
             </p>
             </div>
             </div>
