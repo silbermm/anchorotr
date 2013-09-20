@@ -71,15 +71,19 @@
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
+                <div data-bind="visible:currentView()=='reserveTemplate'">
+                    <div class="row-fluid ui-view" id="inline-reserve-template">
+                        <div class="container">
+                            <div id="OT_center">
+                                <script type="text/javascript" src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short&hover=1"></script><a href="http://www.opentable.com/the-anchor-reservations-cincinnati?rtype=ism&restref=100687" class="OT_ExtLink">The Anchor (100687), Cincinnati / Dayton Reservations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div data-bind='template: {name : "footer"}'></div>
             </div>
 
-            <div class="row-fluid" id="reservations">
-                <div class="container">
-                    <script type="text/javascript" 
-                    src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=wide&hover=1"></script>                   
-                </div>
-            </div>
+
 
         </div>
 
@@ -159,21 +163,21 @@
                 </div>	
                 <div class="container" id="menu-border"></div>	
 
-                <div class="row-fluid" id="reservations">
-                    <div class="container">
-                        <div class="center">
-                        <script type="text/javascript" 
-                            src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=wide&hover=1"></script>                   
-                        </div>
-                    </div>
-                </div>
-
                 <div data-bind='template : {name : currentView, 
                      data: currentModel,
                      beforeRemove: hideElement,
                      afterAdd: showElement}' > 
-                </div>     
+                </div>  
 
+                <div data-bind="visible:currentView()=='reserveTemplate'">
+                    <div class="row-fluid ui-view" id="inline-reserve-template">
+                        <div class="container">
+                            <div id="OT_center">
+                                <script type="text/javascript" src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short&hover=1"></script><a href="http://www.opentable.com/the-anchor-reservations-cincinnati?rtype=ism&restref=100687" class="OT_ExtLink">The Anchor (100687), Cincinnati / Dayton Reservations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
@@ -221,7 +225,7 @@
         </script>
 
         <script type="text/html" id="reserveTemplate">
-            <h1 data-bind="text:$parent.currentView"></h1>
+
         </script>
 
         <script type="text/html" id="aboutTemplate">

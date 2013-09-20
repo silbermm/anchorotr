@@ -416,7 +416,10 @@ body, html {
 .login{padding-top: 65px;}
 .center{float: none; margin-left: auto; margin-right: auto;}
 
-
+#inline-reserve-template {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
 
 /******** FOOTER ***************/
 .pagefooter .thin-line {
@@ -477,6 +480,11 @@ body, html {
     cursor: pointer;
 }
 
+#OT_center{
+    width: 170px;
+    margin: 0 auto;
+}
+
 @media (max-width: 1148px) {
     #desktop-menubar .info-columns{
         top: 9em;
@@ -484,7 +492,7 @@ body, html {
 }
 
 @media (max-width: 800px) {
-   .map {
+    .map {
         width: 400px;
         margin: 0px auto;
     }
