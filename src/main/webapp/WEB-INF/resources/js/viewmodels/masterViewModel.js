@@ -20,7 +20,7 @@ define(["knockout",
         self.currentView = ko.observable("homeTemplate");
         self.currentMenuLink = ko.observable();
         self.currentModel = ko.observable(self.homeViewModel);
-        self.pageTitle = ko.observable("Page Title");
+        self.pageTitle = ko.observable("The Anchor-OTR");
 
         // Main Menu Animations	
         self.toggleSubMenu = function() {

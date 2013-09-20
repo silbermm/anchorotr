@@ -12,7 +12,7 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
-        <link rel="shortcut icon" href="/resources/img/favicon.ico" >
+        <link rel="shortcut icon" href="/resources/img/favicon.ico" > 
         <script data-main="/resources/js/main" src="/resources/js/lib/require.js"></script>
     </head>
     <body>
