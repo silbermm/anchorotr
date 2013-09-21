@@ -71,7 +71,8 @@
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
-                <div data-bind="visible:currentView()=='reserveTemplate'">
+                <!-- 
+		<div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
                         <div class="container">
                             <div id="OT_center">
@@ -80,6 +81,7 @@
                         </div>
                     </div>
                 </div>
+		-->
                 <div data-bind='template: {name : "footer"}'></div>
             </div>
 
