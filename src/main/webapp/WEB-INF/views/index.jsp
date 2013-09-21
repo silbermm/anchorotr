@@ -134,7 +134,8 @@
                                     <a href="#/about"> About </a>
                                 </li>
                                 <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                    <a href="#/reserve"> Reservations </a>                                   
+                                    <!-- <a href="#/reserve"> Reservations </a>  -->                                 
+                                    <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>
                                 </li>
                             </ul>	
                         </div>
@@ -168,7 +169,7 @@
                      beforeRemove: hideElement,
                      afterAdd: showElement}' > 
                 </div>  
-
+		<!--
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
                         <div class="container">
@@ -178,6 +179,7 @@
                         </div>
                     </div>
                 </div>
+		-->
                 <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
