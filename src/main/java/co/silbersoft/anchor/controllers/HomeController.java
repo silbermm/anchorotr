@@ -88,6 +88,7 @@ public class HomeController {
     
     @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value="menus/items", method=RequestMethod.PUT,headers={"Accept=application/json"})
+    @ResponseStatus(HttpStatus.OK)
     public @ResponseBody Map<String,Long> editMenuItem(@RequestBody MenuItem menuItem){
         menuService.updateMenuItem(menuItem);
         Map<String, Long> status = new HashMap();
@@ -99,6 +100,14 @@ public class HomeController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody Map<String,String> handleGenericDataException(GenericDataException e){
         Map<String, String> error = new HashMap();
+        error.put("error", e.getMessage());
+        return error;
+    }
+    
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public @ResponseBody Map<String, String> handleException(Exception e){
+        Map<String,String> error = new HashMap();
         error.put("error", e.getMessage());
         return error;
     }
