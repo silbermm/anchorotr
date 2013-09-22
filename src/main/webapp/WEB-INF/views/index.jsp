@@ -67,12 +67,22 @@
                 <div class="span12 text-center">		
                     <a href="#/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
                 </div>
+                <address class="text-center">
+                    1401 Race Street<br/>
+                    Cincinnati,OH 45202<br/>
+                    (513) 421-8111
+                </address>
+
+                <address class="text-center">
+                    Tue-Thur: 11:30-2:30, 5-10<br/>
+                    Fri-Sat:  11:30-2:30, 5-11
+                </address>
             </div>
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
                 <!-- 
-		<div data-bind="visible:currentView()=='reserveTemplate'">
+                <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
                         <div class="container">
                             <div id="OT_center">
@@ -81,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-		-->
+                -->
                 <div data-bind='template: {name : "footer"}'></div>
             </div>
 
@@ -143,7 +153,7 @@
                         </div>
                     </div>
                 </div>	
-                <div id="submenu" class="row-fluid">
+                <div id="submenu" class="row-fluid collapse">
                     <div class="container">	
                         <ul class="inline">
                             <li data-bind="css:{active: currentMenuLink()=='lunch'}">
@@ -171,7 +181,7 @@
                      beforeRemove: hideElement,
                      afterAdd: showElement}' > 
                 </div>  
-		<!--
+                <!--
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
                         <div class="container">
@@ -181,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-		-->
+                -->
                 <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
@@ -236,7 +246,7 @@
             <div class="row-fluid ui-view" id="about-page">
             <div class="container">	
             <div class="about-photos">
-            <ul class="inline">
+            <ul class="inline text-center">
             <li>
             <a class="thumbnail">
             <img src="${pageContext.request.contextPath}/resources/img/about1.jpg">
@@ -930,6 +940,74 @@
                 <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
             </div>
         </div>
+
+
+        <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="editItemModalLabel">Add a new Menu Item</h3>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        <label class="control-label" for="itemName">Name</label>
+                        <div class="controls">
+                            <input type="text" id="itemName" data-bind="value:editObject().itemname" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemDesc">Description (Optional)</label>
+                        <div class="controls">
+                            <input type="text" id="itemDesc" data-bind="value:editObject().itemdesc" placeholder="Description...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemCatagory">Catagory</label>
+                        <div class="controls">
+                            <input type="text" id="itemCatagory" data-bind="value:editObject().catagory" disabled >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemPrice">Price</label>
+                        <div class="controls">
+                            <input type="text" id="itemPrice" data-bind="value:editObject().price" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelEdit">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
+            </div>
+        </div>
+        
+        
+        <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="mailModalLabel">Email Us</h3>
+            </div>
+            <div class="modal-body">
+                <p> 
+                   We love getting feedback from our customers! Please email us at ... or simply use the form below. 
+                </p>
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        <!-- label -->
+                        <div class="controls">
+                            <!-- input -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
+            </div>
+        </div>
+
+
 
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />

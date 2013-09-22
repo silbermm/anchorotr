@@ -42,5 +42,12 @@ public class MenuItemDaoImpl extends AbstractDao<MenuItem> implements MenuItemDa
         q.setLong("id", menuItemId);
         q.executeUpdate();
     }
+
+    @Override
+    public Long findItemId(String name) {
+        return (Long) getSession().createQuery("select id from MenuItem where itemName=:name").setString("name", name).uniqueResult();
+    }
+    
+    
     
 }

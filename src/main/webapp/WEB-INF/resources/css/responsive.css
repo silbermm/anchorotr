@@ -178,8 +178,8 @@ body, html {
 
 /******* About Us ***********/
 .about-photos {
-    width: 700px;
-    margin: 0px auto;
+    /*width: 700px;
+    margin: 0px auto;*/
 }
 
 .callout {
@@ -483,6 +483,12 @@ body, html {
 #OT_center{
     width: 170px;
     margin: 0 auto;
+}
+
+address {
+    font-family: 'PalatinoLTW01';
+    font-weight: bold;
+    font-size: 13px;
 }
 
 @media (max-width: 1148px) {

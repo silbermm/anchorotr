@@ -17,10 +17,14 @@ define(["knockout",
         self.locationViewModel = new locationViewModel();
         self.aboutViewModel = new aboutViewModel();
         self.menuViewModel = new menuViewModel();
+        //self.mailViewModel = new mailViewModel();
         self.currentView = ko.observable("homeTemplate");
         self.currentMenuLink = ko.observable();
         self.currentModel = ko.observable(self.homeViewModel);
         self.pageTitle = ko.observable("The Anchor-OTR");
+
+        // Mail vars
+        
 
         // Main Menu Animations	
         self.toggleSubMenu = function() {
@@ -29,6 +33,10 @@ define(["knockout",
 
         self.hideSubMenu = function() {
             $('#submenu').collapse('hide');
+        }
+        
+        self.hideNavMenu = function() {
+            $('.nav-collapse').collapse('hide');
         }
 
         self.showSubMenu = function() {
@@ -44,7 +52,12 @@ define(["knockout",
         });
 
         self.showMailModal = function() {
-            return true;
+            console.log("MAIL!");
+            $("#mailModal").modal("show");
+        }
+        
+        self.sendMail = function() {
+            
         }
 
         self.gotoLogin = function() {

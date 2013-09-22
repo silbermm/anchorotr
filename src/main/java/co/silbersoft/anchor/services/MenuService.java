@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,6 +64,7 @@ public class MenuService {
     }
     
     @Transactional(readOnly=false)
+    @PreAuthorize("hasRole('Administrator')")
     public void deleteMenuItem(MenuItem m){
         try {
             menuItemDao.delete(m);
@@ -74,11 +76,11 @@ public class MenuService {
     }
     
     @Transactional(readOnly=false)
+    @PreAuthorize("hasRole('Administrator')")
     public void deleteMenuItem(Long itemId){
         try {
             log.info("trying to delete item " + itemId);
             menuItemDao.deleteById(itemId);
-            log.info("done");
         }catch(RuntimeException e){
             throw new GenericDataException(e.getMessage());
         } catch(Exception e){
@@ -87,9 +89,23 @@ public class MenuService {
     }
     
     @Transactional(readOnly=false)
-    public void createMenuItem(MenuItem item){
+    @PreAuthorize("hasRole('Administrator')")
+    public Long createMenuItem(MenuItem item){
         try{
             menuItemDao.create(item);
+            return menuItemDao.findItemId(item.getItemName());
+        }catch(RuntimeException e){
+            throw new GenericDataException(e.getMessage());
+        } catch(Exception e){
+            throw new GenericDataException(e.getMessage());
+        }
+    }
+    
+    @Transactional(readOnly=false)
+    @PreAuthorize("hasRole('Administrator')")
+    public void updateMenuItem(MenuItem item){
+        try {
+            menuItemDao.update(item);
         }catch(RuntimeException e){
             throw new GenericDataException(e.getMessage());
         } catch(Exception e){

@@ -9,6 +9,8 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         self.deleteObject = ko.observable();
         self.deleteObjectName = ko.observable();
+
+        self.editObject = ko.observable(new MenuItem());
         self.currentMenu = ko.observable();
 
         self.addMenuObject = ko.observable(new MenuItem());
@@ -36,10 +38,6 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
         self.redWine = ko.observableArray();
         self.roseWine = ko.observableArray();
 
-        self.editItem = function() {
-            console.log(this);
-        }
-
         self.deleteItem = function() {
             self.deleteObject(this);
             self.deleteObjectName(this.itemname());
@@ -52,45 +50,45 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
                 url: "/menus/items/" + self.deleteObject().id(),
                 contentType: "application/json",
                 dataType: "json",
-            }).done(function(msg){
+            }).done(function(msg) {
                 console.log(self.deleteObject().catagory());
-                 switch (self.deleteObject().catagory()) {
-                        case "SPARKLING AND CHAMPAGNE":
-                            self.sparklingWine.remove(self.deleteObject());
-                        case "ROSE":
-                            self.roseWine.remove(self.deleteObject());
-                        case "RED":
-                            self.redWine.remove(self.deleteObject());
-                        case "WHITE":
-                            self.whiteWine.remove(self.deleteObject());
-                        case "LUNCH SPECIAL":
-                            self.lunchSpecial.remove(self.deleteObject());
-                        case "RAW BAR":
-                            self.rawBar.remove(self.deleteObject());
-                        case "PLATTERS":
-                            self.platters.remove(self.deleteObject());
-                        case "STARTERS":
-                            self.starters.remove(self.deleteObject());
-                        case "SALADS":
-                            self.salads.remove(self.deleteObject());
-                        case "COCKTAILS":
-                            self.cocktailsCol1.remove(self.deleteObject());
-                            self.cocktailsCol2.remove(self.deleteObject());
-                        case "MAINS":
-                            self.mainsCol1.remove(self.deleteObject());
-                            self.mainsCol2.remove(self.deleteObject());
-                        case "SIDES":
-                            self.sides.remove(self.deleteObject());
-                        case "DESERTS":
-                            self.deserts.remove(self.deleteObject());
-                        case "BEVERAGES":
-                            self.beverages.remove(self.deleteObject());
-                        
-                    }
-            });           
+                switch (self.deleteObject().catagory()) {
+                    case "SPARKLING AND CHAMPAGNE":
+                        self.sparklingWine.remove(self.deleteObject());
+                    case "ROSE":
+                        self.roseWine.remove(self.deleteObject());
+                    case "RED":
+                        self.redWine.remove(self.deleteObject());
+                    case "WHITE":
+                        self.whiteWine.remove(self.deleteObject());
+                    case "LUNCH SPECIAL":
+                        self.lunchSpecial.remove(self.deleteObject());
+                    case "RAW BAR":
+                        self.rawBar.remove(self.deleteObject());
+                    case "PLATTERS":
+                        self.platters.remove(self.deleteObject());
+                    case "STARTERS":
+                        self.starters.remove(self.deleteObject());
+                    case "SALADS":
+                        self.salads.remove(self.deleteObject());
+                    case "COCKTAILS":
+                        self.cocktailsCol1.remove(self.deleteObject());
+                        self.cocktailsCol2.remove(self.deleteObject());
+                    case "MAINS":
+                        self.mainsCol1.remove(self.deleteObject());
+                        self.mainsCol2.remove(self.deleteObject());
+                    case "SIDES":
+                        self.sides.remove(self.deleteObject());
+                    case "DESERTS":
+                        self.deserts.remove(self.deleteObject());
+                    case "BEVERAGES":
+                        self.beverages.remove(self.deleteObject());
+
+                }
+            });
             $("#removeItemModal").modal('hide');
         }
-       
+
         self.addItem = function(catagory) {
             self.addMenuObject().catagory(catagory);
             self.addMenuObject().menuid(self.currentMenu());
@@ -112,40 +110,82 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
                 dataType: "json",
                 data: jsonObject
             }).done(function(msg) {
+                console.log(msg);
+                self.addMenuObject().id(msg.added);
                 switch (self.addMenuObject().catagory()) {
                     case("SPARKLING AND CHAMPAGNE"):
                         self.sparklingWine.push(self.addMenuObject());
+                        break;
                     case("ROSE"):
                         self.roseWine.push(self.addMenuObject());
+                        break;
                     case("RED"):
                         self.redWine.push(self.addMenuObject());
+                        break;
                     case("WHITE"):
                         self.whiteWine.push(self.addMenuObject());
+                        break;
                     case("LUNCH SPECIAL"):
                         self.lunchSpecial.push(self.addMenuObject());
+                        break;
                     case("RAW BAR"):
                         self.rawBar.push(self.addMenuObject());
+                        break;
                     case("PLATTERS"):
                         self.platters.push(self.addMenuObject());
+                        break;
                     case("STARTERS"):
                         self.starters.push(self.addMenuObject());
+                        break;
                     case("SALADS"):
                         self.salads.push(self.addMenuObject());
+                        break;
                     case("COCKTAILS"):
                         self.cocktailsCol2.push(self.addMenuObject());
+                        break;
                     case("MAINS"):
                         self.mainsCol2.push(self.addMenuObject());
+                        break;
                     case("SIDES"):
                         self.sides.push(self.addMenuObject());
+                        break;
                     case("DESERTS"):
                         self.deserts.push(self.addMenuObject());
+                        break;
                     case ("BEVERAGES"):
                         self.beverages.push(self.addMenuObject());
+                        break;
                 }
             }).fail(function(jqXHR, textStatus) {
                 console.log(jqXHR.responseText);
             });
             $('#addItemModal').modal('hide');
+        }
+
+        self.editItem = function() {
+            self.editObject(this);
+            $('#editItemModal').modal('show');
+        }
+
+        self.cancelEdit = function() {
+            self.editObject(new MenuItem());
+        }
+        
+        self.actuallyEdit = function() {
+             var jsonObject = convertMenuItemToJson(self.editObject());
+             console.log(jsonObject);
+             $.ajax({
+                type: "PUT",
+                url: "/menus/items",
+                contentType: "application/json",
+                dataType: "json",
+                data: jsonObject
+            }).done(function(msg) {
+                console.log(msg);
+            }).fail(function(jqXHR, textStatus) {
+                console.log(jqXHR.responseText);
+            });
+            $("#editItemModal").modal('hide');
         }
 
         self.getLunchMenu = function() {
@@ -300,6 +340,9 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
 
         var convertMenuItemToJson = function(menuItem) {
             var data = {};
+            if(menuItem.id()){
+                data.id = menuItem.id();
+            }
             data.itemName = menuItem.itemname();
             data.itemDesc = menuItem.itemdesc();
             data.catagory = menuItem.catagory();

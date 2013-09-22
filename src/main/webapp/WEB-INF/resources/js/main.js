@@ -18,7 +18,7 @@ requirejs.config({
         },
     }
 });
-define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], function(ko, Sammy, $, master) {
+define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel", "jquery.bootstrap"], function(ko, Sammy, $, master) {
     var master = new master();
 
     ko.bindingHandlers.fadeVisible = {
@@ -55,6 +55,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.locationViewModel);
             master.currentMenuLink("location");
             master.hideSubMenu();
+            master.hideNavMenu();
         });
 
         this.get("#/home", function() {
@@ -71,12 +72,14 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.aboutViewModel);
             master.hideSubMenu();
             master.currentMenuLink("about");
+            master.hideNavMenu();
         });
         this.get("#/reserve", function() {
             master.pageTitle("Reservations");
             master.currentView("reserveTemplate");
             master.hideSubMenu();
             master.currentMenuLink("reserve");
+            master.hideNavMenu();
         });
         this.get("#/menus/lunch", function() {
             master.menuViewModel.getLunchMenu();
@@ -86,6 +89,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(true);
+            master.hideNavMenu();
         });
         this.get("#/menus/dinner", function() {
             master.menuViewModel.getDinnerMenu();
@@ -95,6 +99,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(true);
+            master.hideNavMenu();
         });
         this.get("#/menus/cocktails", function() {
             master.menuViewModel.getCocktails();
@@ -104,6 +109,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(false);
+            master.hideNavMenu();
         });
         this.get("#/menus/wine", function() {
             master.menuViewModel.getWineList();
@@ -113,6 +119,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(false);
+            master.hideNavMenu();
         })
         this.get("#/menus/happyHour", function() {
             master.menuViewModel.getHappyHour();
@@ -122,6 +129,7 @@ define(["knockout", "sammy", "jquery", "../viewmodels/masterViewModel"], functio
             master.currentModel(master.menuViewModel);
             master.showSubMenu();
             master.menuViewModel.showWarning(false);
+            master.hideNavMenu();
         });
 
         this.get("#/login", function() {

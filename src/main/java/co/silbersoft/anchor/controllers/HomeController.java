@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -65,7 +66,7 @@ public class HomeController {
         return menuService.getCatagoriesForMenu(id);
     }
     
-    
+    @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value="menus/items/{id}",method=RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody Map<String,String> deleteMenuItem(@PathVariable Long id){
@@ -75,16 +76,24 @@ public class HomeController {
         return error;
     }
     
+    @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value="menus/items", method=RequestMethod.POST,headers ={"Accept=application/json"})
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Map<String,String> addMenuItem(@RequestBody MenuItem menuItem){
-        menuService.createMenuItem(menuItem);
-        Map<String, String> error = new HashMap();
-        error.put("added", menuItem.getItemName());
+    public @ResponseBody Map<String,Long> addMenuItem(@RequestBody MenuItem menuItem){
+        Long id = menuService.createMenuItem(menuItem);
+        Map<String, Long> error = new HashMap();
+        error.put("added", id);
         return error;
     }
     
-    
+    @PreAuthorize("hasRole('Administrator')")
+    @RequestMapping(value="menus/items", method=RequestMethod.PUT,headers={"Accept=application/json"})
+    public @ResponseBody Map<String,Long> editMenuItem(@RequestBody MenuItem menuItem){
+        menuService.updateMenuItem(menuItem);
+        Map<String, Long> status = new HashMap();
+        status.put("updated", menuItem.getId());
+        return status;
+    }
     
     @ExceptionHandler(GenericDataException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

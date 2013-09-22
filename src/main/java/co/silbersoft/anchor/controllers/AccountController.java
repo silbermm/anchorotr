@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -33,6 +34,7 @@ public class AccountController {
             "lastName", "email"});
     }
     
+    @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value="adminAccount", method=RequestMethod.GET)
     public String createAdminAccount(){
         accountService.registerUser("admin", "@nchor0tr", "administrator");
