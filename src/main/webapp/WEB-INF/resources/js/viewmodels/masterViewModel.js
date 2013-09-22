@@ -23,6 +23,8 @@ define(["knockout",
         self.currentModel = ko.observable(self.homeViewModel);
         self.pageTitle = ko.observable("The Anchor-OTR");
 
+        self.errorMsg = ko.observable("ERROR MESSAGE");
+
         // Mail vars
         
 
@@ -42,6 +44,17 @@ define(["knockout",
         self.showSubMenu = function() {
             $("#submenu").collapse('show');
         }
+        
+        self.clearError = ko.computed(function(){
+           self.errorMsg(); 
+        });
+
+        self.isError = ko.computed(function(){
+            if(self.errorMsg() === null){
+                return false;
+            }
+            return true;
+        })
 
         self.isMenuView = ko.computed(function() {
             console.log(self.currentView());

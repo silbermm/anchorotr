@@ -945,7 +945,7 @@
         <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="editItemModalLabel">Add a new Menu Item</h3>
+                <h3 id="editItemModalLabel">Edit <span data-bind='text:editObject().itemname'></span> </h3>
             </div>
             <div class="modal-body">
 
@@ -981,8 +981,8 @@
                 <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
             </div>
         </div>
-        
-        
+
+
         <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -990,7 +990,7 @@
             </div>
             <div class="modal-body">
                 <p> 
-                   We love getting feedback from our customers! Please email us at ... or simply use the form below. 
+                    We love getting feedback from our customers! Please email us at ... or simply use the form below. 
                 </p>
                 <form class="form-horizontal"> 
                     <div class="control-group">

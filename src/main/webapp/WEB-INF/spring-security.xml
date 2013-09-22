@@ -11,7 +11,7 @@
     <sec:http auto-config="true" use-expressions="true">
         <sec:form-login login-page="/login"
                         authentication-failure-url="/login?error=authFailed" />
-        <!-- <sec:remember-me key="98jeij01101SdfiwA1294)" data-source-ref="dataSource" /> -->
+        <sec:remember-me key="98jeij01101SdfiwA1294)" data-source-ref="dataSource" />
         <!-- <sec:session-management invalid-session-url="/login?error=sessionTimeout" />  -->    
 
         <sec:intercept-url pattern="/**" method="GET" access="permitAll" />

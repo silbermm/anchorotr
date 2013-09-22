@@ -156,8 +156,10 @@ define(["knockout", "jquery", "../models/menuitem", "../models/catagory"], funct
                         self.beverages.push(self.addMenuObject());
                         break;
                 }
+                
             }).fail(function(jqXHR, textStatus) {
                 console.log(jqXHR.responseText);
+                
             });
             $('#addItemModal').modal('hide');
         }

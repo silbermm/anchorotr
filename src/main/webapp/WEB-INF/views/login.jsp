@@ -35,9 +35,10 @@
                         <form method="POST" accept-charset="UTF-8" action="${postLoginUrl}" >
                             <input type="text" id="username" class="span4" name='j_username' placeholder="Username" />
                             <input type="password" id="password" class="span4" name='j_password' placeholder="Password" />
-                            <label class="checkbox">
+                            <!--<label class="checkbox">
                                 <input type="checkbox" name='_spring_security_remember_me' value="1" /> Remember Me
-                            </label>
+                            </label>-->
+                            <input type="hidden" name='_spring_security_remember_me' value='1' />
                             <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
                         </form>
                     </div>
