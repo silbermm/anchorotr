@@ -93,7 +93,7 @@ public class MenuService {
     public Long createMenuItem(MenuItem item){
         try{
             menuItemDao.create(item);
-            return menuItemDao.findItemId(item.getItemName());
+            return menuItemDao.findItemId(item.getItemName(), item.getCatagory(), item.getMenu());
         }catch(RuntimeException e){
             throw new GenericDataException(e.getMessage());
         } catch(Exception e){

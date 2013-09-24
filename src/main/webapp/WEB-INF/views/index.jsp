@@ -146,7 +146,7 @@
                                     <a href="#/about"> About </a>
                                 </li>
                                 <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                    <!-- <a href="#/reserve"> Reservations </a>  -->                                 
+                                    <!-- <a href="#/reserve"> Reservations </a> -->
                                     <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>
                                 </li>
                             </ul>	
@@ -239,7 +239,10 @@
         </script>
 
         <script type="text/html" id="reserveTemplate">
-
+            <h2> OPen Table </h2>
+            <div id="OT_searchWrapperAll">
+            
+            </div>
         </script>
 
         <script type="text/html" id="aboutTemplate">

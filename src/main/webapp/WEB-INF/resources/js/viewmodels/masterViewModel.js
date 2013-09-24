@@ -4,19 +4,22 @@ define(["knockout",
     "../viewmodels/locationViewModel",
     "../viewmodels/aboutViewModel",
     "../viewmodels/menuViewModel",
+    "../viewmodels/reserveViewModel",
     "jquery.bootstrap"], function(
         ko,
         $,
         homeViewModel,
         locationViewModel,
         aboutViewModel,
-        menuViewModel) {
+        menuViewModel,
+        reserveViewModel) {
     var masterViewModel = function() {
         var self = this;
         self.homeViewModel = new homeViewModel();
         self.locationViewModel = new locationViewModel();
         self.aboutViewModel = new aboutViewModel();
         self.menuViewModel = new menuViewModel();
+        self.reserveViewModel = new reserveViewModel();
         //self.mailViewModel = new mailViewModel();
         self.currentView = ko.observable("homeTemplate");
         self.currentMenuLink = ko.observable();
