@@ -449,6 +449,10 @@ body, html {
     z-index: 10;
 }
 
+#map-canvas {
+  min-height: 100px;
+}
+
 .clear {
     clear:both;
 }
@@ -498,10 +502,7 @@ address {
 }
 
 @media (max-width: 800px) {
-    .map {
-        width: 400px;
-        margin: 0px auto;
-    }
+   
 }
 
 /*

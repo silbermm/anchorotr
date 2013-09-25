@@ -81,6 +81,12 @@
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
+                 <div id="map-canvas" class="container" data-bind="visible:currentView()=='locationTemplate'" style="min-height: 300px;"> </div>
+                <br />
+                <p class="text-center" data-bind="visible:currentView()=='locationTemplate'">
+                    Looking for parking? 
+                    <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
+                </p>
                 <!-- 
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
@@ -181,6 +187,13 @@
                      beforeRemove: hideElement,
                      afterAdd: showElement}' > 
                 </div>  
+
+                <div id="map-canvas" class="container" data-bind="visible:currentView()=='locationTemplate'" style="min-height: 300px;"> </div>
+                <br />
+                <p class="text-center" data-bind="visible:currentView()=='locationTemplate'">
+                    Looking for parking? 
+                    <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
+                </p>
                 <!--
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
@@ -221,10 +234,14 @@
             </a>
             </li>
             </ul>
+            <!--
             <div class="map"> 
             <a href="https://www.google.com/maps/preview#!q=Anchor+OTR%2C+Cincinnati%2C+OH%2C+North+America&data=!4m10!1m9!4m8!1m3!1d120951!2d-84.5404014!3d39.1363401!3m2!1i816!2i938!4f13.1" target="_blank" >
-            <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x200&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
+            <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x200&scale=2&markers=color:red%7CAnchor+Race+Street,Cincinnati,+OH,+North+America&sensor=false" />
             </a>
+
+
+
             <br />
             <br />
             <br />
@@ -233,15 +250,18 @@
             <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
             </p>
             </div>
+            -->
+
+
             </div>
 
             </div>		
         </script>
 
         <script type="text/html" id="reserveTemplate">
-            <h2> OPen Table </h2>
+            <h2> Open Table </h2>
             <div id="OT_searchWrapperAll">
-            
+
             </div>
         </script>
 
