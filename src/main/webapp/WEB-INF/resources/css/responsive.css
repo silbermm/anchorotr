@@ -170,11 +170,9 @@ body, html {
 }
 
 .map {
-    width: 800px;
+    width: 640px;
     margin: 0px auto;
 }
-
-#map-canvas { height: 100% }
 
 /******* About Us ***********/
 .about-photos {
@@ -501,7 +499,7 @@ address {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 717px) {
    
 }
 
