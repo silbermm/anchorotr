@@ -81,6 +81,7 @@ body, html {
 
 
 #main-menu a {
+    font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
