@@ -31,7 +31,7 @@ body, html {
 }
 
 #desktop-menubar {
-    font-family: 'Quicksand',sans-serif;
+    
     font-size: 13px;
     height: 175px;
 }
@@ -81,8 +81,9 @@ body, html {
 
 
 #main-menu a {
-    font-family: 'Palatino LT W01 Bold';
-    font-size: 17px;
+    font-family:'Libre Baskerville Bold700', serif;
+    font-weight: bold;
+    font-size: 15px;
     text-transform: uppercase;
     color: #A79B96;	
 }
@@ -106,7 +107,7 @@ body, html {
     border-top: 1px solid black;
     position: relative;
     z-index:2;
-    top: 7px;
+    top: 8px;
 }
 
 #submenu {
@@ -170,11 +171,9 @@ body, html {
 }
 
 .map {
-    width: 800px;
+    width: 640px;
     margin: 0px auto;
 }
-
-#map-canvas { height: 100% }
 
 /******* About Us ***********/
 .about-photos {
@@ -183,16 +182,19 @@ body, html {
 }
 
 .callout {
-    font-family: 'PalatinoLTW01-BoldItali';
+    font-family: 'Glass Antiqua', cursive;
+    font-style: italic;
+    font-size: 15px;
 }
 
 .team-name {
-    font-family:'Palatino LT W01 Bold';
+    font-family:'Glass Antiqua', serif;
+    font-size: 15px;
     font-weight: bold;
 }
 
 .team-title {
-    font-family:'Palatino LT W01 Italic';
+    font-family:'Glass Antiqua', serif;
     font-style: italic;
 }
 
@@ -216,7 +218,8 @@ body, html {
     float: left;
     width: 100%;
     text-align: center;
-    font-family: 'Engravers MT W01 Bold';
+    font-family: 'Libre Baskerville';
+    font-weight: bold;
     font-size: 22px;
     padding-bottom: 5px;
     border-bottom: 2px solid #A79B96;
@@ -256,16 +259,18 @@ body, html {
 .food-item-tbl {
     text-transform: uppercase;
     color: #2E2922;
+    font-family: 'Libre Baskerville Bold700', sans-serif;
     font-size: 12px;
-    font-family: 'Palatino LT W01 Bold';
     -sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
 
 .food-item-tbl-desc {
-    font-family: 'Palatino LT W01 Italic';
-    font-size: 13px;
+    font-family: 'Glass Antiqua', sans-serif;
+    font-size: 15px;
+    font-style:italic;
+    font-weight: normal;
     -sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -281,7 +286,8 @@ body, html {
     float: left;
     color: #2E2922;
     font-size: 11px;
-    font-family: 'Palatino LT W01 Bold';
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
     -sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -371,7 +377,8 @@ body, html {
 .aside-text {
     margin-top:20px;
     width:100%;
-    font-family:'PalatinoLTW01-BoldItali';
+    font-family:'Libre Baskerville';
+    font-style: italic;
     font-size: 15px;
 }
 
@@ -449,6 +456,10 @@ body, html {
     z-index: 10;
 }
 
+#map-canvas {
+  min-height: 100px;
+}
+
 .clear {
     clear:both;
 }
@@ -497,11 +508,8 @@ address {
     }
 }
 
-@media (max-width: 800px) {
-    .map {
-        width: 400px;
-        margin: 0px auto;
-    }
+@media (max-width: 717px) {
+   
 }
 
 /*

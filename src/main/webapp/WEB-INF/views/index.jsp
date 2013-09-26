@@ -6,9 +6,8 @@
     <head>     
         <title data-bind="text: $root.pageTitle">The Anchor-OTR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/32e3358a-7cdb-4ede-bd45-eb874aa3d12e.css">
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
@@ -81,6 +80,10 @@
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div data-bind='template : {name : currentView, data: currentModel}' > </div>
+                <div data-bind="visible:currentView()=='locationTemplate'" style='width:425px;margin:0 auto;'>
+                    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.110358,-84.51705&amp;spn=0.002914,0.00456&amp;z=17&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.110358,-84.51705&amp;spn=0.002914,0.00456&amp;z=17&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+                </div>
                 <!-- 
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
@@ -181,7 +184,14 @@
                      beforeRemove: hideElement,
                      afterAdd: showElement}' > 
                 </div>  
-                
+                <div data-bind="visible:currentView()=='locationTemplate'" style='width:640px;margin:0 auto;'>
+                    <iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.111282,-84.517232&amp;spn=0.003996,0.006866&amp;z=17&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.111282,-84.517232&amp;spn=0.003996,0.006866&amp;z=17&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                    <p class="text-center">
+                        Looking for parking? 
+                        <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
+                    </p>
+                </div>
+                <!--
                 <div data-bind="visible:currentView()=='reserveTemplate'">
                     <div class="row-fluid ui-view" id="inline-reserve-template">
                         <div class="container">
@@ -191,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                
+                --> 
                 <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
@@ -221,28 +231,13 @@
             </a>
             </li>
             </ul>
-            <div class="map"> 
-            <a href="https://www.google.com/maps/preview#!q=Anchor+OTR%2C+Cincinnati%2C+OH%2C+North+America&data=!4m10!1m9!4m8!1m3!1d120951!2d-84.5404014!3d39.1363401!3m2!1i816!2i938!4f13.1" target="_blank" >
-            <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x200&scale=2&markers=color:red%7CAnchor+OTR,Cincinnati,+OH,+North+America&sensor=true" />
-            </a>
-            <br />
-            <br />
-            <br />
-            <p clas="text-center">
-            Looking for parking? 
-            <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
-            </p>
             </div>
-            </div>
-
             </div>		
         </script>
 
         <script type="text/html" id="reserveTemplate">
-            <h2> OPen Table </h2>
-            <div id="OT_searchWrapperAll">
-            
-            </div>
+            <h2> Open Table </h2>
+
         </script>
 
         <script type="text/html" id="aboutTemplate">
@@ -266,7 +261,7 @@
             </a>
             </li>
             </ul>	
-            <br/>
+            <br />
             <p class="callout"> 
             The Anchor-otr brings a classic seafood experience to land locked Cincinnatians. From Maine sea scallops to grilled whole fish
             to fresh oysters flown in from the west and east coast,  chef/owner Derek dos Anjos's team serves high quality and sustainable seafood
@@ -275,7 +270,7 @@
             extravagance to Washington Park in Over the Rhine.  The dining rooms custom charred wood walls, communal table seating and nautical lighting
             encourage a playful experience.		
             </p>
-
+            <br />
             <div class="food-menu-container">
             <div class="food-menu-title">THE TEAM </div>
             <div class="food-menu-title-ornament-container">
@@ -298,8 +293,8 @@
             </tbody>
             </table>
             </div>
-            </div>
 
+            </div>
             </div>
             </div>
         </script>
@@ -311,8 +306,37 @@
             <div class="container">
 
             <div class="row-fluid" data-bind="if:happyHour()">
-            <div class="span12">
-            <h3> COMING SOON! </h3>
+            <div class="container">	
+            <div class="about-photos">
+            <h2 class=" text-center">
+            Join us for Happy Hour weeknights from 5 - 7 pm.
+            </h2>
+            <ul class="inline text-center">
+                <li>$1.50 oysters - shucker's choice </li>
+                <li>$1 off all beer and select glasses of wine</li>
+            </ul>
+            
+            <ul class="inline text-center">
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/happy1.jpg">
+            </a>
+            </li>
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/happy2.jpg">
+            </a>
+            </li>
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/happy3.jpg">
+            </a>
+            </li>
+            </ul>	
+            <br/>
+            
+            
+            </div>
             </div>
             </div>
 
@@ -435,7 +459,6 @@
             </table>
             </div>
             </div>
-
 
             <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">          
             <!-- LUNCH SPECIAL -->
