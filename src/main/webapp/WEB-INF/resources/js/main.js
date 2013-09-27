@@ -4,6 +4,7 @@ requirejs.config({
         ko: "knockout",
         jquery: "jquery-1.9.0.min",
         "jquery.bootstrap": "bootstrap",
+        "jquery.bootstrapDate":"bootstrap-datepicker",
         sammy: "sammy",
         "app": "../app",
     },
@@ -11,6 +12,9 @@ requirejs.config({
         ko: {exports: "ko"},
         jquery: {exports: 'jQuery'},
         "jquery.bootstrap": {
+            deps: ["jquery"]
+        },
+        "jquery.bootstrapDate":{
             deps: ["jquery"]
         },
         sammy: {

@@ -11,6 +11,7 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
+        <link rel="stylesheet" media="screen" href="/resources/css/datepicker.css" >
         <link rel="shortcut icon" href="/resources/img/favicon.ico" > 
         <script data-main="/resources/js/main" src="/resources/js/lib/require.js"></script>
     </head>
@@ -191,17 +192,85 @@
                         <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
                     </p>
                 </div>
-                <!--
+
                 <div data-bind="visible:currentView()=='reserveTemplate'">
-                    <div class="row-fluid ui-view" id="inline-reserve-template">
+                    <div class="row-fluid ui-view" id="reservation-page">
                         <div class="container">
-                            <div id="OT_center">
-                                <script type="text/javascript" src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short&hover=1"></script><a href="http://www.opentable.com/the-anchor-reservations-cincinnati?rtype=ism&restref=100687" class="OT_ExtLink">The Anchor (100687), Cincinnati / Dayton Reservations</a>
-                            </div>
+                            <form name=ism id=ism class="text-center" METHOD=POST action="http://www.opentable.com/restaurant-search.aspx">
+                                <fieldset>
+                                    <legend> Open Table Reservations </legend>
+                                    <label> Select your Parties Size </label>
+                                    <select name="PartySize">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option><option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                    </select>
+                                    <label> Select a Date </label>
+                                    <input type="text" id="startDate" name="startDate" data-bind="value:$root.today" >
+                                    <label> Choose a Time </label>
+                                    <select name="ResTime">
+                                        <option value="10:00 AM" >10:00 AM</option>
+                                        <option value="10:30 AM" >10:30 AM</option>
+                                        <option value="11:00 AM" >11:00 AM</option>        
+                                        <option value="11:30 AM" >11:30 AM</option>
+                                        <option value="12:00 PM" >12:00 PM</option>
+                                        <option value="12:30 PM" >12:30 PM</option>
+                                        <option value="1:00 PM" >1:00 PM</option>
+                                        <option value="1:30 PM" >1:30 PM</option>
+                                        <option value="2:00 PM" >2:00 PM</option>
+                                        <option value="2:30 PM" >2:30 PM</option>
+                                        <option value="3:00 PM" >3:00 PM</option>
+                                        <option value="3:30 PM" >3:30 PM</option>
+                                        <option value="5:00 PM" >5:00 PM</option>
+                                        <option value="5:30 PM" >5:30 PM</option>
+                                        <option value="6:00 PM" >6:00 PM</option>
+                                        <option value="6:30 PM" >6:30 PM</option>
+                                        <option value="7:00 PM" selected>7:00 PM</option>
+                                        <option value="7:30 PM" >7:30 PM</option>
+                                        <option value="8:00 PM" >8:00 PM</option>
+                                        <option value="8:30 PM" >8:30 PM</option>
+                                        <option value="9:00 PM" >9:00 PM</option>
+                                        <option value="9:30 PM" >9:30 PM</option>
+                                        <option value="10:00 PM" >10:00 PM</option>
+                                        <option value="10:30 PM" >10:30 PM</option>
+                                        <option value="11:00 PM" >11:00 PM</option>
+                                        <option value="11:30 PM" >11:30 PM</option>
+                                    </select>
+                                    <label> </label>
+                                    <button type="submit" class="btn" name="submit" >Find a Table</button>
+                                    <input type="hidden" id="RestaurantReferralID" name="RestaurantReferralID"
+                                           value="100687">
+                                    <input type="hidden" id="RestaurantID" name="RestaurantID" value="100687">
+                                    <input type="hidden" name="txtDateFormat" value="MM/dd/yyyy">
+                                    <br />
+                                    <div id="OT_logo">
+                                        <a href="http://www.opentable.com/home.aspx" title="Powered By OpenTable">
+                                            <img src="http://www.opentable.com/img/buttons/Otlogo.gif" id="OT_imglogo" alt="Restaurant Management Software" border=0 />
+                                        </a>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </div>
-                --> 
+
+
                 <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
@@ -236,7 +305,6 @@
         </script>
 
         <script type="text/html" id="reserveTemplate">
-            <h2> Open Table </h2>
 
         </script>
 
@@ -312,10 +380,10 @@
             Join us for Happy Hour weeknights from 5 - 7 pm.
             </h2>
             <ul class="inline text-center">
-                <li>$1.50 oysters - shucker's choice </li>
-                <li>$1 off all beer and select glasses of wine</li>
+            <li>$1.50 oysters - shucker's choice </li>
+            <li>$1 off all beer and select glasses of wine</li>
             </ul>
-            
+
             <ul class="inline text-center">
             <li>
             <a class="thumbnail">
@@ -334,8 +402,8 @@
             </li>
             </ul>	
             <br/>
-            
-            
+
+
             </div>
             </div>
             </div>
@@ -694,9 +762,27 @@
             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
             </tr>
             </tbody>
-            </table>
-            </div> 
+            </table>          
             </div>
+            </div>
+            <ul class="inline text-center">
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/cocktails1.jpg">
+            </a>
+            </li>
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/cocktails3.jpg">
+            </a>
+            </li>
+            <li>
+            <a class="thumbnail">
+            <img src="${pageContext.request.contextPath}/resources/img/cocktails2.jpg">
+            </a>
+            </li>
+            </ul>	
+            <br/>
             </div>
 
 

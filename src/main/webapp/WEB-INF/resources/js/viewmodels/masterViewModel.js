@@ -15,16 +15,24 @@ define(["knockout",
         reserveViewModel) {
     var masterViewModel = function() {
         var self = this;
+        
         self.homeViewModel = new homeViewModel();
         self.locationViewModel = new locationViewModel();
         self.aboutViewModel = new aboutViewModel();
         self.menuViewModel = new menuViewModel();
         self.reserveViewModel = new reserveViewModel();
-        //self.mailViewModel = new mailViewModel();
         self.currentView = ko.observable("homeTemplate");
         self.currentMenuLink = ko.observable();
         self.currentModel = ko.observable(self.homeViewModel);
         self.pageTitle = ko.observable("The Anchor-OTR");
+
+        self.today = ko.computed(function(){
+           var d = new Date();
+           var month = d.getMonth() + 1;
+           var year = d.getFullYear();
+           var day = d.getDate();
+           return month + "/" + day + "/" + year;
+        });
 
         self.errorMsg = ko.observable("ERROR MESSAGE");
 
