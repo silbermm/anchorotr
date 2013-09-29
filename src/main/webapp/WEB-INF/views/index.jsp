@@ -14,21 +14,6 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/datepicker.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-resource.min.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-0.5.0.min.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/underscore.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
-        <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/services/searchService.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
-        <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
-        <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/menus/menus.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/reservation/reservation.js' />"></script>
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -392,5 +377,21 @@
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
+        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-resource.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-0.5.0.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/underscore.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/services/searchService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/menus/menus.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/reservation/reservation.js' />"></script>
     </body>
 </html>
