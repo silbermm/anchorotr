@@ -2,18 +2,32 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html id="topHtml">
+<html ng-app="anchorotr" ng-controller="AppCtrl">
     <head>     
-        <title data-bind="text: $root.pageTitle">The Anchor-OTR</title>
+        <title>The Anchor-OTR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href="/resources/css/responsive.css" >
-        <link rel="stylesheet" media="screen" href="/resources/css/datepicker.css" >
-        <link rel="shortcut icon" href="/resources/img/favicon.ico" > 
-        <script data-main="/resources/js/main" src="/resources/js/lib/require.js"></script>
+        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
+        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/datepicker.css' />" >
+        <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-resource.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-0.5.0.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ng-grid.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/services/searchService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/menus/menus.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/reservation/reservation.js' />"></script>
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -30,29 +44,30 @@
                         <ul class="nav">
                             <li class="dropdown">
                                 <ul class="nav">
-                                    <li data-bind="css:{active: currentMenuLink()=='lunch'}">
+                                    <li ui-route="/menus/lunch" ng-class="{active:$state.params.name == lunch}">
                                         <a href="#/menus/lunch"> Lunch Menu </a>
                                     </li>
-                                    <li data-bind="css:{active: currentMenuLink()=='dinner'}"> 
+                                    <li ui-route="/menus/dinner" ng-class="{active:$state.params.name == dinner}"> 
                                         <a href="#/menus/dinner"> Dinner Menu </a>
                                     </li>
-                                    <li data-bind="css:{active: currentMenuLink()=='wine'}">
+                                    <li ui-route="/menus/wine" ng-class="{active:$state.params.name == wine}">
                                         <a href="#/menus/wine"> Wine List </a>
                                     </li>
-                                    <li data-bind="css:{active: currentMenuLink()=='cocktails'}">
+                                    <li ui-route="/menus/cocktails" ng-class="{active:$state.params.name == cocktails}">
                                         <a href="#/menus/cocktails"> House Cocktails </a>
                                     </li>
-                                    <li data-bind="css:{active: currentMenuLink()=='happyHour'}">
+                                    <li ui-route="/menus/happyHour" ng-class="{active:$state.params.name == happyHour}">
                                         <a href="#/menus/happyHour"> Happy Hour </a>
                                     </li>
-                                    <li data-bind="css: {active: currentView()=='locationTemplate'}">
+                                    <li ui-route="/location" ng-class="{active: $state.includes('location')}">
                                         <a href="#/location"> Location </a>
                                     </li>
-                                    <li data-bind="css: {active: currentView()=='aboutTemplate'}">
+                                    <li ui-route="/about" ng-class="{active: $state.includes('about')}">
                                         <a href="#/about">About </a>
                                     </li>
-                                    <li>
-                                        <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a>
+                                    <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}" >
+                                        <a href="#/reservation">Reservations</a>
+
                                     </li>
                                 </ul>			
                             </li>
@@ -80,27 +95,54 @@
             </div>
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
-                <div data-bind='template : {name : currentView, data: currentModel}' > </div>
-                <div data-bind="visible:currentView()=='locationTemplate'" style='width:425px;margin:0 auto;'>
-                    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.110358,-84.51705&amp;spn=0.002914,0.00456&amp;z=17&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.110358,-84.51705&amp;spn=0.002914,0.00456&amp;z=17&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+                <div ui-view="main"> </div>
 
-                </div>
-                <!-- 
-                <div data-bind="visible:currentView()=='reserveTemplate'">
-                    <div class="row-fluid ui-view" id="inline-reserve-template">
-                        <div class="container">
-                            <div id="OT_center">
-                                <script type="text/javascript" src="http://www.opentable.com/frontdoor/default.aspx?rid=100687&restref=100687&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=http://www.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short&hover=1"></script><a href="http://www.opentable.com/the-anchor-reservations-cincinnati?rtype=ism&restref=100687" class="OT_ExtLink">The Anchor (100687), Cincinnati / Dayton Reservations</a>
-                            </div>
-                        </div>
+                <div class="pagefooter" class="row-fluid ui-view">
+                    <div class="thin-line" > </div>
+                    <div class="thick-line"> </div>	
+                    <div class="social container">
+                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-facebook icon-light"></i>
+                            </span>
+                        </a>	
+
+                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-twitter icon-light"></i>
+                            </span>	
+                        </a>
+
+                        <a data-bind="click: showMailModal"> 
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-envelope icon-light"></i>
+                            </span>	
+                        </a>
+
+                        <security:authorize access="isAnonymous()"> 
+                            <a href="#/login" >
+                                <span class="icon-stack">
+                                    <i class="icon-circle icon-stack-base"></i>
+                                    <i class="icon-lock icon-light"></i>
+                                </span>
+                            </a>
+                        </security:authorize>
+
+                        <security:authorize access="isAuthenticated()">
+                            <a href="#/logout   " >
+                                <span class="icon-stack">
+                                    <i class="icon-circle icon-stack-base"></i>
+                                    <i class="icon-unlock icon-light"></i>
+                                </span>
+                            </a>
+                        </security:authorize>
+
                     </div>
                 </div>
-                -->
-                <div data-bind='template: {name : "footer"}'></div>
             </div>
-
-
-
         </div>
 
         <div id="desktop-menubar" class="row-fluid hidden-phone hidden-tablet visible-desktop">
@@ -135,10 +177,10 @@
                     <div class="container">
                         <div class="span4" >
                             <ul class="inline text-right">
-                                <li data-bind="css: {active: isMenuView}"> 
-                                    <a href="" data-bind="click:showSubMenu">Menus</a>
+                                <li ng-class="{active: $state.includes('menus')}"> 
+                                    <a href="">Menus</a>
                                 </li>
-                                <li data-bind="css: {active: currentView()=='locationTemplate'}">
+                                <li ui-route="/location" ng-class="{active: $state.includes('location')}" >
                                     <a href="#/location"> Location </a>
                                 </li>
                             </ul>
@@ -146,12 +188,11 @@
                         <div class="span4"> </div>	
                         <div class="span4">
                             <ul class="inline text-left">
-                                <li data-bind="css: {active: currentView()=='aboutTemplate'}">
+                                <li ui-route="/about" ng-class="{active: $state.includes('about')}" >
                                     <a href="#/about"> About </a>
                                 </li>
-                                <li data-bind="css: {active: currentView()=='reserveTemplate'}">
-                                    <a href="#/reserve"> Reservations </a> 
-                                    <!-- <a href="http://www.opentable.com/the-anchor-reservations-cincinnati?restref=100687" target="_blank"> Reservations </a> -->
+                                <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}">
+                                    <a href="#/reservation"> Reservations </a>                      
                                 </li>
                             </ul>	
                         </div>
@@ -160,969 +201,194 @@
                 <div id="submenu" class="row-fluid collapse">
                     <div class="container">	
                         <ul class="inline">
-                            <li data-bind="css:{active: currentMenuLink()=='lunch'}">
+                            <li ng-class="{active:$state.params.name == lunch}" >
                                 <a href="#/menus/lunch"> Lunch </a>	
                             </li>
-                            <li data-bind="css:{active: currentMenuLink()=='dinner'}">
+                            <li ng-class="{active:$state.params.name == dinner}">
                                 <a href="#/menus/dinner"> Dinner </a>
                             </li>	
-                            <li data-bind="css:{active: currentMenuLink()=='wine'}">
+                            <li ng-class="{active:$state.params.name == wine}" >
                                 <a href="#/menus/wine" > Wine List </a>
                             </li>
-                            <li data-bind="css:{active: currentMenuLink()=='cocktails'}">
+                            <li ng-class="{active:$state.params.name == cocktails}">
                                 <a href="#/menus/cocktails"> House Cocktails </a>
                             </li>
-                            <li data-bind="css:{active: currentMenuLink()=='happyHour'}">
+                            <li ng-class="{active:$state.params.name == happyHour}">
                                 <a href="#/menus/happyHour"> Happy Hour </a>
                             </li>
                         </ul>	
                     </div>
                 </div>	
                 <div class="container" id="menu-border"></div>	
-
-                <div data-bind='template : {name : currentView, 
-                     data: currentModel,
-                     beforeRemove: hideElement,
-                     afterAdd: showElement}' > 
-                </div>  
-                <div data-bind="visible:currentView()=='locationTemplate'" style='width:640px;margin:0 auto;'>
-                    <iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.111282,-84.517232&amp;spn=0.003996,0.006866&amp;z=17&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://www.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Anchor+OTR,+1401+Race+Street,+Cincinnati,+OH+45202,+USA&amp;aq=0&amp;oq=Anchor+o&amp;sll=39.13634,-84.540401&amp;sspn=0.36802,0.724411&amp;ie=UTF8&amp;hq=Anchor&amp;hnear=1401+Race+St,+Cincinnati,+Hamilton,+Ohio+45202&amp;t=m&amp;fll=39.110566,-84.517211&amp;fspn=0.001438,0.00283&amp;st=110616160731137639226&amp;rq=1&amp;ev=zi&amp;split=1&amp;ll=39.111282,-84.517232&amp;spn=0.003996,0.006866&amp;z=17&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-                    <p class="text-center">
-                        Looking for parking? 
-                        <a style="font-size:12px;color:black" href="http://washingtonpark.org/parking/" target="_blank"> http://washingtonpark.org/parking/ </a>
-                    </p>
-                </div>
-
-                <div data-bind="visible:currentView()=='reserveTemplate'">
-                    <div class="row-fluid ui-view" id="reservation-page">
-                        <div class="container">
-                            <form name=ism id=ism class="text-center" METHOD=POST action="http://www.opentable.com/restaurant-search.aspx">
-                                <fieldset>
-                                    <legend> Open Table Reservations </legend>
-                                    <label> Select your Parties Size </label>
-                                    <select name="PartySize">
-                                        <option value="1">1</option>
-                                        <option value="2" selected>2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option><option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                    </select>
-                                    <label> Select a Date </label>
-                                    <input type="text" id="startDate" name="startDate" data-bind="value:$root.today" >
-                                    <label> Choose a Time </label>
-                                    <select name="ResTime">
-                                        <option value="10:00 AM" >10:00 AM</option>
-                                        <option value="10:30 AM" >10:30 AM</option>
-                                        <option value="11:00 AM" >11:00 AM</option>        
-                                        <option value="11:30 AM" >11:30 AM</option>
-                                        <option value="12:00 PM" >12:00 PM</option>
-                                        <option value="12:30 PM" >12:30 PM</option>
-                                        <option value="1:00 PM" >1:00 PM</option>
-                                        <option value="1:30 PM" >1:30 PM</option>
-                                        <option value="2:00 PM" >2:00 PM</option>
-                                        <option value="2:30 PM" >2:30 PM</option>
-                                        <option value="3:00 PM" >3:00 PM</option>
-                                        <option value="3:30 PM" >3:30 PM</option>
-                                        <option value="5:00 PM" >5:00 PM</option>
-                                        <option value="5:30 PM" >5:30 PM</option>
-                                        <option value="6:00 PM" >6:00 PM</option>
-                                        <option value="6:30 PM" >6:30 PM</option>
-                                        <option value="7:00 PM" selected>7:00 PM</option>
-                                        <option value="7:30 PM" >7:30 PM</option>
-                                        <option value="8:00 PM" >8:00 PM</option>
-                                        <option value="8:30 PM" >8:30 PM</option>
-                                        <option value="9:00 PM" >9:00 PM</option>
-                                        <option value="9:30 PM" >9:30 PM</option>
-                                        <option value="10:00 PM" >10:00 PM</option>
-                                        <option value="10:30 PM" >10:30 PM</option>
-                                        <option value="11:00 PM" >11:00 PM</option>
-                                        <option value="11:30 PM" >11:30 PM</option>
-                                    </select>
-                                    <label> </label>
-                                    <button type="submit" class="btn" name="submit" >Find a Table</button>
-                                    <input type="hidden" id="RestaurantReferralID" name="RestaurantReferralID"
-                                           value="100687">
-                                    <input type="hidden" id="RestaurantID" name="RestaurantID" value="100687">
-                                    <input type="hidden" name="txtDateFormat" value="MM/dd/yyyy">
-                                    <br />
-                                    <div id="OT_logo">
-                                        <a href="http://www.opentable.com/home.aspx" title="Powered By OpenTable">
-                                            <img src="http://www.opentable.com/img/buttons/Otlogo.gif" id="OT_imglogo" alt="Restaurant Management Software" border=0 />
-                                        </a>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
+                <div ui-view="main"> </div> 
+                <div class="pagefooter" class="row-fluid ui-view">
+                    <div class="thin-line" > </div>
+                    <div class="thick-line"> </div>	
+                    <div class="social container">
+                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-facebook icon-light"></i>
+                            </span>
+                        </a>	
+                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-twitter icon-light"></i>
+                            </span>	
+                        </a>
+                        <a data-bind="click: showMailModal"> 
+                            <span class="icon-stack">
+                                <i class="icon-circle icon-stack-base"></i>
+                                <i class="icon-envelope icon-light"></i>
+                            </span>	
+                        </a>
+                        <security:authorize access="isAnonymous()"> 
+                            <a href="#/login" >
+                                <span class="icon-stack">
+                                    <i class="icon-circle icon-stack-base"></i>
+                                    <i class="icon-lock icon-light"></i>
+                                </span>
+                            </a>
+                        </security:authorize>
+                        <security:authorize access="isAuthenticated()">
+                            <a href="#/logout   " >
+                                <span class="icon-stack">
+                                    <i class="icon-circle icon-stack-base"></i>
+                                    <i class="icon-unlock icon-light"></i>
+                                </span>
+                            </a>
+                        </security:authorize>
                     </div>
                 </div>
-
-
-                <div data-bind='template: {name : "footer"}'></div>   
             </div>	
         </div>
 
+    <!-- Modal -->
+    <div id="removeItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="removeItemModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="removeItemModalLabel">Are you sure?</h3>
+        </div>
+        <div class="modal-body">
+            <p>This will remove <span data-bind="text:deleteObjectName"></span> from the database. Are you sure you want to do this?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+            <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
+        </div>
+    </div>
+
+    <div id="addItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="addItemModalLabel">Add a new Menu Item</h3>
+        </div>
+        <div class="modal-body">
+
+            <form class="form-horizontal"> 
+                <div class="control-group">
+                    <label class="control-label" for="itemName">Name</label>
+                    <div class="controls">
+                        <input type="text" id="itemName" data-bind="value:addMenuObject().itemname" placeholder="Name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemDesc">Description (Optional)</label>
+                    <div class="controls">
+                        <input type="text" id="itemDesc" data-bind="value:addMenuObject().itemdesc" placeholder="Description...">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemCatagory">Catagory</label>
+                    <div class="controls">
+                        <input type="text" id="itemCatagory" data-bind="value:addMenuObject().catagory" disabled >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemPrice">Price</label>
+                    <div class="controls">
+                        <input type="text" id="itemPrice" data-bind="value:addMenuObject().price" >
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelAdd">Cancel</button>
+            <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
+        </div>
+    </div>
 
 
-        <script type="text/html" id="homeTemplate">                       
-            <div class="row-fluid ui-view" id="landing-imgs">
-            <img src="${pageContext.request.contextPath}/resources/img/landing.jpg" />
-            </div>
-        </script>
+    <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="editItemModalLabel">Edit <span data-bind='text:editObject().itemname'></span> </h3>
+        </div>
+        <div class="modal-body">
+
+            <form class="form-horizontal"> 
+                <div class="control-group">
+                    <label class="control-label" for="itemName">Name</label>
+                    <div class="controls">
+                        <input type="text" id="itemName" data-bind="value:editObject().itemname" placeholder="Name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemDesc">Description (Optional)</label>
+                    <div class="controls">
+                        <input type="text" id="itemDesc" data-bind="value:editObject().itemdesc" placeholder="Description...">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemCatagory">Catagory</label>
+                    <div class="controls">
+                        <input type="text" id="itemCatagory" data-bind="value:editObject().catagory" disabled >
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="itemPrice">Price</label>
+                    <div class="controls">
+                        <input type="text" id="itemPrice" data-bind="value:editObject().price" >
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelEdit">Cancel</button>
+            <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
+        </div>
+    </div>
 
 
-
-        <script type="text/html" id="locationTemplate">
-            <div class="row-fluid ui-view" id="location-page">
-            <div class="container">
-            <ul class="inline text-center">
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/location1.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/location2.jpg">
-            </a>
-            </li>
-            </ul>
-            </div>
-            </div>		
-        </script>
-
-        <script type="text/html" id="reserveTemplate">
-
-        </script>
-
-        <script type="text/html" id="aboutTemplate">
-            <div class="row-fluid ui-view" id="about-page">
-            <div class="container">	
-            <div class="about-photos">
-            <ul class="inline text-center">
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/about1.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/about2.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/about3.jpg">
-            </a>
-            </li>
-            </ul>	
-            <br />
-            <p class="callout"> 
-            The Anchor-otr brings a classic seafood experience to land locked Cincinnatians. From Maine sea scallops to grilled whole fish
-            to fresh oysters flown in from the west and east coast,  chef/owner Derek dos Anjos's team serves high quality and sustainable seafood
-            from the countries best suppliers.  Beach food classics such as  hush puppies and lobster rolls will transport you to your favorite spot along
-            the coast. With a wine list chosen to compliment seafood, craft cocktails and a warm sense of hospitality, The Anchor-otr brings laid back
-            extravagance to Washington Park in Over the Rhine.  The dining rooms custom charred wood walls, communal table seating and nautical lighting
-            encourage a playful experience.		
+    <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="mailModalLabel">Email Us</h3>
+        </div>
+        <div class="modal-body">
+            <p> 
+                We love getting feedback from our customers! Please email us at ... or simply use the form below. 
             </p>
-            <br />
-            <div class="food-menu-container">
-            <div class="food-menu-title">THE TEAM </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>					
-            <table class="table table-condensed">
-            <tbody>	
-            <tr>
-            <td class="team-name"> Derek dos Anjos </td>
-            <td class="team-name"> Jocelyn dos Anjos </td>	
-            <td class="team-name"> Steven Campbell </td>
-            <td class="team-name"> Aaron Drahmann </td>	
-            </tr>
-            <tr>
-            <td class="team-title"> Chef/ Owner </td>
-            <td class="team-title"> Owner/ Operations </td>
-            <td class="team-title"> General Manager </td>
-            <td class="team-title"> Sous Chef </td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-
-            </div>
-            </div>
-            </div>
-        </script>
-
-
-
-        <script type="text/html" id="foodMenuTemplate">
-            <div class="row-fluid ui-view" id="lunch-page" data-bind="with: $root.menuViewModel">
-            <div class="container">
-
-            <div class="row-fluid" data-bind="if:happyHour()">
-            <div class="container">	
-            <div class="about-photos">
-            <h2 class=" text-center">
-            Join us for Happy Hour weeknights from 5 - 7 pm.
-            </h2>
-            <ul class="inline text-center">
-            <li>$1.50 oysters - shucker's choice </li>
-            <li>$1 off all beer and select glasses of wine</li>
-            </ul>
-
-            <ul class="inline text-center">
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/happy1.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/happy2.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/happy3.jpg">
-            </a>
-            </li>
-            </ul>	
-            <br/>
-
-
-            </div>
-            </div>
-            </div>
-
-            <!-- WINE LIST -->
-            <div class="row-fluid" data-bind="if:sparklingWine().length >0">
-
-            <!-- Sparkling and Champagne -->
-            <div class="span6 food-menu-container" data-bind="fadeVisible:showSparklingRow" >
-            <div class="food-menu-title"> Champagne 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('SPARKLING AND CHAMPAGNE'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>	
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:sparklingWine" class="food-item-tbl">
-            <tr> 
-            <td><span data-bind="text:itemdesc"></span></td>
-            <td><span data-bind="text:itemname"><span data-bind="text: $index"></span></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
-            </tbody>
-            </table>
-            </div>
-
-            <!-- ROSE -->
-            <div class="span6"  data-bind="fadeVisible:roseWine().length>0" >
-            <div class="food-menu-title"> ROSÉ 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('ROSE'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize></div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>	
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:roseWine" class="food-item-tbl">
-            <tr> 
-            <td><span data-bind="text:itemdesc"></span></td>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-
-            <div class="row-fluid" data-bind="fadeVisible:redWine().length >0"> 
-            <div class="span6 food-menu-container" data-bind="if:redWine().length >0">
-            <div class="food-menu-title"> RED 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('RED'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize></div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>	
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:redWine" class="food-item-tbl">
-            <tr> 
-            <td><span data-bind="text:itemdesc"></span></td>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
-            </tbody>
-            </table>
-            </div>
-            <div class="span6" data-bind="fadeVisible:whiteWine().length>0" >
-            <div class="food-menu-title"> WHITE 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('WHITE'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize></div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>	
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:whiteWine" class="food-item-tbl">
-            <tr> 
-            <td><span data-bind="text:itemdesc"></span></td>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr> <td colspan="3" style="border-top:none"> </td> </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-
-            <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">          
-            <!-- LUNCH SPECIAL -->
-            <div class="span12">
-            <div class="food-menu-container food-menu-container-border middle-callout"> 
-            <div class="food-menu-title">LUNCH SPECIAL
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('LUNCH SPECIAL'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <ul class="food-menu-list" data-bind="foreach:lunchSpecial">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            </div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            <div class="food-item-price">
-            <span data-bind="text:price"> </span>
-            <security:authorize access="hasRole('Administrator')"> 
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-            </security:authorize>
-            </div>
-            </li>
-            </ul>
-            </div>
-            </div>	
-            </div>			
-
-            <div class="row-fluid" data-bind="fadeVisible:rawBar().length>0">
-            <div class="span6 food-menu-container" data-bind="fadeVisible:rawBar().length>0">
-            <div class="food-menu-title"> RAW BAR 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('RAW BAR'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>	
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:rawBar" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            <!--        
-            <ul class="food-menu-list" data-bind="foreach:rawBar">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            </div>
-            </li>	
-            </ul>
-            -->
-            </div>
-            <div class="span6 food-menu-container" data-bind="fadeVisible:platters().length>0">
-            <div class="food-menu-title"> PLATTERS
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('PLATTERS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div> 
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:platters" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            <!--
-            <ul class="food-menu-list" data-bind="foreach:platters">
-            <li>
-            <div class="food-item-first-line">
-            <div class="food-item-title" data-bind="text:itemname"></div>
-            <div class="food-item-line" > </div>	
-            <div class="food-item-price" data-bind="text:price"></div>
-            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
-            </div>
-            </li>	
-            </ul>
-            -->
-            </div>		
-            </div>
-
-
-            <div class="row-fluid" data-bind="fadeVisible:starters().length>0">
-            <!-- STARTERS -->
-            <div class="span6 food-container" data-bind="fadeVisible:starters().length>0">
-            <div class="food-menu-title"> STARTERS 
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('STARTERS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:starters" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>	
-
-            <!-- SALADS -->
-            <div class="span6 food-container" data-bind="fadeVisible:salads().length>0">
-            <div class="food-menu-title"> SALADS
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('SALADS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:salads" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-
-
-            <!-- COCKTAILS -->
-            <div class="row-fluid" data-bind="fadeVisible:cocktailsCol1().length>0">
-            <div class="span12 food-container" data-bind="fadeVisible:cocktailsCol1().length>0">
-            <div class="food-menu-title"> House Cocktails
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('COCKTAILS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <div class="fmc-double-column">
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:cocktailsCol1" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            <div class="fmc-double-column fmcdc-last">
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:cocktailsCol2" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>          
-            </div>
-            </div>
-            <ul class="inline text-center">
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/cocktails1.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/cocktails3.jpg">
-            </a>
-            </li>
-            <li>
-            <a class="thumbnail">
-            <img src="${pageContext.request.contextPath}/resources/img/cocktails2.jpg">
-            </a>
-            </li>
-            </ul>	
-            <br/>
-            </div>
-
-
-            <!-- MAINS -->
-            <div class="row-fluid" data-bind="fadeVisible:mainsCol1().length>0">
-            <div class="span12 food-container" >
-            <div class="food-menu-title"> MAINS
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('MAINS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <div class="fmc-double-column">
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:mainsCol1" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            <div class="fmc-double-column fmcdc-last">
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:mainsCol2" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>	
-            </div>
-
-            <div class="row-fluid" data-bind="fadeVisible:sides().length>0">	
-            <!-- SIDES -->
-            <div class="span6 food-container" data-bind="fadeVisible:sides().length>0">
-            <div class="food-menu-title"> SIDES
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('SIDES'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:sides" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-
-            <!-- DESERTS -->
-            <div class="span6 food-container" data-bind="fadeVisible:deserts().length>0">
-            <div class="food-menu-title"> DESERTS
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('DESERTS'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:deserts" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-            </div>
-
-            <div class="row-fluid">
-            <!-- BEVERAGES -->
-            <div class="span6 food-container" data-bind="fadeVisible:beverages().length>0">
-            <div class="food-menu-title">BEVERAGES
-            <security:authorize access="hasRole('Administrator')">
-                <a class="pointer" data-bind="click:function () { addItem('BEVERAGES'); }"> <i class="icon-plus-sign"></i></a>
-            </security:authorize>
-            </div>
-            <div class="food-menu-title-ornament-container">
-            <div class="food-menu-title-ornament"></div>
-            </div>
-            <table class="table table-condensed">
-            <tbody data-bind="foreach:beverages" class="food-item-tbl">
-            <tr>
-            <td><span data-bind="text:itemname"></span></td>
-            <td class="pull-right"><span data-bind="text:price"> </span></td>
-            <security:authorize access="hasRole('Administrator')"> 
-                <td>
-                <span>
-                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
-                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
-                </span>
-                </td>
-            </security:authorize>
-            </tr>
-            <tr>
-            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
-            </tr>
-            </tbody>
-            </table>
-            </div>	
-            </div>		
-            </div>
-
-            <div class="row-fluid" data-bind="fadeVisible:showWarning">
-            <div class="aside-container">
-            <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
-            <img class="food-menu-container-image" src="${pageContext.request.contextPath}/resources/img/shark-small.gif" style="opacity: 1;">
-            <div class="aside-text">There is a risk associated with consumption of raw oysters or any raw protein</div>
-            </div>
-            </div>
-            </div>
-        </script>
-
-        <script type="text/html" id="footer">
-            <div class="pagefooter" class="row-fluid ui-view">
-            <div class="thin-line" > </div>
-            <div class="thick-line"> </div>	
-            <div class="social container">
-            <a href="https://www.facebook.com/theanchorotr" target="_blank">
-            <span class="icon-stack">
-            <i class="icon-circle icon-stack-base"></i>
-            <i class="icon-facebook icon-light"></i>
-            </span>
-            </a>	
-
-            <a href="https://twitter.com/theanchorotr" target="_blank"> 
-            <span class="icon-stack">
-            <i class="icon-circle icon-stack-base"></i>
-            <i class="icon-twitter icon-light"></i>
-            </span>	
-            </a>
-
-            <a data-bind="click: showMailModal"> 
-            <span class="icon-stack">
-            <i class="icon-circle icon-stack-base"></i>
-            <i class="icon-envelope icon-light"></i>
-            </span>	
-            </a>
-
-            <security:authorize access="isAnonymous()"> 
-                <a href="#/login" >
-                <span class="icon-stack">
-                <i class="icon-circle icon-stack-base"></i>
-                <i class="icon-lock icon-light"></i>
-                </span>
-                </a>
-            </security:authorize>
-
-            <security:authorize access="isAuthenticated()">
-                <a href="#/logout   " >
-                <span class="icon-stack">
-                <i class="icon-circle icon-stack-base"></i>
-                <i class="icon-unlock icon-light"></i>
-                </span>
-                </a>
-            </security:authorize>
-
-            </div>
-            </div>
-        </script>
-
-        <!-- Modal -->
-        <div id="removeItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="removeItemModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="removeItemModalLabel">Are you sure?</h3>
-            </div>
-            <div class="modal-body">
-                <p>This will remove <span data-bind="text:deleteObjectName"></span> from the database. Are you sure you want to do this?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
-                <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
-            </div>
+            <form class="form-horizontal"> 
+                <div class="control-group">
+                    <!-- label -->
+                    <div class="controls">
+                        <!-- input -->
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div id="addItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="addItemModalLabel">Add a new Menu Item</h3>
-            </div>
-            <div class="modal-body">
-
-                <form class="form-horizontal"> 
-                    <div class="control-group">
-                        <label class="control-label" for="itemName">Name</label>
-                        <div class="controls">
-                            <input type="text" id="itemName" data-bind="value:addMenuObject().itemname" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemDesc">Description (Optional)</label>
-                        <div class="controls">
-                            <input type="text" id="itemDesc" data-bind="value:addMenuObject().itemdesc" placeholder="Description...">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemCatagory">Catagory</label>
-                        <div class="controls">
-                            <input type="text" id="itemCatagory" data-bind="value:addMenuObject().catagory" disabled >
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemPrice">Price</label>
-                        <div class="controls">
-                            <input type="text" id="itemPrice" data-bind="value:addMenuObject().price" >
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelAdd">Cancel</button>
-                <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
-            </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
         </div>
-
-
-        <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="editItemModalLabel">Edit <span data-bind='text:editObject().itemname'></span> </h3>
-            </div>
-            <div class="modal-body">
-
-                <form class="form-horizontal"> 
-                    <div class="control-group">
-                        <label class="control-label" for="itemName">Name</label>
-                        <div class="controls">
-                            <input type="text" id="itemName" data-bind="value:editObject().itemname" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemDesc">Description (Optional)</label>
-                        <div class="controls">
-                            <input type="text" id="itemDesc" data-bind="value:editObject().itemdesc" placeholder="Description...">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemCatagory">Catagory</label>
-                        <div class="controls">
-                            <input type="text" id="itemCatagory" data-bind="value:editObject().catagory" disabled >
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="itemPrice">Price</label>
-                        <div class="controls">
-                            <input type="text" id="itemPrice" data-bind="value:editObject().price" >
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelEdit">Cancel</button>
-                <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
-            </div>
-        </div>
-
-
-        <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="mailModalLabel">Email Us</h3>
-            </div>
-            <div class="modal-body">
-                <p> 
-                    We love getting feedback from our customers! Please email us at ... or simply use the form below. 
-                </p>
-                <form class="form-horizontal"> 
-                    <div class="control-group">
-                        <!-- label -->
-                        <div class="controls">
-                            <!-- input -->
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
-            </div>
-        </div>
+    </div>
 
 
 
-        <form>
-            <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
-        </form>
-    </body>
+    <form>
+        <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
+    </form>
+</body>
 </html>

@@ -1,0 +1,576 @@
+<div class="row-fluid ui-view" id="lunch-page">
+    <div class="container">
+
+        <div class="row-fluid" data-bind="if:happyHour()">
+            <div class="container">	
+                <div class="about-photos">
+                    <h2 class=" text-center">
+                        Join us for Happy Hour weeknights from 5 - 7 pm.
+                    </h2>
+                    <ul class="inline text-center">
+                        <li>$1.50 oysters - shucker's choice </li>
+                        <li>$1 off all beer and select glasses of wine</li>
+                    </ul>
+
+                    <ul class="inline text-center">
+                        <li>
+                            <a class="thumbnail">
+                                <img src="${pageContext.request.contextPath}/resources/img/happy1.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="thumbnail">
+                                <img src="${pageContext.request.contextPath}/resources/img/happy2.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="thumbnail">
+                                <img src="${pageContext.request.contextPath}/resources/img/happy3.jpg">
+                            </a>
+                        </li>
+                    </ul>	
+                    <br/>
+                </div>
+            </div>
+        </div>
+
+        <!-- WINE LIST -->
+        <div class="row-fluid" data-bind="if:sparklingWine().length >0">
+
+            <!-- Sparkling and Champagne -->
+            <div class="span6 food-menu-container" data-bind="fadeVisible:showSparklingRow" >
+                <div class="food-menu-title"> Champagne 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('SPARKLING AND CHAMPAGNE'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>	
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:sparklingWine" class="food-item-tbl">
+                        <tr> 
+                            <td><span data-bind="text:itemdesc"></span></td>
+                            <td><span data-bind="text:itemname"><span data-bind="text: $index"></span></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ROSE -->
+            <div class="span6"  data-bind="fadeVisible:roseWine().length>0" >
+                <div class="food-menu-title"> ROSÉ 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('ROSE'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize></div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>	
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:roseWine" class="food-item-tbl">
+                        <tr> 
+                            <td><span data-bind="text:itemdesc"></span></td>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row-fluid" data-bind="fadeVisible:redWine().length >0"> 
+            <div class="span6 food-menu-container" data-bind="if:redWine().length >0">
+                <div class="food-menu-title"> RED 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('RED'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize></div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>	
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:redWine" class="food-item-tbl">
+                        <tr> 
+                            <td><span data-bind="text:itemdesc"></span></td>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="span6" data-bind="fadeVisible:whiteWine().length>0" >
+                <div class="food-menu-title"> WHITE 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('WHITE'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize></div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>	
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:whiteWine" class="food-item-tbl">
+                        <tr> 
+                            <td><span data-bind="text:itemdesc"></span></td>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr> <td colspan="3" style="border-top:none"> </td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row-fluid" data-bind="fadeVisible:lunchSpecial().length>0">          
+            <!-- LUNCH SPECIAL -->
+            <div class="span12">
+                <div class="food-menu-container food-menu-container-border middle-callout"> 
+                    <div class="food-menu-title">LUNCH SPECIAL
+                        <security:authorize access="hasRole('Administrator')">
+                            <a class="pointer" data-bind="click:function () { addItem('LUNCH SPECIAL'); }"> <i class="icon-plus-sign"></i></a>
+                        </security:authorize>
+                    </div>
+                    <div class="food-menu-title-ornament-container">
+                        <div class="food-menu-title-ornament"></div>
+                    </div>
+                    <ul class="food-menu-list" data-bind="foreach:lunchSpecial">
+                        <li>
+                            <div class="food-item-first-line">
+                                <div class="food-item-title" data-bind="text:itemname"></div>
+                            </div>
+                            <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
+                            <div class="food-item-price">
+                                <span data-bind="text:price"> </span>
+                                <security:authorize access="hasRole('Administrator')"> 
+                                    <span>
+                                        <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                        <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                                    </span>
+                                </security:authorize>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>	
+        </div>			
+
+        <div class="row-fluid" data-bind="fadeVisible:rawBar().length>0">
+            <div class="span6 food-menu-container" data-bind="fadeVisible:rawBar().length>0">
+                <div class="food-menu-title"> RAW BAR 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('RAW BAR'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>	
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:rawBar" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--        
+                <ul class="food-menu-list" data-bind="foreach:rawBar">
+                <li>
+                <div class="food-item-first-line">
+                <div class="food-item-title" data-bind="text:itemname"></div>
+                <div class="food-item-line" > </div>	
+                <div class="food-item-price" data-bind="text:price"></div>
+                </div>
+                </li>	
+                </ul>
+                -->
+            </div>
+            <div class="span6 food-menu-container" data-bind="fadeVisible:platters().length>0">
+                <div class="food-menu-title"> PLATTERS
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('PLATTERS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div> 
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:platters" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--
+                <ul class="food-menu-list" data-bind="foreach:platters">
+                <li>
+                <div class="food-item-first-line">
+                <div class="food-item-title" data-bind="text:itemname"></div>
+                <div class="food-item-line" > </div>	
+                <div class="food-item-price" data-bind="text:price"></div>
+                <div class="food-item-second-line" data-bind="if:itemdesc,text:itemdesc"></div>
+                </div>
+                </li>	
+                </ul>
+                -->
+            </div>		
+        </div>
+
+
+        <div class="row-fluid" data-bind="fadeVisible:starters().length>0">
+            <!-- STARTERS -->
+            <div class="span6 food-container" data-bind="fadeVisible:starters().length>0">
+                <div class="food-menu-title"> STARTERS 
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('STARTERS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:starters" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>	
+
+            <!-- SALADS -->
+            <div class="span6 food-container" data-bind="fadeVisible:salads().length>0">
+                <div class="food-menu-title"> SALADS
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('SALADS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:salads" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- COCKTAILS -->
+        <div class="row-fluid" data-bind="fadeVisible:cocktailsCol1().length>0">
+            <div class="span12 food-container" data-bind="fadeVisible:cocktailsCol1().length>0">
+                <div class="food-menu-title"> House Cocktails
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('COCKTAILS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <div class="fmc-double-column">
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach:cocktailsCol1" class="food-item-tbl">
+                            <tr>
+                                <td><span data-bind="text:itemname"></span></td>
+                                <td class="pull-right"><span data-bind="text:price"> </span></td>
+                        <security:authorize access="hasRole('Administrator')"> 
+                            <td>
+                                <span>
+                                    <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                    <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                                </span>
+                            </td>
+                        </security:authorize>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fmc-double-column fmcdc-last">
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach:cocktailsCol2" class="food-item-tbl">
+                            <tr>
+                                <td><span data-bind="text:itemname"></span></td>
+                                <td class="pull-right"><span data-bind="text:price"> </span></td>
+                        <security:authorize access="hasRole('Administrator')"> 
+                            <td>
+                                <span>
+                                    <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                    <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                                </span>
+                            </td>
+                        </security:authorize>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>          
+                </div>
+            </div>
+            <ul class="inline text-center">
+                <li>
+                    <a class="thumbnail">
+                        <img src="${pageContext.request.contextPath}/resources/img/cocktails1.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a class="thumbnail">
+                        <img src="${pageContext.request.contextPath}/resources/img/cocktails3.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a class="thumbnail">
+                        <img src="${pageContext.request.contextPath}/resources/img/cocktails2.jpg">
+                    </a>
+                </li>
+            </ul>	
+            <br/>
+        </div>
+
+
+        <!-- MAINS -->
+        <div class="row-fluid" data-bind="fadeVisible:mainsCol1().length>0">
+            <div class="span12 food-container" >
+                <div class="food-menu-title"> MAINS
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('MAINS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <div class="fmc-double-column">
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach:mainsCol1" class="food-item-tbl">
+                            <tr>
+                                <td><span data-bind="text:itemname"></span></td>
+                                <td class="pull-right"><span data-bind="text:price"> </span></td>
+                        <security:authorize access="hasRole('Administrator')"> 
+                            <td>
+                                <span>
+                                    <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                    <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                                </span>
+                            </td>
+                        </security:authorize>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="fmc-double-column fmcdc-last">
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach:mainsCol2" class="food-item-tbl">
+                            <tr>
+                                <td><span data-bind="text:itemname"></span></td>
+                                <td class="pull-right"><span data-bind="text:price"> </span></td>
+                        <security:authorize access="hasRole('Administrator')"> 
+                            <td>
+                                <span>
+                                    <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                    <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                                </span>
+                            </td>
+                        </security:authorize>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>	
+        </div>
+
+        <div class="row-fluid" data-bind="fadeVisible:sides().length>0">	
+            <!-- SIDES -->
+            <div class="span6 food-container" data-bind="fadeVisible:sides().length>0">
+                <div class="food-menu-title"> SIDES
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('SIDES'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:sides" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- DESERTS -->
+            <div class="span6 food-container" data-bind="fadeVisible:deserts().length>0">
+                <div class="food-menu-title"> DESERTS
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('DESERTS'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:deserts" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <!-- BEVERAGES -->
+            <div class="span6 food-container" data-bind="fadeVisible:beverages().length>0">
+                <div class="food-menu-title">BEVERAGES
+                    <security:authorize access="hasRole('Administrator')">
+                        <a class="pointer" data-bind="click:function () { addItem('BEVERAGES'); }"> <i class="icon-plus-sign"></i></a>
+                    </security:authorize>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody data-bind="foreach:beverages" class="food-item-tbl">
+                        <tr>
+                            <td><span data-bind="text:itemname"></span></td>
+                            <td class="pull-right"><span data-bind="text:price"> </span></td>
+                    <security:authorize access="hasRole('Administrator')"> 
+                        <td>
+                            <span>
+                                <a data-bind="click:$parent.editItem" class="pointer"> <i class="icon-edit-sign"></i> </a> 
+                                <a data-bind="click:$parent.deleteItem" class="pointer"> <i class="icon-remove-sign red"></i></a>
+                            </span>
+                        </td>
+                    </security:authorize>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" data-bind="text:itemdesc"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>	
+        </div>		
+    </div>
+
+    <div class="row-fluid" data-bind="fadeVisible:showWarning">
+        <div class="aside-container">
+            <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
+                <img class="food-menu-container-image" src="${pageContext.request.contextPath}/resources/img/shark-small.gif" style="opacity: 1;">
+                <div class="aside-text">There is a risk associated with consumption of raw oysters or any raw protein</div>
+            </div>
+        </div>
+    </div>
