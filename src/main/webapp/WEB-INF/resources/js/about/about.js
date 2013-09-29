@@ -13,7 +13,7 @@ angular.module('anchorotr.about', [
         }
     })
 }).controller('AboutCtrl', function LocationController($scope, titleService) {
-    
-
+    $scope.testing = "hello scope";
+            
 })
 

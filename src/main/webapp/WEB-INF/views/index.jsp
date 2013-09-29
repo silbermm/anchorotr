@@ -13,13 +13,14 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/datepicker.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-resource.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-0.5.0.min.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/ng-grid.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/underscore.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/services/searchService.js' />"></script>
@@ -115,7 +116,7 @@
                             </span>	
                         </a>
 
-                        <a data-bind="click: showMailModal"> 
+                        <a > 
                             <span class="icon-stack">
                                 <i class="icon-circle icon-stack-base"></i>
                                 <i class="icon-envelope icon-light"></i>
@@ -237,7 +238,7 @@
                                 <i class="icon-twitter icon-light"></i>
                             </span>	
                         </a>
-                        <a data-bind="click: showMailModal"> 
+                        <a > 
                             <span class="icon-stack">
                                 <i class="icon-circle icon-stack-base"></i>
                                 <i class="icon-envelope icon-light"></i>
@@ -264,131 +265,132 @@
             </div>	
         </div>
 
-    <!-- Modal -->
-    <div id="removeItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="removeItemModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="removeItemModalLabel">Are you sure?</h3>
-        </div>
-        <div class="modal-body">
-            <p>This will remove <span data-bind="text:deleteObjectName"></span> from the database. Are you sure you want to do this?</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
-            <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
-        </div>
-    </div>
+        <!-- Modal -->
+                <!--
 
-    <div id="addItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="addItemModalLabel">Add a new Menu Item</h3>
+        <div id="removeItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="removeItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="removeItemModalLabel">Are you sure?</h3>
+            </div>
+            <div class="modal-body">
+                <p>This will remove <span data-bind="text:deleteObjectName"></span> from the database. Are you sure you want to do this?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
+                <button class="btn btn-primary" data-bind="click:actuallyDelete">Yes</button>
+            </div>
         </div>
-        <div class="modal-body">
 
-            <form class="form-horizontal"> 
-                <div class="control-group">
-                    <label class="control-label" for="itemName">Name</label>
-                    <div class="controls">
-                        <input type="text" id="itemName" data-bind="value:addMenuObject().itemname" placeholder="Name">
+        <div id="addItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="addItemModalLabel">Add a new Menu Item</h3>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        <label class="control-label" for="itemName">Name</label>
+                        <div class="controls">
+                            <input type="text" id="itemName" data-bind="value:addMenuObject().itemname" placeholder="Name">
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemDesc">Description (Optional)</label>
-                    <div class="controls">
-                        <input type="text" id="itemDesc" data-bind="value:addMenuObject().itemdesc" placeholder="Description...">
+                    <div class="control-group">
+                        <label class="control-label" for="itemDesc">Description (Optional)</label>
+                        <div class="controls">
+                            <input type="text" id="itemDesc" data-bind="value:addMenuObject().itemdesc" placeholder="Description...">
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemCatagory">Catagory</label>
-                    <div class="controls">
-                        <input type="text" id="itemCatagory" data-bind="value:addMenuObject().catagory" disabled >
+                    <div class="control-group">
+                        <label class="control-label" for="itemCatagory">Catagory</label>
+                        <div class="controls">
+                            <input type="text" id="itemCatagory" data-bind="value:addMenuObject().catagory" disabled >
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemPrice">Price</label>
-                    <div class="controls">
-                        <input type="text" id="itemPrice" data-bind="value:addMenuObject().price" >
+                    <div class="control-group">
+                        <label class="control-label" for="itemPrice">Price</label>
+                        <div class="controls">
+                            <input type="text" id="itemPrice" data-bind="value:addMenuObject().price" >
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelAdd">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelAdd">Cancel</button>
-            <button class="btn btn-primary" data-bind="click:actuallyAdd">Create</button>
+
+        <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="editItemModalLabel">Edit <span data-bind='text:editObject().itemname'></span> </h3>
+            </div>
+            <div class="modal-body">
+    
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        <label class="control-label" for="itemName">Name</label>
+                        <div class="controls">
+                            <input type="text" id="itemName" data-bind="value:editObject().itemname" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemDesc">Description (Optional)</label>
+                        <div class="controls">
+                            <input type="text" id="itemDesc" data-bind="value:editObject().itemdesc" placeholder="Description...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemCatagory">Catagory</label>
+                        <div class="controls">
+                            <input type="text" id="itemCatagory" data-bind="value:editObject().catagory" disabled >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemPrice">Price</label>
+                        <div class="controls">
+                            <input type="text" id="itemPrice" data-bind="value:editObject().price" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelEdit">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
+            </div>
         </div>
-    </div>
+    
+    
+        <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="mailModalLabel">Email Us</h3>
+            </div>
+            <div class="modal-body">
+                <p> 
+                    We love getting feedback from our customers! Please email us at ... or simply use the form below. 
+                </p>
+                <form class="form-horizontal"> 
+                    <div class="control-group">
+                        
+                        <div class="controls">
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
+            </div>
+        </div>
+        -->
 
 
-    <div id="editItemModal" data-bind="with:menuViewModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editItemModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="editItemModalLabel">Edit <span data-bind='text:editObject().itemname'></span> </h3>
-        </div>
-        <div class="modal-body">
-
-            <form class="form-horizontal"> 
-                <div class="control-group">
-                    <label class="control-label" for="itemName">Name</label>
-                    <div class="controls">
-                        <input type="text" id="itemName" data-bind="value:editObject().itemname" placeholder="Name">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemDesc">Description (Optional)</label>
-                    <div class="controls">
-                        <input type="text" id="itemDesc" data-bind="value:editObject().itemdesc" placeholder="Description...">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemCatagory">Catagory</label>
-                    <div class="controls">
-                        <input type="text" id="itemCatagory" data-bind="value:editObject().catagory" disabled >
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="itemPrice">Price</label>
-                    <div class="controls">
-                        <input type="text" id="itemPrice" data-bind="value:editObject().price" >
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelEdit">Cancel</button>
-            <button class="btn btn-primary" data-bind="click:actuallyEdit">Update</button>
-        </div>
-    </div>
-
-
-    <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="mailModalLabel">Email Us</h3>
-        </div>
-        <div class="modal-body">
-            <p> 
-                We love getting feedback from our customers! Please email us at ... or simply use the form below. 
-            </p>
-            <form class="form-horizontal"> 
-                <div class="control-group">
-                    <!-- label -->
-                    <div class="controls">
-                        <!-- input -->
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
-        </div>
-    </div>
-
-
-
-    <form>
-        <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
-    </form>
-</body>
+        <form>
+            <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
+        </form>
+    </body>
 </html>

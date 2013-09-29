@@ -1,5 +1,5 @@
 'use strict';
-angular.module('heartbeat.home', [
+angular.module('anchorotr.menus', [
     'ui.state',
     'titleService',
 ]).config(function config($stateProvider, $urlRouterProvider) {
@@ -13,7 +13,8 @@ angular.module('heartbeat.home', [
             }
         }
     })
-}).controller('MenuCtrl', function MenuController($scope, titleService) {
+}).controller('MenuCtrl', function MenuController($scope, titleService, $http) {
+    
     
 
 })

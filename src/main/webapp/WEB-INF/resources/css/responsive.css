@@ -146,7 +146,7 @@ body, html {
 }
 
 
-.ui-view {
+.ui-view-row {
     position: relative;
     /*top: 14px; */
     height: auto;

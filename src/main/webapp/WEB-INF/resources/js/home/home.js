@@ -13,7 +13,8 @@ angular.module('anchorotr.home', [
         }
     })
 }).controller('HomeCtrl', function HomeController($scope, titleService) {
+    titleService.setTitle("Home");
     
-
+   
 })
 

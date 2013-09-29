@@ -2,7 +2,6 @@
 angular.module('anchorotr', [
     "ui.state", 
     "ui.route",
-    "ngGrid",
     "ui.bootstrap",
     "anchorotr.home",
     "anchorotr.about",
@@ -11,8 +10,7 @@ angular.module('anchorotr', [
     "anchorotr.reservation"
 ])
 .config( function myAppConfig($stateProvider, $urlRouterProvider) {      
-    //$urlRouterProvider.otherwise("/home");
-    
+
 })
 .run(function run(titleService, $rootScope, $state, $stateParams){
     $rootScope.$state = $state;    
@@ -22,7 +20,7 @@ angular.module('anchorotr', [
 })
 .controller('AppCtrl', function AppCtrl($scope, $location, titleService){
     titleService.setTitle("Home");   
-    //$scope.state = $state;
+    $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
 });
 
 
