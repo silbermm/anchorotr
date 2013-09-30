@@ -18,10 +18,14 @@ angular.module('anchorotr', [
     titleService.setSuffix(' | The Anchor-OTR');   
     $state.transitionTo("home");
 })
-.controller('AppCtrl', function AppCtrl($scope, $location, titleService, menuCollapseService, $state, $stateParams){
+.controller('AppCtrl', function AppCtrl($scope, $location, titleService, menuCollapseService, authService, $state, $stateParams){
     titleService.setTitle("Home");   
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();
+    
+    authService.getDetails();
+    
+    
     
     $scope.toggleMenu = function(){
         if($state.includes('menus')){

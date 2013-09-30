@@ -388,6 +388,7 @@
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/services/menuCollapseService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/services/authService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>

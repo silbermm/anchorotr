@@ -1,5 +1,5 @@
 'use strict';
-angular.module('AuthService', [$http]).factory('authService', function(http) {
+angular.module('authService', []).factory('authService', function($http) {
     var auth = {
         authenticated: false,
         username: null,
@@ -8,7 +8,7 @@ angular.module('AuthService', [$http]).factory('authService', function(http) {
     };
     return {
         getDetails: function(){
-            http.get('/users/authorities').success(function(data, status, headers, config) {
+            $http.get('/users/authorities').success(function(data, status, headers, config) {
                 for(var i = 0; i < data.length; i++){
                     if(data[i].authority === "Administrator"){
                         auth.admin = true;
@@ -17,7 +17,7 @@ angular.module('AuthService', [$http]).factory('authService', function(http) {
             }).error(function(data, status, headers, config) {
                 auth.admin = false;
             }); 
-            http.get('/users/username').success(function(data, status, headers, config){
+            $http.get('/users/username').success(function(data, status, headers, config){
                auth.username = data;
                auth.authenticated = true;
             }).error(function(data, status, headers, config){

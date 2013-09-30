@@ -3,6 +3,7 @@ angular.module('anchorotr.menus', [
     'ui.state',
     'titleService',
     'menuCollapseService',
+    'authService'
 ]).config(function config($stateProvider, $urlRouterProvider) {
     $stateProvider.state('menus', {
         url: '/menus/:id',
@@ -13,9 +14,17 @@ angular.module('anchorotr.menus', [
             }
         }
     })
-}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, $stateParams, $state, $http) {
+}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, authService, $stateParams, $state, $http) {
     
     menuCollapseService.setCollapsed(false);
+    
+    authService.getDetails();
+
+    $scope.username = authService.getUsername();
+    $scope.isAuthenticated = authService.isAuthenticated();
+    $scope.isAdmin = authService.isAdmin();
+
+
 
     if ($stateParams.id === 'lunch') {
         console.log("in the rawbar method");
