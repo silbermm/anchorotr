@@ -2,6 +2,7 @@
 angular.module('anchorotr.location', [
     'ui.state',
     'titleService',
+    'menuCollapseService'
 ]).config(function config($stateProvider) {
     $stateProvider.state('location', {
         url: '/location',
@@ -12,8 +13,9 @@ angular.module('anchorotr.location', [
             }
         }
     })
-}).controller('LocationCtrl', function LocationController($scope, titleService) {
-    
+}).controller('LocationCtrl', function LocationController($scope, titleService, menuCollapseService) {
+    titleService.setTitle("Location");
+    $scope.isCollapsed = menuCollapseService.setCollapsed(true);
 
 })
 

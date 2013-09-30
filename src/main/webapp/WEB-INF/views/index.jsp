@@ -30,19 +30,19 @@
                         <ul class="nav">
                             <li class="dropdown">
                                 <ul class="nav">
-                                    <li ui-route="/menus/lunch" ng-class="{active:$state.params.name == lunch}">
+                                    <li ui-route="/menus/lunch" ng-class="{active:$state.params.name==='lunch'}">
                                         <a href="#/menus/lunch"> Lunch Menu </a>
                                     </li>
-                                    <li ui-route="/menus/dinner" ng-class="{active:$state.params.name == dinner}"> 
+                                    <li ui-route="/menus/dinner" ng-class="{active:$state.params.name==='dinner'}"> 
                                         <a href="#/menus/dinner"> Dinner Menu </a>
                                     </li>
-                                    <li ui-route="/menus/wine" ng-class="{active:$state.params.name == wine}">
+                                    <li ui-route="/menus/wine" ng-class="{active:$state.params.name==='wine'}">
                                         <a href="#/menus/wine"> Wine List </a>
                                     </li>
-                                    <li ui-route="/menus/cocktails" ng-class="{active:$state.params.name == cocktails}">
+                                    <li ui-route="/menus/cocktails" ng-class="{active:$state.params.name==='cocktails'}">
                                         <a href="#/menus/cocktails"> House Cocktails </a>
                                     </li>
-                                    <li ui-route="/menus/happyHour" ng-class="{active:$state.params.name == happyHour}">
+                                    <li ui-route="/menus/happyHour" ng-class="{active:$state.params.name==='happyHour'}">
                                         <a href="#/menus/happyHour"> Happy Hour </a>
                                     </li>
                                     <li ui-route="/location" ng-class="{active: $state.includes('location')}">
@@ -164,7 +164,7 @@
                         <div class="span4" >
                             <ul class="inline text-right">
                                 <li ng-class="{active: $state.includes('menus')}"> 
-                                    <a href="">Menus</a>
+                                    <a href="" ng-click="toggleMenu()">Menu</a>
                                 </li>
                                 <li ui-route="/location" ng-class="{active: $state.includes('location')}" >
                                     <a href="#/location"> Location </a>
@@ -184,22 +184,22 @@
                         </div>
                     </div>
                 </div>	
-                <div id="submenu" class="row-fluid collapse">
+                <div id="submenu" class="row-fluid" collapse="isCollapsed.val">
                     <div class="container">	
                         <ul class="inline">
-                            <li ng-class="{active:$state.params.name == lunch}" >
+                            <li ng-class="{active:$state.params.id==='lunch'}" >
                                 <a href="#/menus/lunch"> Lunch </a>	
                             </li>
-                            <li ng-class="{active:$state.params.name == dinner}">
+                            <li ng-class="{active:$state.params.id==='dinner'}">
                                 <a href="#/menus/dinner"> Dinner </a>
                             </li>	
-                            <li ng-class="{active:$state.params.name == wine}" >
+                            <li ng-class="{active:$state.params.id==='wine'}" >
                                 <a href="#/menus/wine" > Wine List </a>
                             </li>
-                            <li ng-class="{active:$state.params.name == cocktails}">
+                            <li ng-class="{active:$state.params.id==='cocktails'}">
                                 <a href="#/menus/cocktails"> House Cocktails </a>
                             </li>
-                            <li ng-class="{active:$state.params.name == happyHour}">
+                            <li ng-class="{active:$state.params.id==='happyHour'}">
                                 <a href="#/menus/happyHour"> Happy Hour </a>
                             </li>
                         </ul>	
@@ -387,7 +387,7 @@
         <script type="text/javascript" src="<c:url value='/resources/js/vender/underscore.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/services/searchService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/services/menuCollapseService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>
