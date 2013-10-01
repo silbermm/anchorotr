@@ -13,7 +13,6 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/datepicker.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
-        <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> -->
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
@@ -148,7 +147,6 @@
                             <li>
                                 <ul class="hours">
                                     <li> Tue-Thur: 11:30-2:30, 5-10 </li>
-                                    <!-- <li> Open daily at 1pm </li> -->
                                     <li> Fri-Sat: 11:30-2:30, 5-11 </li>
                                 </ul>
                             </li>
@@ -248,33 +246,7 @@
                 </div>
             </div>	
         </div>
-        <!--
-        <div id="mailModal"  class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mailModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="mailModalLabel">Email Us</h3>
-            </div>
-            <div class="modal-body">
-                <p> 
-                    We love getting feedback from our customers! Please email us at ... or simply use the form below. 
-                </p>
-                <form class="form-horizontal"> 
-                    <div class="control-group">
-                        
-                        <div class="controls">
-                           
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" data-bind="click:sendMail">Send</button>
-            </div>
-        </div>
-        -->
-
-
+        
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
@@ -285,7 +257,6 @@
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
-        <!-- <script type="text/javascript" src="<c:url value='/resources/js/vender/underscore.js' />"></script> -->
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/services/menuCollapseService.js' />"></script>
