@@ -152,6 +152,7 @@ body, html {
 
 /******* LANDING PAGE PICTURES *********/
 #landing-imgs {
+	max-width: 1280px;
 }
 
 
