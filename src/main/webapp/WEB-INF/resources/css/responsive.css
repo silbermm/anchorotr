@@ -496,6 +496,11 @@ address {
     font-size: 13px;
 }
 
+.parking a{
+    text-transform: lowercase;
+    color: #0088cc;
+}
+
 @media (max-width: 1148px) {
     #desktop-menubar .info-columns{
         top: 9em;
