@@ -1,6 +1,6 @@
 <div class="row-fluid ui-view-row" id="reservation-page">
     <div class="container">
-       
+        
         <form name=ism id=ism class="text-center" METHOD=POST action="http://www.opentable.com/restaurant-search.aspx">
             <fieldset>
                 <legend> Open Table Reservations </legend>
@@ -27,7 +27,15 @@
                     <option value="20">20</option>
                 </select>
                 <label> Select a Date </label>
-                <input type="text" id="startDate" name="startDate" data-bind="value:$root.today" >
+                <input type="text" id="startDate" name="startDate"
+                       datepicker-popup="MM/dd/yyyy" 
+                       ng-model="dt" 
+                       is-open="opened" 
+                       min="minDate" 
+                       max="'2015-06-22'" 
+                       datepicker-options="dateOptions" 
+                       date-disabled="disabled(date, mode)" 
+                       ng-required="true" />                    
                 <label> Choose a Time </label>
                 <select name="ResTime">
                     <option value="10:00 AM" >10:00 AM</option>

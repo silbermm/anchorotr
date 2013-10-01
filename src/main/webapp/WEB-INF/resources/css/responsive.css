@@ -1,25 +1,18 @@
-/*
- * font-family:'Palatino LT W01 Light';
- * font-family:'PalatinoLTW01-LightItal';
- * font-family:'Palatino LT W01 Roman';
- * font-family:'Palatino LT W01 Italic';
- * font-family:'Palatino LT W01 Medium';
- * font-family:'PalatinoLTW01-MediumIta';
- * font-family:'Palatino LT W01 Bold';
- * font-family:'PalatinoLTW01-BoldItali';
- * font-family:'Palatino LT W01 Black';
- * font-family:'PalatinoLTW01-BlackItal';
- * font-family:'Engravers MT W01 Bold';
- * font-family: 'Quicksand', sans-serif;
- * */
-
 body, html {
     margin: 0;
     padding: 0;
     height:100%;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Libre Baskerville', serif;
     color: #2E2922;
     background: url(../img/background_offwhite.jpg);
+}
+
+.css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
 }
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
@@ -31,7 +24,7 @@ body, html {
 }
 
 #desktop-menubar {
-    
+
     font-size: 13px;
     height: 175px;
 }
@@ -107,7 +100,7 @@ body, html {
     border-top: 1px solid black;
     position: relative;
     z-index:2;
-    top: 8px;
+    top: 9px;
 }
 
 #submenu {
@@ -182,19 +175,20 @@ body, html {
 }
 
 .callout {
-    font-family: 'Glass Antiqua', cursive;
+    font-family: 'Libre Baskerville Italic400', serif;
     font-style: italic;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .team-name {
-    font-family:'Glass Antiqua', serif;
-    font-size: 15px;
+    font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
+    font-size: 13px;
+
 }
 
 .team-title {
-    font-family:'Glass Antiqua', serif;
+    font-family:'Libre Baskerville Italic400', serif;
     font-style: italic;
 }
 
@@ -259,7 +253,8 @@ body, html {
 .food-item-tbl {
     text-transform: uppercase;
     color: #2E2922;
-    font-family: 'Libre Baskerville Bold700', sans-serif;
+    font-family: 'Libre Baskerville', sans-serif;
+    font-weight: bold;
     font-size: 12px;
     -sizing: border-box;
     -moz-box-sizing: border-box;
@@ -267,8 +262,7 @@ body, html {
 }
 
 .food-item-tbl-desc {
-    font-family: 'Glass Antiqua', sans-serif;
-    font-size: 15px;
+    font-family: 'Libre Baskerville Italic400', serif;
     font-style:italic;
     font-weight: normal;
     -sizing: border-box;
@@ -326,8 +320,8 @@ body, html {
 .food-item-second-line {
     width: 100%;
     float: left;
-    font-family: 'Palatino LT W01 Italic';
-    font-size: 15px;
+    font-family: 'Libre Baskerville Italic400', serif;
+    font-size: 13px;
     -sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -457,7 +451,7 @@ body, html {
 }
 
 #map-canvas {
-  min-height: 100px;
+    min-height: 100px;
 }
 
 .clear {
@@ -497,7 +491,7 @@ body, html {
 }
 
 address {
-    font-family: 'PalatinoLTW01';
+    font-family: 'Libre Baskerville';
     font-weight: bold;
     font-size: 13px;
 }
@@ -509,7 +503,7 @@ address {
 }
 
 @media (max-width: 717px) {
-   
+
 }
 
 /*
