@@ -3,7 +3,8 @@ angular.module('anchorotr.reservation', [
     'ui.state',
     'titleService',
     'menuCollapseService',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'navCollapseService',
 ]).config(function config($stateProvider) {
     $stateProvider.state('reservation', {
         url: '/reservation',
@@ -14,8 +15,9 @@ angular.module('anchorotr.reservation', [
             }
         }
     })
-}).controller('ReservationCtrl', function ReservationController($scope, titleService, menuCollapseService, $timeout) {
+}).controller('ReservationCtrl', function ReservationController($scope, titleService, menuCollapseService, navCollapseService,$timeout) {
     titleService.setTitle("Reservations");
+    navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
 
     $scope.today = function() {

@@ -3,6 +3,7 @@ angular.module('anchorotr.about', [
     'ui.state',
     'titleService',
     'menuCollapseService',
+    'navCollapseService',
 ]).config(function config($stateProvider) {
     $stateProvider.state('about', {
         url: '/about',
@@ -13,7 +14,9 @@ angular.module('anchorotr.about', [
             }
         }
     })
-}).controller('AboutCtrl', function LocationController($scope, titleService, menuCollapseService) {
+}).controller('AboutCtrl', function LocationController($scope, titleService, menuCollapseService,navCollapseService) {
+    titleService.setTitle("About Us");
+    navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
             
 })

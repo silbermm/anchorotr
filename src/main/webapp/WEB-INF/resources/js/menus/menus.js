@@ -4,7 +4,8 @@ angular.module('anchorotr.menus', [
     'titleService',
     'menuCollapseService',
     'authService',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'navCollapseService',
 ]).config(function config($stateProvider, $urlRouterProvider) {
     $stateProvider.state('menus', {
         url: '/menus/:id',
@@ -23,8 +24,8 @@ angular.module('anchorotr.menus', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, authService, $stateParams, $modal, $http, $log) {
-
+}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log) {
+    navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     authService.getDetails();
     $scope.username = authService.getUsername();

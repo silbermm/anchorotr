@@ -11,37 +11,36 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
-        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/datepicker.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <a class="btn btn-navbar" ng-click="toggleNavMenu()">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
 
                     <a class="brand" href="#"><i class="icon-anchor"></i>The Anchor-OTR</a>				
-                    <div class="nav-collapse collapse">	
+                    <div class="nav-collapse collapse" collapse="isNavCollapsed.val">	
                         <ul class="nav">
                             <li class="dropdown">
                                 <ul class="nav">
-                                    <li ui-route="/menus/lunch" ng-class="{active:$state.params.name==='lunch'}">
+                                    <li ui-route="/menus/lunch" ng-class="{active:$state.params.id==='lunch'}">
                                         <a href="#/menus/lunch"> Lunch Menu </a>
                                     </li>
-                                    <li ui-route="/menus/dinner" ng-class="{active:$state.params.name==='dinner'}"> 
+                                    <li ui-route="/menus/dinner" ng-class="{active:$state.params.id==='dinner'}"> 
                                         <a href="#/menus/dinner"> Dinner Menu </a>
                                     </li>
-                                    <li ui-route="/menus/wine" ng-class="{active:$state.params.name==='wine'}">
+                                    <li ui-route="/menus/wine" ng-class="{active:$state.params.id==='wine'}">
                                         <a href="#/menus/wine"> Wine List </a>
                                     </li>
-                                    <li ui-route="/menus/cocktails" ng-class="{active:$state.params.name==='cocktails'}">
+                                    <li ui-route="/menus/cocktails" ng-class="{active:$state.params.id==='cocktails'}">
                                         <a href="#/menus/cocktails"> House Cocktails </a>
                                     </li>
-                                    <li ui-route="/menus/happyHour" ng-class="{active:$state.params.name==='happyHour'}">
+                                    <li ui-route="/menus/happyHour" ng-class="{active:$state.params.id==='happyHour'}">
                                         <a href="#/menus/happyHour"> Happy Hour </a>
                                     </li>
                                     <li ui-route="/location" ng-class="{active: $state.includes('location')}">
@@ -81,7 +80,7 @@
             <div style="margin-left:20px;margin-right:20px">	
                 <div ui-view="main"> </div>
 
-                <div class="pagefooter" class="row-fluid ui-view">
+                <div class="pagefooter" class="row-fluid ui-view">                   
                     <div class="thin-line" > </div>
                     <div class="thick-line"> </div>	
                     <div class="social container">
@@ -181,7 +180,7 @@
                         </div>
                     </div>
                 </div>	
-                <div id="submenu" class="row-fluid" collapse="isCollapsed.val">
+                <div id="submenu" class="row-fluid collapse" collapse="isCollapsed.val">
                     <div class="container">	
                         <ul class="inline">
                             <li ng-class="{active:$state.params.id==='lunch'}" >
@@ -206,7 +205,7 @@
                 <div ui-view="main"> </div> 
                 <div class="pagefooter" class="row-fluid ui-view">
                     <div class="thin-line" > </div>
-                    <div class="thick-line"> </div>	
+                    <div class="thick-line"> </div>                    
                     <div class="social container">
                         <a href="https://www.facebook.com/theanchorotr" target="_blank">
                             <span class="icon-stack">
@@ -260,6 +259,7 @@
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/services/titleService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/services/menuCollapseService.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/services/navCollapseService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/services/authService.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/home/home.js' />"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/about/about.js' />"></script> 
