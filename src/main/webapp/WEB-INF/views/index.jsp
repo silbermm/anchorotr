@@ -12,6 +12,7 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     </head>
     <body>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
