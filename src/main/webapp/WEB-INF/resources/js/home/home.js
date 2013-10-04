@@ -3,6 +3,7 @@ angular.module('anchorotr.home', [
     'ui.state',
     'titleService',
     'navCollapseService',
+		'menuCollapseService',
 ]).config(function config($stateProvider) {
     $stateProvider.state('home', {
         url: '/home',
@@ -17,9 +18,10 @@ angular.module('anchorotr.home', [
             }
         }
     })
-}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService) {
+}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService,menuCollapseService) {
     titleService.setTitle("Home");
     navCollapseService.setCollapsed(true);
+		menuCollapseService.setCollapsed(true);
     
    
 })
