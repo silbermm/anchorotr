@@ -78,7 +78,6 @@
                     Cincinnati,OH 45202<br/>
                     (513) 421-8111
                 </address>
-
                 <address class="text-center">
                     Tue-Thur: 11:30-2:30, 5-10<br/>
                     Fri-Sat:  11:30-2:30, 5-11
@@ -87,52 +86,7 @@
             <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
             <div style="margin-left:20px;margin-right:20px">	
                 <div ui-view="main"> </div>
-
-                <div class="pagefooter" class="row-fluid ui-view">                   
-                    <div class="thin-line" > </div>
-                    <div class="thick-line"> </div>	
-                    <div class="social container">
-                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-facebook icon-light"></i>
-                            </span>
-                        </a>	
-
-                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-twitter icon-light"></i>
-                            </span>	
-                        </a>
-
-                        <a > 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-envelope icon-light"></i>
-                            </span>	
-                        </a>
-
-                        <security:authorize access="isAnonymous()"> 
-                            <a href="<c:url value='/login' />">
-                                <span class="icon-stack">
-                                    <i class="icon-circle icon-stack-base"></i>
-                                    <i class="icon-lock icon-light"></i>
-                                </span>
-                            </a>
-                        </security:authorize>
-
-                        <security:authorize access="isAuthenticated()">
-                            <a href="<c:url value='/j_spring_security_logout' />" >
-                                <span class="icon-stack">
-                                    <i class="icon-circle icon-stack-base"></i>
-                                    <i class="icon-unlock icon-light"></i>
-                                </span>
-                            </a>
-                        </security:authorize>
-
-                    </div>
-                </div>
+                <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>
             </div>
         </div>
 
@@ -211,46 +165,7 @@
                 </div>	
                 <div class="container" id="menu-border"></div>	
                 <div ui-view="main"> </div> 
-                <div class="pagefooter" class="row-fluid ui-view">
-                    <div class="thin-line" > </div>
-                    <div class="thick-line"> </div>                    
-                    <div class="social container">
-                        <a href="https://www.facebook.com/theanchorotr" target="_blank">
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-facebook icon-light"></i>
-                            </span>
-                        </a>	
-                        <a href="https://twitter.com/theanchorotr" target="_blank"> 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-twitter icon-light"></i>
-                            </span>	
-                        </a>
-                        <a > 
-                            <span class="icon-stack">
-                                <i class="icon-circle icon-stack-base"></i>
-                                <i class="icon-envelope icon-light"></i>
-                            </span>	
-                        </a>
-                        <security:authorize access="isAnonymous()"> 
-                            <a href="<c:url value='/login' />">
-                                <span class="icon-stack">
-                                    <i class="icon-circle icon-stack-base"></i>
-                                    <i class="icon-lock icon-light"></i>
-                                </span>
-                            </a>
-                        </security:authorize>
-                        <security:authorize access="isAuthenticated()">
-                            <a href="<c:url value='/j_spring_security_logout' />" >
-                                <span class="icon-stack">
-                                    <i class="icon-circle icon-stack-base"></i>
-                                    <i class="icon-unlock icon-light"></i>
-                                </span>
-                            </a>
-                        </security:authorize>
-                    </div>
-                </div>
+                <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>               
             </div>	
         </div>
 

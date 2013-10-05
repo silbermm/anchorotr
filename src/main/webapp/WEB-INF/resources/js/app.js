@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr', [
-    "ui.state", 
+    "ui.state",
     "ui.route",
     "ui.bootstrap",
     "anchorotr.home",
@@ -9,35 +9,39 @@ angular.module('anchorotr', [
     "anchorotr.menus",
     "anchorotr.reservation"
 ])
-.config( function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider) {      
+        .config(function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.hashPrefix('!');
 })
-.run(function run(titleService, $rootScope, $state, $stateParams){
-    $rootScope.$state = $state;    
+        .run(function run(titleService, $rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    titleService.setSuffix(' | The Anchor-OTR');   
+    titleService.setSuffix(' | The Anchor-OTR');
     $state.transitionTo("home");
 })
-.controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state){
-    titleService.setTitle("Home");   
+        .controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state) {
+    titleService.setTitle("Home");
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
-    $scope.isCollapsed = menuCollapseService.getCollapsed();    
+    $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();
-    
+
+
     authService.getDetails();
-      
-    $scope.toggleMenu = function(){
-        if($state.includes('menus')){
+    $scope.username = authService.getUsername();
+    $scope.isAuthenticated = authService.isAuthenticated();
+    $scope.isAdmin = authService.isAdmin();
+    
+    $scope.toggleMenu = function() {
+        if ($state.includes('menus')) {
             menuCollapseService.setCollapsed(false);
         } else {
             menuCollapseService.setCollapsed(!menuCollapseService.getCollapsed().val);
         }
     }
-    
-    $scope.toggleNavMenu = function(){
+
+    $scope.toggleNavMenu = function() {
         navCollapseService.setCollapsed(!navCollapseService.getCollapsed().val);
     }
-    
+
 });
 
 

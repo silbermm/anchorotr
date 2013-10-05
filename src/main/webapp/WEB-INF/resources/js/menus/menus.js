@@ -28,10 +28,11 @@ angular.module('anchorotr.menus', [
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     authService.getDetails();
+    
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
-
+    
     $scope.openAddModal = function(currentCatagory) {
         var modalInstance = $modal.open({
             templateUrl: 'addModal.html',
@@ -150,16 +151,16 @@ angular.module('anchorotr.menus', [
                         $scope.salads.splice($scope.deleteIdx, 1);
                         break;
                     case "COCKTAILS":
-                        angular.forEach($scope.cocktailsCol1, function(val,key){
-                            if(val.id === menuItem.id){
-                             this.splice(key,1);   
+                        angular.forEach($scope.cocktailsCol1, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this.splice(key, 1);
                             }
-                        },$scope.cocktailCol1);
-                        angular.forEach($scope.cocktailsCol2, function(val,key){
-                            if(val.id === menuItem.id){
-                             this.splice(key,1);   
+                        }, $scope.cocktailCol1);
+                        angular.forEach($scope.cocktailsCol2, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this.splice(key, 1);
                             }
-                        },$scope.cocktailCol2);
+                        }, $scope.cocktailCol2);
                         break;
                     case "MAINS":
                         angular.forEach($scope.mainsCol1, function(val, key) {
@@ -191,7 +192,7 @@ angular.module('anchorotr.menus', [
         });
     };
 
-     $scope.openEditModal = function(menuItem, idx) {
+    $scope.openEditModal = function(menuItem, idx) {
         $scope.editIdx = idx;
         var modalInstance = $modal.open({
             templateUrl: 'editModal.html',
@@ -235,26 +236,26 @@ angular.module('anchorotr.menus', [
                         $scope.salads[$scope.editIdx] = menuItem;
                         break;
                     case "COCKTAILS":
-                        angular.forEach($scope.cocktailsCol1, function(val,key){
-                            if(val.id === menuItem.id){
-                             this[key] = menuItem; 
+                        angular.forEach($scope.cocktailsCol1, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
                             }
-                        },$scope.cocktailCol1);
-                        angular.forEach($scope.cocktailsCol2, function(val,key){
-                            if(val.id === menuItem.id){
-                             this[key] = menuItem;   
+                        }, $scope.cocktailCol1);
+                        angular.forEach($scope.cocktailsCol2, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
                             }
-                        },$scope.cocktailCol2);
+                        }, $scope.cocktailCol2);
                         break;
                     case "MAINS":
                         angular.forEach($scope.mainsCol1, function(val, key) {
                             if (val.id === menuItem.id) {
-                                this[key] = menuItem;  
+                                this[key] = menuItem;
                             }
                         }, $scope.mainsCol1);
                         angular.forEach($scope.mainsCol2, function(val, key) {
                             if (val.id === menuItem.id) {
-                                 this[key] = menuItem;  
+                                this[key] = menuItem;
                             }
                         }, $scope.mainsCol2);
                         break;

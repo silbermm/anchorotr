@@ -1,0 +1,45 @@
+<div class="pagefooter" class="row-fluid ui-view" ng-controller='AppCtrl'>                   
+    <div class="thin-line" > </div>
+    <div class="thick-line"> </div>	
+    <div class="social container">
+        <a href="https://www.facebook.com/theanchorotr" target="_blank">
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-facebook icon-light"></i>
+            </span>
+        </a>	
+
+        <a href="https://twitter.com/theanchorotr" target="_blank"> 
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-twitter icon-light"></i>
+            </span>	
+        </a>
+
+        <a > 
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-envelope icon-light"></i>
+            </span>	
+        </a>
+
+
+        <a href="/login" n ng-if="!isAuthenticated">
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-lock icon-light"></i>
+            </span>
+        </a>
+
+
+
+        <a href="/j_spring_security_logout" ng-if="isAuthenticated">
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-unlock icon-light"></i>
+            </span>
+        </a>
+
+
+    </div>
+</div>
