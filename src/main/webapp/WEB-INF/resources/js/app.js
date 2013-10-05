@@ -9,8 +9,8 @@ angular.module('anchorotr', [
     "anchorotr.menus",
     "anchorotr.reservation"
 ])
-.config( function myAppConfig($stateProvider, $urlRouterProvider) {      
-    
+.config( function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider) {      
+    $locationProvider.hashPrefix('!');
 })
 .run(function run(titleService, $rootScope, $state, $stateParams){
     $rootScope.$state = $state;    
