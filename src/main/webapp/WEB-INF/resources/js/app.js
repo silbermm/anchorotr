@@ -17,8 +17,7 @@ angular.module('anchorotr', [
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');
     $state.transitionTo("home");
-})
-        .controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state) {
+}).controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state, $modal) {
     titleService.setTitle("Home");
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();
@@ -29,7 +28,7 @@ angular.module('anchorotr', [
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
-    
+
     $scope.toggleMenu = function() {
         if ($state.includes('menus')) {
             menuCollapseService.setCollapsed(false);
@@ -42,8 +41,35 @@ angular.module('anchorotr', [
         navCollapseService.setCollapsed(!navCollapseService.getCollapsed().val);
     }
 
-});
 
+    $scope.openMailModal = function() {
+        var modalInstance = $modal.open({
+            templateUrl: 'mailModal.html',
+            controller: 'EmailModalInstanceCtrl',
+            resolve: {
+                items: function() {
+                    return {
+                        from: null,
+                        message: null
+                    }
+                }
+            }
+        });
+        modalInstance.result.then(function(mail) {
+            // send the mail off...
+        });
+    }
+
+}).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
+    $scope.mail = items;
+    $scope.ok = function() {
+        $modalInstance.close($scope.mail);
+    };
+    $scope.cancel = function() {
+        $modalInstance.dismiss('cancel');
+    };
+})
+;
 
 
 

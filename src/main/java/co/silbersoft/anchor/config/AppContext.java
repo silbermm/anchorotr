@@ -5,16 +5,19 @@ import com.typesafe.config.ConfigFactory;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -25,17 +28,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class AppContext {
 
     private static final Logger log = LoggerFactory.getLogger(AppContext.class);
-    
     @Value("#{ systemEnvironment['DATABASE_URL'] }")
     private String DATABASE_URL;
-    
+
     @Bean
     public Config config() {
         return ConfigFactory.load().withFallback(ConfigFactory.systemProperties());
     }
 
     @Bean
-    public URI dbUrl(){
+    public URI dbUrl() {
         log.debug(DATABASE_URL + " ------------------- ");
         try {
             return new URI(DATABASE_URL);
@@ -44,9 +46,9 @@ public class AppContext {
             return null;
         }
     }
-    
-    @Bean(destroyMethod ="close")
-    public DataSource dataSource(){
+
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("org.postgresql.Driver");
         basicDataSource.setUrl("jdbc:postgresql://" + dbUrl().getHost() + ":" + dbUrl().getPort() + dbUrl().getPath());
@@ -55,19 +57,6 @@ public class AppContext {
         basicDataSource.setMaxWait(1);
         return basicDataSource;
     }
-    
-    /*
-    @Bean(destroyMethod = "close")
-    public DataSource dataSource() {
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName(config().getString("db.driverClass"));
-        basicDataSource.setUrl(config().getString("db.url"));
-        basicDataSource.setUsername(config().getString("db.username"));
-        basicDataSource.setPassword(config().getString("db.password"));
-        basicDataSource.setMaxWait(config().getLong("db.maxwait"));
-        return basicDataSource;
-    }
-    */ 
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -83,6 +72,36 @@ public class AppContext {
         return t;
     }
 
+    @Bean(name = "mailSender")
+    public JavaMailSenderImpl mailSender() {
+        JavaMailSenderImpl jms = new JavaMailSenderImpl();
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("silbermm@gmail.com", "Othello2!2");
+            }
+        });
+        //jms.setHost("smtpout.secureserver.net");
+        //jms.setPort(80);
+        jms.setSession(session);
+        return jms;
+    }
+
+    @Bean
+    public SimpleMailMessage mailMessage() {
+        SimpleMailMessage m = new SimpleMailMessage();
+        m.setFrom("silbermm@gmail.com");
+        m.setSubject("Mail From The Web");
+        return m;
+    }
+
     private Properties getHibernateProperties() {
         Properties p = new Properties();
         p.setProperty("hibernate.dialect", config().getString("hibernate.dialect"));
@@ -91,6 +110,4 @@ public class AppContext {
         p.setProperty("hibernate.hbm2ddl.auto", config().getString("hibernate.hbm2ddl.auto"));
         return p;
     }
-
-
 }

@@ -1,15 +1,17 @@
 package co.silbersoft.anchor.controllers;
 
 import co.silbersoft.anchor.exceptions.GenericDataException;
-import co.silbersoft.anchor.forms.MenuItemForm;
+import co.silbersoft.anchor.models.Mail;
 import co.silbersoft.anchor.models.Menu;
 import co.silbersoft.anchor.models.MenuItem;
+import co.silbersoft.anchor.services.MailService;
 import co.silbersoft.anchor.services.MenuService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.MailException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +47,15 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping(value="mail", method=RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody Map<String,String> sendMail(@RequestBody Mail mail){       
+        mailService.sendMessage(mail.getFrom(), mail.getMessage());        
+        Map m = new HashMap();
+        m.put("sent", "true");
+        return m;
+    }
+    
     @RequestMapping(value = "menus", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
@@ -106,6 +117,14 @@ public class HomeController {
         return status;
     }
 
+    @ExceptionHandler(MailException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public @ResponseBody Map<String, String> handleMailException(MailException e){
+        Map error = new HashMap();
+        error.put("error", e.getMessage());
+        return error;
+    }
+    
     @ExceptionHandler(GenericDataException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody
@@ -125,4 +144,6 @@ public class HomeController {
     }
     @Autowired
     MenuService menuService;
+    
+    @Autowired MailService mailService;
 }
