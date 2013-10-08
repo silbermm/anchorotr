@@ -8,21 +8,18 @@ angular.module('anchorotr', [
     "anchorotr.location",
     "anchorotr.menus",
     "anchorotr.reservation"
-])
-        .config(function myAppConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+]).config(function myAppConfig($locationProvider) {
     $locationProvider.hashPrefix('!');
-})
-        .run(function run(titleService, $rootScope, $state, $stateParams) {
+}).run(function run(titleService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');
     $state.transitionTo("home");
-}).controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state, $modal) {
+}).controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state, $modal, $http, $log) {
     titleService.setTitle("Home");
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();
-
 
     authService.getDetails();
     $scope.username = authService.getUsername();
@@ -36,12 +33,9 @@ angular.module('anchorotr', [
             menuCollapseService.setCollapsed(!menuCollapseService.getCollapsed().val);
         }
     }
-
     $scope.toggleNavMenu = function() {
         navCollapseService.setCollapsed(!navCollapseService.getCollapsed().val);
     }
-
-
     $scope.openMailModal = function() {
         var modalInstance = $modal.open({
             templateUrl: 'mailModal.html',
@@ -56,10 +50,13 @@ angular.module('anchorotr', [
             }
         });
         modalInstance.result.then(function(mail) {
-            // send the mail off...
+            $http.post("/mail", mail).success(function(data, status, headers, config) {
+                $log.debug(data);
+            }).error(function(data, status, headers, config) {
+                $log.debug(data);
+            });
         });
     }
-
 }).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
     $scope.mail = items;
     $scope.ok = function() {
@@ -69,7 +66,7 @@ angular.module('anchorotr', [
         $modalInstance.dismiss('cancel');
     };
 })
-;
+        ;
 
 
 

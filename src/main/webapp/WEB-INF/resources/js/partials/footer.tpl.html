@@ -42,6 +42,22 @@
         <div class="modal-body">
             <p> We love hearing from our customers! Send us an email at info@theanchor-otr.com or simply fill out the form below. </p>
             <br />
+            <hr>
+            
+           <form name="form" class="form-horizontal css-form"> 
+            <div class="control-group">
+                <label class="control-label" for="from">Your Email (optional): </label>
+                <div class="controls">
+                    <input type="text" id="from" placeholder="From" ng-model="mail.from">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="message">Description (Optional)</label>
+                <div class="controls">
+                <textarea id="message" placeholder="Your Message..." ng-model="mail.message" required></textarea>                    
+                </div>
+            </div>        
+        </form>                       
         
         </div>
         <div class="modal-footer">
