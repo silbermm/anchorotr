@@ -4,6 +4,7 @@ angular.module('anchorotr.menus', [
     'titleService',
     'menuCollapseService',
     'authService',
+    'angular-growl',
     'ui.bootstrap',
     'navCollapseService',
 ]).config(function config($stateProvider, $urlRouterProvider) {
@@ -24,10 +25,12 @@ angular.module('anchorotr.menus', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log) {
+}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     authService.getDetails();
+    
+    growl.addWarnMessage("This adds a warn message");
     
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();

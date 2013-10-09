@@ -1,5 +1,7 @@
 package co.silbersoft.anchor.config;
 
+import co.silbersoft.anchor.dao.MailSettingsDao;
+import co.silbersoft.anchor.models.MailSettings;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import java.net.URI;
@@ -12,6 +14,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -74,33 +77,15 @@ public class AppContext {
 
     @Bean(name = "mailSender")
     public JavaMailSenderImpl mailSender() {
-        JavaMailSenderImpl jms = new JavaMailSenderImpl();
-
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("silbermm@gmail.com", "Othello2!2");
-            }
-        });
-        //jms.setHost("smtpout.secureserver.net");
-        //jms.setPort(80);
-        jms.setSession(session);
+        JavaMailSenderImpl jms = new JavaMailSenderImpl();              
         return jms;
     }
 
     @Bean
     public SimpleMailMessage mailMessage() {
-        SimpleMailMessage m = new SimpleMailMessage();
-        m.setFrom("silbermm@gmail.com");
-        m.setSubject("Mail From The Web");
+        SimpleMailMessage m = new SimpleMailMessage();        
         return m;
-    }
+    }       
 
     private Properties getHibernateProperties() {
         Properties p = new Properties();

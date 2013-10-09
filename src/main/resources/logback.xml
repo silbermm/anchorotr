@@ -7,7 +7,7 @@
     </layout>
   </appender>
   
-  <logger name="co.silbersoft.anchor" level="INFO"/>
+  <logger name="co.silbersoft.anchor" level="DEBUG"/>
 
 	<logger name="org.hibernate" level="ERROR" />
 

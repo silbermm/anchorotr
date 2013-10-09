@@ -3,19 +3,30 @@ angular.module('anchorotr', [
     "ui.state",
     "ui.route",
     "ui.bootstrap",
+    'angular-growl',
     "anchorotr.home",
     "anchorotr.about",
     "anchorotr.location",
     "anchorotr.menus",
     "anchorotr.reservation"
-]).config(function myAppConfig($locationProvider) {
+]).config(function myAppConfig($locationProvider, growlProvider) {
     $locationProvider.hashPrefix('!');
+    growlProvider.globalTimeToLive(5000);
 }).run(function run(titleService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');
     $state.transitionTo("home");
-}).controller('AppCtrl', function AppCtrl($scope, titleService, menuCollapseService, authService, navCollapseService, $state, $modal, $http, $log) {
+}).controller('AppCtrl', function AppCtrl($scope, 
+    titleService, 
+    menuCollapseService, 
+    authService, 
+    navCollapseService, 
+    $state, 
+    $modal, 
+    $http, 
+    $log
+    ){
     titleService.setTitle("Home");
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();

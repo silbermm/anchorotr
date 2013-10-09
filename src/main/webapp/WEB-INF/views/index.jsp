@@ -6,22 +6,24 @@
     <head>     
         <title>The Anchor-OTR</title>
         <meta name="description=" content="The Anchor-otr brings a classic seafood experience to land locked Cincinnatians. From Maine sea scallops to grilled whole fish
-                to fresh oysters flown in from the west and east coast,  chef/owner Derek dos Anjos's team serves high quality and sustainable seafood
-                from the countries best suppliers.  Beach food classics such as  hush puppies and lobster rolls will transport you to your favorite spot along
-                the coast. With a wine list chosen to compliment seafood, craft cocktails and a warm sense of hospitality, The Anchor-otr brings laid back
-                extravagance to Washington Park in Over the Rhine.  The dining rooms custom charred wood walls, communal table seating and nautical lighting
-                encourage a playful experience.">
+              to fresh oysters flown in from the west and east coast,  chef/owner Derek dos Anjos's team serves high quality and sustainable seafood
+              from the countries best suppliers.  Beach food classics such as  hush puppies and lobster rolls will transport you to your favorite spot along
+              the coast. With a wine list chosen to compliment seafood, craft cocktails and a warm sense of hospitality, The Anchor-otr brings laid back
+              extravagance to Washington Park in Over the Rhine.  The dining rooms custom charred wood walls, communal table seating and nautical lighting
+              encourage a playful experience.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<meta name="google-site-verification" content="rEzKhvVOv399nK2V5_7E97RD7MmrZGTffNhpwKsEuw8" />
+        <meta name="google-site-verification" content="rEzKhvVOv399nK2V5_7E97RD7MmrZGTffNhpwKsEuw8" />
         <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
+        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        
     </head>
     <body>
+        <div growl></div>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
             <div class="navbar-inner">
                 <div class="container">
@@ -174,8 +176,8 @@
         </form>
 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-resource.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
