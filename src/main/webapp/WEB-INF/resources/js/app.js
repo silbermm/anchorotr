@@ -12,10 +12,11 @@ angular.module('anchorotr', [
 ]).config(function myAppConfig($locationProvider, growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
-}).run(function run(titleService, $rootScope, $state, $stateParams) {
+}).run(function run(titleService, authService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');
+    authService.getDetails();
     $state.transitionTo("home");
 }).controller('AppCtrl', function AppCtrl($scope, 
     titleService, 
@@ -25,14 +26,13 @@ angular.module('anchorotr', [
     $state, 
     $modal, 
     $http, 
-    $log
+    $log,
+    growl
     ){
     titleService.setTitle("Home");
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();
-    $scope.isNavCollapsed = navCollapseService.getCollapsed();
-
-    authService.getDetails();
+    $scope.isNavCollapsed = navCollapseService.getCollapsed();    
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
@@ -63,11 +63,31 @@ angular.module('anchorotr', [
         modalInstance.result.then(function(mail) {
             $http.post("/mail", mail).success(function(data, status, headers, config) {
                 $log.debug(data);
+                $scope.openMailThanksModal();
             }).error(function(data, status, headers, config) {
-                $log.debug(data);
+                growl.addErrorMessage("There was a problem sending your message. Sorry for the inconvenience, please try again.")
             });
         });
-    }
+    };
+    
+    $scope.openMailThanksModal = function(){
+        var modalInstance = $modal.open({
+            templateUrl: 'mailThanksModal.html',
+            controller: 'EmailModalInstanceCtrl',   
+            resolve: {
+                items: function() {
+                    return {
+                        from: null,
+                        message: null
+                    }
+                }
+            }
+        });        
+        
+    };
+    
+    
+    
 }).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
     $scope.mail = items;
     $scope.ok = function() {

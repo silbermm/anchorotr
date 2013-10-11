@@ -19,16 +19,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class MailService {
 
     @Transactional
-    public void sendMessage(String from, String message) throws MailException {
-        log.debug("ATTEMPTING TO SEND MAIL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+    public void sendMessage(String from, String message) throws MailException {        
         final MailSettings mailSettings = mailSettingsDao.getSettings();
         if (mailSettings == null) {            
             throw new RuntimeException("Unable to detect mail settings");
         } else {
             log.debug(String.valueOf(mailSettings.getUsername()));
             Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable","true");
+            props.put("mail.smtp.auth", (mailSettings.isSmtpAuth()) ? "true" : "false");
+            props.put("mail.smtp.starttls.enable",mailSettings.isStarttls() ? "true" : "false");
             props.put("mail.smtp.host", mailSettings.getSmtpHost());
             props.put("mail.smtp.port", mailSettings.getSmtpPort());
 
@@ -37,9 +36,7 @@ public class MailService {
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(mailSettings.getUsername(), mailSettings.getPassword());
                 }
-            });
-            //jms.setHost("smtpout.secureserver.net");
-            //jms.setPort(80);
+            });         
             mailSender.setSession(session);
         }
         mailMessage.setFrom(mailSettings.getFromAddress());

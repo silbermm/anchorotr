@@ -209,6 +209,10 @@ body, html {
     margin: 0px auto;
 }
 
+.food-container {
+    z-index: 100;
+}
+
 .food-menu-title {
     float: left;
     width: 100%;
@@ -515,6 +519,7 @@ address {
 .cocktailsPhotos {
     position: relative;
     bottom: 64px;
+    z-index: 2;
 }
 
 
@@ -537,6 +542,12 @@ position: relative;
 
 .resForm legend {
     border-bottom: none;
+} 
+
+.item-weight {
+    color:green;
+    font-weight: bold;
+    font-style: italic;
 }
 
 @media (max-width: 1148px) {

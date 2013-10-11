@@ -29,13 +29,11 @@ angular.module('anchorotr.menus', [
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     authService.getDetails();
-    
-    growl.addWarnMessage("This adds a warn message");
-    
+
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
-    
+
     $scope.openAddModal = function(currentCatagory) {
         var modalInstance = $modal.open({
             templateUrl: 'addModal.html',
@@ -48,7 +46,8 @@ angular.module('anchorotr.menus', [
                         price: null,
                         itemName: null,
                         itemDesc: null,
-                        id: null
+                        id: null,
+                        weight: 1
                     }
                 }
             }
@@ -102,6 +101,7 @@ angular.module('anchorotr.menus', [
                         $scope.beverages.push(menuItem);
                         break;
                 }
+                growl.addSuccessMessage("Successfully added " + menuItem.itemName);
             }).error(function(data, status, headers, config) {
                 $log.info("BOO! " + status + " " + data);
             });
@@ -111,7 +111,6 @@ angular.module('anchorotr.menus', [
     };
 
     $scope.openDeleteModal = function(menuItem, idx) {
-        $scope.deleteIdx = idx;
         var modalInstance = $modal.open({
             templateUrl: 'deleteModal.html',
             controller: 'ModalInstanceCtrl',
@@ -127,31 +126,94 @@ angular.module('anchorotr.menus', [
                 $log.info("removed item with id: " + data.removed);
                 switch (menuItem.catagory) {
                     case "LUNCH SPECIAL":
-                        $scope.lunchSpecial.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.lunchSpecial, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.lunchSpecial);
                         break;
                     case "SPARKLING AND CHAMPAGNE":
-                        $scope.sparklingWine.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.sparklingWine, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.sparklingWine);
                         break;
                     case "ROSE":
-                        $scope.roseWine.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.roseWine, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.roseWine);
                         break;
                     case "RED":
-                        $scope.redWine.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.redWine, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.redWine);
                         break;
                     case "WHITE":
-                        $scope.whiteWine.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.whiteWine, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.whiteWine);
                         break;
                     case "RAW BAR":
-                        $scope.rawBar.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.rawBar, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.rawBar);
                         break;
                     case "PLATTERS":
-                        $scope.platters.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.platters, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.platters);
                         break;
                     case "STARTERS":
-                        $scope.starters.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.starters, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.starters);
                         break;
                     case "SALADS":
-                        $scope.salads.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.salads, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.salads);
                         break;
                     case "COCKTAILS":
                         angular.forEach($scope.cocktailsCol1, function(val, key) {
@@ -178,17 +240,39 @@ angular.module('anchorotr.menus', [
                         }, $scope.mainsCol2);
                         break;
                     case "SIDES":
-                        $scope.sides.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.sides, function(val, key) {
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");
+                            if (menuItem.id === val.id) {
+                                this.splice(key, 1);
+                                return;
+                            }
+                        }, $scope.sides);
                         break;
                     case "DESERTS":
-                        $scope.deserts.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.deserts, function(val,key){
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");                             
+                            if(menuItem.id === val.id){                              
+                               this.splice(key, 1);
+                               return;
+                            }
+                        }, $scope.deserts);
                         break;
                     case "BEVERAGES":
-                        $scope.beverages.splice($scope.deleteIdx, 1);
+                        angular.forEach($scope.beverages, function(val,key){
+                            $log.debug("val = " + val + ", key = " + key);
+                            $log.debug("does " + menuItem.id + " = " + val.id + "?");                             
+                            if(menuItem.id === val.id){                              
+                               this.splice(key, 1);
+                               return;
+                            }
+                        }, $scope.beverages);
                         break;
                 }
+                growl.addSuccessMessage("Successfully deleted " + menuItem.itemName);
             }).error(function(data, status, headers, config) {
-                $log.info("failed to remove: " + data.error);
+                growl.addErrorMessage("Something went wrong trying to delete " + menuItem.itemName);
             });
         }, function() {
             $log.info('Modal dismissed at: ' + new Date());
@@ -212,31 +296,76 @@ angular.module('anchorotr.menus', [
                 $log.info("updated item with id: " + data.updated);
                 switch (menuItem.catagory) {
                     case "LUNCH SPECIAL":
-                        $scope.lunchSpecial[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.lunchSpecial, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.lunchSpecial);
                         break;
                     case "SPARKLING AND CHAMPAGNE":
-                        $scope.sparklingWine[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.sparklingWine, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.sparklingWine);
                         break;
                     case "ROSE":
-                        $scope.roseWine[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.roseWine, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.roseWine);
                         break;
                     case "RED":
-                        $scope.redWine[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.redWine, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.redWine);
                         break;
                     case "WHITE":
-                        $scope.whiteWine[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.whiteWine, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.whiteWine);
                         break;
                     case "RAW BAR":
-                        $scope.rawBar[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.rawBar, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.rawBar);
                         break;
                     case "PLATTERS":
-                        $scope.platters[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.platters, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.platters);
                         break;
                     case "STARTERS":
-                        $scope.starters[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.starters, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.starters);
                         break;
                     case "SALADS":
-                        $scope.salads[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.salads, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.salads);
                         break;
                     case "COCKTAILS":
                         angular.forEach($scope.cocktailsCol1, function(val, key) {
@@ -263,16 +392,33 @@ angular.module('anchorotr.menus', [
                         }, $scope.mainsCol2);
                         break;
                     case "SIDES":
-                        $scope.sides[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.sides, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.sides);
                         break;
                     case "DESERTS":
-                        $scope.deserts[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.deserts, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.deserts);
                         break;
                     case "BEVERAGES":
-                        $scope.beverages[$scope.editIdx] = menuItem;
+                        angular.forEach($scope.beverages, function(val, key) {
+                            if (val.id === menuItem.id) {
+                                this[key] = menuItem;
+                                return;
+                            }
+                        }, $scope.beverages);
                         break;
                 }
+                growl.addSuccessMessage("Successfully updated " + menuItem.itemName);
             }).error(function(data, status, headers, config) {
+                growl.addErrorMessage("Unable to update " + menuItem.itemName);
                 $log.info("failed to remove: " + data.error);
             });
         }, function() {

@@ -77,7 +77,7 @@ public class AppContext {
 
     @Bean(name = "mailSender")
     public JavaMailSenderImpl mailSender() {
-        JavaMailSenderImpl jms = new JavaMailSenderImpl();              
+        JavaMailSenderImpl jms = new JavaMailSenderImpl();         
         return jms;
     }
 
