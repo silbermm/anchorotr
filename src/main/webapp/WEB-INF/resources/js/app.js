@@ -34,6 +34,9 @@ angular.module('anchorotr', [
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();    
     $scope.username = authService.getUsername();
+    
+    authService.getDetails();
+
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
 
@@ -97,7 +100,7 @@ angular.module('anchorotr', [
         $modalInstance.dismiss('cancel');
     };
 })
-        ;
+;
 
 
 
