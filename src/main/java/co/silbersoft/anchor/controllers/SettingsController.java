@@ -2,7 +2,6 @@ package co.silbersoft.anchor.controllers;
 
 import co.silbersoft.anchor.models.MailSettings;
 import co.silbersoft.anchor.services.MailService;
-import co.silbersoft.anchor.services.MenuService;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
