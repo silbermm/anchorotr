@@ -20,7 +20,6 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
-        
     </head>
     <body>
         <div growl></div>
@@ -32,7 +31,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-
                     <a class="brand" href="#"><i class="icon-anchor"></i>The Anchor-OTR</a>				
                     <div class="nav-collapse collapse" collapse="isNavCollapsed.val">	
                         <ul class="nav">
@@ -68,8 +66,7 @@
                     </div>
                 </div>
             </div>	
-        </div>	
-
+        </div>
         <div id="mobile-logo" class="visible-phone visible-tablet hidden-desktop">	
             <div class="row-fluid">
                 <div class="span12 text-center">		
@@ -84,8 +81,7 @@
                     Tue-Thur: 11:30-2:30, 5-10<br/>
                     Fri-Sat:  11:30-2:30, 5-11
                 </address>
-            </div>
-            <!-- may need to display a different template for the location as the map is really small on a mobile device... -->
+            </div>           
             <div style="margin-left:20px;margin-right:20px">	
                 <div ui-view="main"> </div>
                 <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>
@@ -170,11 +166,9 @@
                 <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>               
             </div>	
         </div>
-
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
-
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>

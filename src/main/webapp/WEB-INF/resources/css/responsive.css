@@ -2,7 +2,6 @@ body, html {
     margin: 0;
     padding: 0;
     height:100%;
-    font-family: 'Libre Baskerville', serif;
     color: #2E2922;
     background: url(../img/background_offwhite.jpg);
 }
@@ -24,7 +23,6 @@ body, html {
 }
 
 #desktop-menubar {
-
     font-size: 13px;
     height: 175px;
 }
@@ -45,15 +43,6 @@ body, html {
     bottom: 2px;
     font-size: 12px;
 }
-
-.info-columns .hours .top {
-
-}
-
-.info-columns .hours .bottom {
-
-}
-
 /*************
  * MAIN MENU *
 **************/
@@ -71,8 +60,6 @@ body, html {
     position:relative;
     top: 7px;
 }
-
-
 #main-menu a {
     font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
@@ -80,21 +67,17 @@ body, html {
     text-transform: uppercase;
     color: #A79B96;	
 }
-
 #main-menu a:hover {
     color: #000;
     text-decoration: none;
 }
-
 #main-menu .row-fluid .span5 ul{
     height: 1.5em;
     padding-top: 11px;
 }
-
 #main-menu .row-fluid .span4 ul li.active a {
     color: black;
 }
-
 #menu-border {
     width: 100%;
     border-top: 1px solid black;
@@ -102,7 +85,6 @@ body, html {
     z-index:2;
     top: 9px;
 }
-
 #submenu {
     background: url('../img/background_ios.png');
     margin-top: 3px;
@@ -111,17 +93,14 @@ body, html {
     position: relative;
     top: 4px;
 }
-
 #submenu .container {
     padding: 40px 0 10px 0
 }
-
 #submenu ul{
     width: 591px;
     margin: 0px auto;
     position: relative;
 }
-
 #submenu a {
     color: #D2CDC6;
     -webkit-transition: color .2s ease-out;
@@ -137,11 +116,8 @@ body, html {
 #submenu li.active > a {
     color: white;
 }
-
-
 .ui-view-row {
     position: relative;
-    /*top: 14px; */
     height: auto;
     margin-top: 10px;
 }
@@ -149,50 +125,28 @@ body, html {
 #lunch-page {
     margin-top: 32px;
 }
-
-/******* LANDING PAGE PICTURES *********/
 #landing-imgs {
     max-width: 2080px;
 }
-
-
-/******* Location *********/
-#location-page {
-}
-
-#location-page img {
-    /*width: 100%;*/
-}
-
 .map {
     width: 640px;
     margin: 0px auto;
 }
-
-/******* About Us ***********/
-.about-photos {
-    /*width: 700px;
-    margin: 0px auto;*/
-}
-
 .callout {
     font-family: 'Libre Baskerville Italic400', serif;
     font-style: italic;
     font-size: 13px;
 }
-
 .team-name {
     font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
     font-size: 13px;
 
 }
-
 .team-title {
     font-family:'Libre Baskerville Italic400', serif;
     font-style: italic;
 }
-
 .team-divider {
     padding: 2px 0;	
 }
@@ -201,9 +155,6 @@ body, html {
     border: none;
     padding: 0px 5px;
 }
-
-
-/******* FOOD MENUS **********/
 .middle-callout {
     width: 350px;
     margin: 0px auto;
@@ -277,9 +228,6 @@ body, html {
     bottom:11px;
     text-transform: lowercase;
 }
-
-
-
 .food-item-title {
     text-transform: uppercase;
     float: left;
@@ -318,7 +266,6 @@ body, html {
     float: right;
     font-size: 15px;
     margin-top: -5px;
-    /*background: url(../img/background_offwhite.jpg);*/
     padding-left: 10px;
 }
 
@@ -331,7 +278,6 @@ body, html {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-
 .fmc-double-column {
     float: left;
     width: 48%;
@@ -426,12 +372,6 @@ body, html {
     margin-top: 50px;
     margin-bottom: 100px;
 }
-
-/******** FOOTER ***************/
-.pagefooter {
-    
-}
-
 .pagefooter .thin-line {
     width: 100%;
     border-top: 1px solid black;
@@ -481,25 +421,11 @@ body, html {
 
 .text-left {
     text-align:left;
-}
-
-.login{padding-top: 65px;}
-.center{float: none; margin-left: auto; margin-right: auto;}
-
-.red {
+}.login{padding-top: 65px;}.center{float: none; margin-left: auto; margin-right: auto;}.red {
     color: red;
-}
-
-.pointer {
+}.pointer {
     cursor: pointer;
-}
-
-#OT_center{
-    width: 170px;
-    margin: 0 auto;
-}
-
-address {
+}address {
     font-family: 'Libre Baskerville';
     font-weight: bold;
     font-size: 13px;
@@ -508,22 +434,15 @@ address {
 .parking a{
     text-transform: lowercase;
     color: #0088cc;
-}
-
-#reservation-page {
+}#reservation-page {
     position: relative;
     top:50px;
     margin-bottom: 60px;
-}
-
-.cocktailsPhotos {
+}.cocktailsPhotos {
     position: relative;
     bottom: 64px;
     z-index: 2;
-}
-
-
-.resForm {
+}.resForm {
     border: 1px solid rgba(0,0,0,0.5);
     border-radius: 10px 10px 10px 10px;
     background: rgba(0,0,0,0.33);
@@ -531,88 +450,19 @@ address {
     -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
-}
-
-.resForm-desktop {
+}.resForm-desktop {
 position: relative;
     left: 12px;
     top: 8px;
     width: 100%;
-}
-
-.resForm legend {
+}.resForm legend {
     border-bottom: none;
-} 
-
-.item-weight {
+}.item-weight {
     color:green;
     font-weight: bold;
     font-style: italic;
-}
-
-@media (max-width: 1148px) {
+}@media (max-width: 1148px) {
     #desktop-menubar .info-columns{
         top: 9em;
     }
 }
-
-@media (max-width: 717px) {
-
-}
-
-/*
-@media (min-width: 717px) {
-  #mobile-menubar,#mobile-logo {
-                display:none;
-        }
-
-        #desktop-menubar {
-                display:block;
-        }
-
-}
-
-@media (min-width: 720px) {
-        .info-columns {
-                position: relative;
-                top: 7em;
-        }
-
-}
-
-@media (min-width: 900px){
-        .info-columns {
-                position: relative;
-                top: 9em;
-        }
-}
-
-
-@media (min-width: 1004px){
-        .info-columns {
-                position: relative;
-                top: 12em;
-        }
-}
-
-@media (min-width: 1100px){
-        .info-columns {
-                position: relative;
-                top: 13em;
-        }
-}
-
-@media (min-width: 1200px){
-        .info-columns {
-                position: relative;
-                top: 8em;
-        }
-
-        #main-menu {
-                bottom: 5em;
-                height: 3em;		
-        }
-
-}
-*/
-

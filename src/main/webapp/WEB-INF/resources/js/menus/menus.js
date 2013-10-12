@@ -28,8 +28,8 @@ angular.module('anchorotr.menus', [
 }).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
-    authService.getDetails();
-
+    
+    authService.getDetails();    
     $scope.username = authService.getUsername();
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();

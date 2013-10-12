@@ -33,10 +33,9 @@ angular.module('anchorotr', [
     $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();    
-    $scope.username = authService.getUsername();
     
-    authService.getDetails();
-
+    authService.getDetails();    
+    $scope.username = authService.getUsername();       
     $scope.isAuthenticated = authService.isAuthenticated();
     $scope.isAdmin = authService.isAdmin();
 

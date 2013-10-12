@@ -68,9 +68,6 @@ public class AccountController {
         }        
     }
     
-    
-    
-
     @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value = "adminAccount", method = RequestMethod.GET)
     public String createAdminAccount() {
