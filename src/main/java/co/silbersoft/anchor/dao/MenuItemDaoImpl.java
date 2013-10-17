@@ -18,12 +18,12 @@ public class MenuItemDaoImpl extends AbstractDao<MenuItem> implements MenuItemDa
     
     @Override
     public List<MenuItem> findItemsByMenu(Long menuId) {
-        return (List<MenuItem>) getSession().createQuery("from MenuItem where menu_id=:id").setLong("id", menuId).list();
+        return (List<MenuItem>) getSession().createQuery("from MenuItem m where menu_id=:id order by m.weight asc").setLong("id", menuId).list();
     }
 
     @Override
     public List<MenuItem> findItemsByMenuAndCatagory(Long menuid, String catagory) {
-        return (List<MenuItem>) getSession().createQuery("from MenuItem where menu_id=:id and catagory=:catagory")
+        return (List<MenuItem>) getSession().createQuery("from MenuItem m where menu_id=:id and catagory=:catagory order by m.weight asc")
                 .setString("catagory", catagory)
                 .setLong("id", menuid)
                 .list();

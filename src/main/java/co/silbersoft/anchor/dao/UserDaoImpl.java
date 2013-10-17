@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void delete(String username) {
         jdbcTemplate.update("DELETE FROM authorities WHERE username = ?", username);
-        jdbcTemplate.update("DELETE FROM users WHERE username - ?", username);
+        jdbcTemplate.update("DELETE FROM users WHERE username = ?", username);
     }
 
     @Override
@@ -62,9 +62,6 @@ public class UserDaoImpl implements UserDao {
 
         Integer rowCount = this.jdbcTemplate.queryForObject("select count(*) from users where username = ?", Integer.class, username);
         if (rowCount > 0) {
-
-
-
             final List<GrantedAuthority> authorities = jdbcTemplate.query("SELECT * FROM users join authorities on users.username = authorities.username WHERE users.username = ?",
                     new String[]{username},
                     new RowMapper<GrantedAuthority>() {

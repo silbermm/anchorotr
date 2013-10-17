@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -22,23 +21,24 @@
                     <a href="/"> <img src="/resources/img/AnchorLarge.png" /> </a>
                 </div>
             </div>
-        </div>        
+        </div>
+    <body>
         <section>
             <div class="container login">
                 <div class="row ">
                     <div class="center span12 well tabbable">
                         <ul id="tabs" class="nav nav-tabs">
-                            <li class="active"><a href="#mail" data-toggle="tab">Mail Settings</a></li>
-                            <li><a href="#password" data-toggle="tab">Password Settings</a></li>                            
+                            <li class="active"><a href="<c:url value='/settings/mail' />">Mail Settings</a></li>
+                            <li><a href="<c:url value='/settings/account' />">Account Settings</a></li>                            
                         </ul>
 
-                        <div class="tab-content">
+                        <div class="tab-content container">
                             <div class="tab-pane active" id="mail">
                                 <p>
-                                    <form:form action="/settings/mail" modelAttribute="mailSettings" >                                    
+                                    <form:form action="/settings/mail" modelAttribute="mailSettings" class="form-horizontal" >                                    
                                         <form:errors path="*"> 
                                         <div class="alert alert-error">
-                                            <a class="close" data-dismiss="alert" href="#">Ã—</a>
+                                            <a class="close" data-dismiss="alert" href="#">×</a>
                                             Please fix the errors below
                                         </div>
                                     </form:errors>
@@ -145,21 +145,10 @@
                                 </form:form>
                                 </p>
                             </div>
-
-
-                            <div class="tab-pane" id="password">
-                                <p>
-
-                                </p>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
     </body>
 </html>

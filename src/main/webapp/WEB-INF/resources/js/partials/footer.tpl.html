@@ -26,6 +26,12 @@
                 <i class="icon-lock icon-light"></i>
             </span>
         </a>
+        <a href="/settings" ng-if="isAuthenticated">
+            <span class="icon-stack">
+                <i class="icon-circle icon-stack-base"></i>
+                <i class="icon-gears icon-light"></i>
+            </span>
+        </a>
         <a href="/j_spring_security_logout" ng-if="isAuthenticated">
             <span class="icon-stack">
                 <i class="icon-circle icon-stack-base"></i>

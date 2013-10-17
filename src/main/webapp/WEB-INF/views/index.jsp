@@ -134,7 +134,8 @@
                                     <a href="#!/about"> About </a>
                                 </li>
                                 <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}">
-                                    <a href="#!/reservation"> Reservations </a>                      
+                                    <!-- <a href="#!/reservation" class="standout"> Reservations </a> -->
+                                    <a href="#!/reservation" class="btn btn-primary btn-reserve"><i class="icon-food"></i> Reservations </a>
                                 </li>
                             </ul>	
                         </div>

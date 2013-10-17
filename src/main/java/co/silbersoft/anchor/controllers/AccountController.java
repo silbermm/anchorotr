@@ -92,7 +92,7 @@ public class AccountController {
     private static User toUser(AccountForm form) {
         Set<GrantedAuthority> s = new HashSet();
         s.add(new SimpleGrantedAuthority("user"));
-        User u = new User(form.getUsername(), form.getPassword(), s);
+        User u = new User("", form.getPassword(), s);
         return u;
     }
 
