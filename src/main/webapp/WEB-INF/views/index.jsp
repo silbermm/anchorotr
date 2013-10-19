@@ -20,6 +20,13 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
+				<script>
+  			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	   		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		   	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  			ga('create', 'UA-44977861-1', 'theanchor-otr.com');
+				</script>
     </head>
     <body>
         <div growl></div>
@@ -130,7 +137,7 @@
                         <div class="span4"> </div>	
                         <div class="span4">
                             <ul class="inline text-left">
-                                <li ui-route="/about" ng-class="{active: $state.includes('about')}" >
+                                <li ui-route="/about" ng-class="{active: $state.includes('about')}" id="about-link">
                                     <a href="#!/about"> About </a>
                                 </li>
                                 <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}">
@@ -173,7 +180,9 @@
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics.min.js' />"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics-google-analytics.min.js' />"></script>
+				<script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        

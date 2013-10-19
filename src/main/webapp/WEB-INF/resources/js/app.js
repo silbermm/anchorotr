@@ -8,15 +8,16 @@ angular.module('anchorotr', [
     "anchorotr.about",
     "anchorotr.location",
     "anchorotr.menus",
-    "anchorotr.reservation"
+    "anchorotr.reservation",
+    "angulartics",
+    "angulartics.google.analytics"
 ]).config(function myAppConfig($locationProvider, growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
 }).run(function run(titleService, authService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    titleService.setSuffix(' | The Anchor-OTR');
-    authService.getDetails();
+    titleService.setSuffix(' | The Anchor-OTR');    
     $state.transitionTo("home");
 }).controller('AppCtrl', function AppCtrl($scope, 
     titleService, 
@@ -34,10 +35,13 @@ angular.module('anchorotr', [
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();    
     
-    authService.getDetails();    
-    $scope.username = authService.getUsername();       
-    $scope.isAuthenticated = authService.isAuthenticated();
-    $scope.isAdmin = authService.isAdmin();
+    authService.isAuthenticated().then(function(d){
+       if(d.status === 200){
+           $scope.isAuthenticated = true;
+           $scope.username = d.data.username;
+           $scope.isAdmin = true;
+       } 
+    });
 
     $scope.toggleMenu = function() {
         if ($state.includes('menus')) {
@@ -86,10 +90,7 @@ angular.module('anchorotr', [
             }
         });        
         
-    };
-    
-    
-    
+    };            
 }).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
     $scope.mail = items;
     $scope.ok = function() {

@@ -29,11 +29,6 @@ angular.module('anchorotr.menus', [
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     
-    authService.getDetails();    
-    $scope.username = authService.getUsername();
-    $scope.isAuthenticated = authService.isAuthenticated();
-    $scope.isAdmin = authService.isAdmin();
-
     $scope.openAddModal = function(currentCatagory) {
         var modalInstance = $modal.open({
             templateUrl: 'addModal.html',
