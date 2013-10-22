@@ -20,14 +20,14 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
-				<script>
-  			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	   		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		   	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  			ga('create', 'UA-44977861-1', 'theanchor-otr.com');
-				</script>
-    </head>
+				<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-44977861-1', 'theanchor-otr.com');
+				</script>	
+		</head>
     <body>
         <div growl></div>
         <div class="navbar visible-phone visible-tablet hidden-desktop" id="mobile-menubar">
