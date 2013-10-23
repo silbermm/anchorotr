@@ -11,10 +11,10 @@
     <sec:http auto-config="true" use-expressions="true">
         <sec:form-login login-page="/login"
                         authentication-failure-url="/login?error=authFailed" />
-        <sec:remember-me key="98jeij01101SdfiwA1294)" data-source-ref="dataSource" />
-        <!-- <sec:session-management invalid-session-url="/login?error=sessionTimeout" />  -->    
-
+        <sec:remember-me key="98jeij01101SdfiwA1294)" data-source-ref="dataSource" />               
         <sec:intercept-url pattern="/**" method="GET" access="permitAll" />
+        <sec:intercept-url pattern="/settings" method="GET" access="hasRole('Administrator')" />
+        <sec:intercept-url pattern="/settings" method="POST" access="hasRole('Administrator')" />
         <sec:logout logout-success-url="/" />
     </sec:http>
 

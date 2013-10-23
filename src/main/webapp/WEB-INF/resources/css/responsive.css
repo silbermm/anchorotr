@@ -2,7 +2,6 @@ body, html {
     margin: 0;
     padding: 0;
     height:100%;
-    font-family: 'Libre Baskerville', serif;
     color: #2E2922;
     background: url(../img/background_offwhite.jpg);
 }
@@ -24,7 +23,6 @@ body, html {
 }
 
 #desktop-menubar {
-
     font-size: 13px;
     height: 175px;
 }
@@ -45,18 +43,15 @@ body, html {
     bottom: 2px;
     font-size: 12px;
 }
-
-.info-columns .hours .top {
-
-}
-
-.info-columns .hours .bottom {
-
-}
-
 /*************
  * MAIN MENU *
 **************/
+#main-menu a.btn-reserve {
+    color: white;
+    position: relative;
+    bottom: 4px;
+}
+
 #main-menu {
     width: 100%;
     border-top: 2px solid black;
@@ -71,8 +66,6 @@ body, html {
     position:relative;
     top: 7px;
 }
-
-
 #main-menu a {
     font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
@@ -80,28 +73,33 @@ body, html {
     text-transform: uppercase;
     color: #A79B96;	
 }
-
 #main-menu a:hover {
     color: #000;
     text-decoration: none;
 }
-
 #main-menu .row-fluid .span5 ul{
     height: 1.5em;
     padding-top: 11px;
 }
-
 #main-menu .row-fluid .span4 ul li.active a {
     color: black;
 }
-
+#main-menu .row-fluid .span4 ul li.active a.btn-reserve {
+    color: white;
+}
 #menu-border {
     width: 100%;
     border-top: 1px solid black;
     position: relative;
     z-index:2;
-    top: 9px;
+    top: -1px;
 }
+
+#about-link {
+    position:relative;
+    bottom: 3px;
+}
+
 
 #submenu {
     background: url('../img/background_ios.png');
@@ -109,19 +107,16 @@ body, html {
     margin-bottom: -3px;
     z-index:2;
     position: relative;
-    top: 4px;
+    bottom: 5px;
 }
-
 #submenu .container {
     padding: 40px 0 10px 0
 }
-
 #submenu ul{
     width: 591px;
     margin: 0px auto;
     position: relative;
 }
-
 #submenu a {
     color: #D2CDC6;
     -webkit-transition: color .2s ease-out;
@@ -137,62 +132,40 @@ body, html {
 #submenu li.active > a {
     color: white;
 }
-
-
 .ui-view-row {
     position: relative;
-    /*top: 14px; */
     height: auto;
-    margin-top: 10px;
+		bottom: 1px;
+    /*margin-top: 10px;*/
 }
 
 #lunch-page {
     margin-top: 32px;
 }
-
-/******* LANDING PAGE PICTURES *********/
 #landing-imgs {
     max-width: 2080px;
+		width:100%;
 }
-
-
-/******* Location *********/
-#location-page {
-}
-
-#location-page img {
-    /*width: 100%;*/
-}
-
 .map {
     width: 640px;
     margin: 0px auto;
 }
-
-/******* About Us ***********/
-.about-photos {
-    /*width: 700px;
-    margin: 0px auto;*/
-}
-
 .callout {
     font-family: 'Libre Baskerville Italic400', serif;
     font-style: italic;
-    font-size: 13px;
+    font-size: 15px;
 }
-
 .team-name {
     font-family:'Libre Baskerville Bold700', serif;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 15px;
 
 }
-
 .team-title {
     font-family:'Libre Baskerville Italic400', serif;
     font-style: italic;
+    font-size: 15px;
 }
-
 .team-divider {
     padding: 2px 0;	
 }
@@ -201,12 +174,13 @@ body, html {
     border: none;
     padding: 0px 5px;
 }
-
-
-/******* FOOD MENUS **********/
 .middle-callout {
     width: 350px;
     margin: 0px auto;
+}
+
+.food-container {
+    z-index: 100;
 }
 
 .food-menu-title {
@@ -273,9 +247,6 @@ body, html {
     bottom:11px;
     text-transform: lowercase;
 }
-
-
-
 .food-item-title {
     text-transform: uppercase;
     float: left;
@@ -314,7 +285,6 @@ body, html {
     float: right;
     font-size: 15px;
     margin-top: -5px;
-    /*background: url(../img/background_offwhite.jpg);*/
     padding-left: 10px;
 }
 
@@ -327,7 +297,6 @@ body, html {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
-
 .fmc-double-column {
     float: left;
     width: 48%;
@@ -422,12 +391,6 @@ body, html {
     margin-top: 50px;
     margin-bottom: 100px;
 }
-
-/******** FOOTER ***************/
-.pagefooter {
-    
-}
-
 .pagefooter .thin-line {
     width: 100%;
     border-top: 1px solid black;
@@ -439,10 +402,11 @@ body, html {
 }
 
 .pagefooter .social {
-    width: 151px;
-    height: 150px;
+    width: 181px;
+    /*height: 150px;*/
     margin: 0px auto;
     padding-top: 20px;
+    text-align: center;
 }
 
 .center-container {
@@ -477,25 +441,11 @@ body, html {
 
 .text-left {
     text-align:left;
-}
-
-.login{padding-top: 65px;}
-.center{float: none; margin-left: auto; margin-right: auto;}
-
-.red {
+}.login{padding-top: 65px;}.center{float: none; margin-left: auto; margin-right: auto;}.red {
     color: red;
-}
-
-.pointer {
+}.pointer {
     cursor: pointer;
-}
-
-#OT_center{
-    width: 170px;
-    margin: 0 auto;
-}
-
-address {
+}address {
     font-family: 'Libre Baskerville';
     font-weight: bold;
     font-size: 13px;
@@ -504,21 +454,15 @@ address {
 .parking a{
     text-transform: lowercase;
     color: #0088cc;
-}
-
-#reservation-page {
+}#reservation-page {
     position: relative;
     top:50px;
     margin-bottom: 60px;
-}
-
-.cocktailsPhotos {
+}.cocktailsPhotos {
     position: relative;
     bottom: 64px;
-}
-
-
-.resForm {
+    z-index: 2;
+}.resForm {
     border: 1px solid rgba(0,0,0,0.5);
     border-radius: 10px 10px 10px 10px;
     background: rgba(0,0,0,0.33);
@@ -526,82 +470,25 @@ address {
     -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
     -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
-}
-
-.resForm-desktop {
-position: relative;
+}.resForm-desktop {
+    position: relative;
     left: 12px;
     top: 8px;
     width: 100%;
-}
-
-.resForm legend {
+}.resForm legend {
     border-bottom: none;
-}
-
-@media (max-width: 1148px) {
+}.item-weight {
+    color:green;
+    font-weight: bold;
+    font-style: italic;
+}.tab-content{
+    background:white;
+    position:relative;
+    bottom:20px;
+}.tab-pane {
+    margin-top:20px;
+}@media (max-width: 1148px) {
     #desktop-menubar .info-columns{
         top: 9em;
     }
 }
-
-@media (max-width: 717px) {
-
-}
-
-/*
-@media (min-width: 717px) {
-  #mobile-menubar,#mobile-logo {
-                display:none;
-        }
-
-        #desktop-menubar {
-                display:block;
-        }
-
-}
-
-@media (min-width: 720px) {
-        .info-columns {
-                position: relative;
-                top: 7em;
-        }
-
-}
-
-@media (min-width: 900px){
-        .info-columns {
-                position: relative;
-                top: 9em;
-        }
-}
-
-
-@media (min-width: 1004px){
-        .info-columns {
-                position: relative;
-                top: 12em;
-        }
-}
-
-@media (min-width: 1100px){
-        .info-columns {
-                position: relative;
-                top: 13em;
-        }
-}
-
-@media (min-width: 1200px){
-        .info-columns {
-                position: relative;
-                top: 8em;
-        }
-
-        #main-menu {
-                bottom: 5em;
-                height: 3em;		
-        }
-
-}
-*/
-

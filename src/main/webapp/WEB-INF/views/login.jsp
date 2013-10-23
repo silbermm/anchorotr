@@ -11,8 +11,7 @@
         <title> Login | The Anchor-OTR </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/32e3358a-7cdb-4ede-bd45-eb874aa3d12e.css">
+        <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>        
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
@@ -22,7 +21,7 @@
         <div id="mobile-logo">
             <div class="row-fluid">
                 <div class="span12 text-center">		
-                    <a href="#/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
+                    <a href="/"> <img src="/resources/img/AnchorLarge.png" /> </a>
                 </div>
             </div>
         </div>

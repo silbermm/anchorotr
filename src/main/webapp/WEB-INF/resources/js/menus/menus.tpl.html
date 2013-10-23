@@ -14,17 +14,17 @@
                     <ul class="inline text-center">
                         <li>
                             <a class="thumbnail">
-                                <img src="{{baseUrl}}resources/img/happy1.jpg">
+                                <img src="/resources/img/happy1.jpg">
                             </a>
                         </li>
                         <li>
                             <a class="thumbnail">
-                                <img src="{{baseUrl}}resources/img/happy2.jpg">
+                                <img src="/resources/img/happy2.jpg">
                             </a>
                         </li>
                         <li>
                             <a class="thumbnail">
-                                <img src="{{baseUrl}}resources/img/happy3.jpg">
+                                <img src="/resources/img/happy3.jpg">
                             </a>
                         </li>
                     </ul>	
@@ -37,23 +37,24 @@
             <!-- Sparkling and Champagne -->
             <div class="span6 food-menu-container" >
                 <div class="food-menu-title"> Champagne 
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SPARKLING AND CHAMPAGNE')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
                     <tbody class="food-item-tbl">
-                        <tr ng-repeat="item in sparklingWine"> 
+                        <tr ng-repeat="item in sparklingWine | orderBy :['weight','itemName']"> 
                             <td>{{item.itemDesc}}</td>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>                    
                             <td ng-if='isAdmin'>
                                 <span>
                                     <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
-                            </td>                    
+                            </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>  
                         </tr>
                         <tr> <td colspan="3" style="border-top:none"> </td> </tr>
                     </tbody>
@@ -63,14 +64,14 @@
             <!-- ROSE -->
             <div class="span6"  ng-if="roseWine" >
                 <div class="food-menu-title"> ROSÉ                    
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin'  ng-click="openAddModal('ROSE')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
                     <tbody class="food-item-tbl">
-                        <tr ng-repeat="item in roseWine"> 
+                        <tr ng-repeat="item in roseWine | orderBy :['weight','itemName']"> 
                             <td>{{item.itemDesc}}</td>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -80,6 +81,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr> <td colspan="3" style="border-top:none"> </td> </tr>
                     </tbody>
@@ -90,14 +92,14 @@
         <div class="row-fluid" ng-if="redWine"> 
             <div class="span6 food-menu-container" ng-if="redWine">
                 <div class="food-menu-title"> RED 
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('RED')" > <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
                     <tbody class="food-item-tbl">
-                        <tr ng-repeat="item in redWine"> 
+                        <tr ng-repeat="item in redWine | orderBy :['weight','itemName']"> 
                             <td>{{item.itemDesc}}</td>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -107,6 +109,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr> <td colspan="3" style="border-top:none"> </td> </tr>
                     </tbody>
@@ -114,14 +117,14 @@
             </div>
             <div class="span6" ng-if="whiteWine" >
                 <div class="food-menu-title"> WHITE                     
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('WHITE')" > <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
                     <tbody class="food-item-tbl">
-                        <tr ng-repeat="item in whiteWine"> 
+                        <tr ng-repeat="item in whiteWine | orderBy :['weight','itemName']"> 
                             <td>{{item.itemDesc}}</td>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -131,6 +134,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr> <td colspan="3" style="border-top:none"> </td> </tr>
                     </tbody>
@@ -149,7 +153,7 @@
                         <div class="food-menu-title-ornament"></div>
                     </div>
                     <ul class="food-menu-list">
-                        <li ng-repeat="item in lunchSpecial">
+                        <li ng-repeat="item in lunchSpecial | orderBy :['weight','itemName']">
                             <div class="food-item-first-line">
                                 <div class="food-item-title">{{item.itemName}}</div>
                             </div>
@@ -170,13 +174,13 @@
         <div class="row-fluid" ng-if="rawBar">
             <div class="span6 food-menu-container" ng-if="rawBar">
                 <div class="food-menu-title"> RAW BAR 
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('RAW BAR')" > <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl"  ng-repeat="item in rawBar">
+                    <tbody class="food-item-tbl"  ng-repeat="item in rawBar | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -186,7 +190,9 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
+
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc" >{{item.itemDesc}}</span></td>
                         </tr>
@@ -196,14 +202,14 @@
             <div class="span6 food-menu-container" ng-if="platters">
                 <div class="food-menu-title"> PLATTERS
 
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('PLATTERS')" > <i class="icon-plus-sign"></i></a>
 
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div> 
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in platters">
+                    <tbody class="food-item-tbl" ng-repeat="item in platters | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -213,6 +219,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -227,13 +234,13 @@
             <!-- STARTERS -->
             <div class="span6 food-container" ng-if="starters" >
                 <div class="food-menu-title"> STARTERS 
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('STARTERS')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in starters">
+                    <tbody class="food-item-tbl" ng-repeat="item in starters | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -243,6 +250,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -254,13 +262,13 @@
             <!-- SALADS -->
             <div class="span6 food-container" ng-if="salads">
                 <div class="food-menu-title"> SALADS
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SALADS')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in salads">
+                    <tbody class="food-item-tbl" ng-repeat="item in salads | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -270,7 +278,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
-
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none">
@@ -287,7 +295,7 @@
         <div class="row-fluid" ng-if="cocktailsCol1" >
             <div class="span12 food-container">
                 <div class="food-menu-title"> House Cocktails
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('COCKTAILS')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -304,6 +312,7 @@
                                         <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                     </span>
                                 </td>
+                                <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -323,6 +332,7 @@
                                         <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                     </span>
                                 </td>
+                                <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -331,26 +341,28 @@
                     </table>          
                 </div>
             </div>
-            <ul class="inline text-center cocktailsPhotos visible-desktop hidden-phone hidden-tablet">
-                <li>
-                    <a class="thumbnail">
-                        <img src="/resources/img/cocktails1.jpg">
-                    </a>
-                </li>                
-                <li style="position:relative;top:68px;">
-                    <a class="thumbnail">
-                        <img src="/resources/img/cocktails3.jpg">
-                    </a>
-                    <a class="thumbnail">
-                        <img src="/resources/img/cocktails4.jpg">
-                    </a>
-                </li>
-                <li>
-                    <a class="thumbnail">
-                        <img src="/resources/img/cocktails2.jpg">
-                    </a>
-                </li>
-            </ul>	
+            <div class='text-center span12 cocktailsPhotos visible-desktop hidden-phone hidden-tablet'>
+                <ul class="inline">
+                    <li>
+                        <a class="thumbnail">
+                            <img src="/resources/img/cocktails1.jpg">
+                        </a>
+                    </li>                
+                    <li style="position:relative;top:68px;">
+                        <a class="thumbnail">
+                            <img src="/resources/img/cocktails3.jpg">
+                        </a>
+                        <a class="thumbnail">
+                            <img src="/resources/img/cocktails4.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="thumbnail">
+                            <img src="/resources/img/cocktails2.jpg">
+                        </a>
+                    </li>
+                </ul>	
+            </div>
             <br/>
         </div>
 
@@ -359,14 +371,14 @@
         <div class="row-fluid" ng-if="mainsCol1">
             <div class="span12 food-container" >
                 <div class="food-menu-title"> MAINS
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('MAINS')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <div class="fmc-double-column">
                     <table class="table table-condensed">
-                        <tbody ng-repeat="item in mainsCol1" class="food-item-tbl">
+                        <tbody ng-repeat="item in mainsCol1 | orderBy :['weight','itemName']" class="food-item-tbl">
                             <tr>
                                 <td>{{item.itemName}}</td>
                                 <td class="pull-right">{{item.price}}</td>
@@ -375,7 +387,8 @@
                                         <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
                                         <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                     </span>
-                                </td>                       
+                                </td> 
+                                <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -385,7 +398,7 @@
                 </div>
                 <div class="fmc-double-column fmcdc-last">
                     <table class="table table-condensed">
-                        <tbody ng-repeat="item in mainsCol2" class="food-item-tbl">
+                        <tbody ng-repeat="item in mainsCol2 | orderBy :['weight','itemName']" class="food-item-tbl">
                             <tr>
                                 <td>{{item.itemName}}</td>
                                 <td class="pull-right">{{item.price}}</td>
@@ -395,6 +408,7 @@
                                         <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                     </span>
                                 </td>
+                                <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -409,13 +423,13 @@
             <!-- SIDES -->
             <div class="span6 food-container" ng-if="sides">
                 <div class="food-menu-title"> SIDES
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SIDES')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in sides">
+                    <tbody class="food-item-tbl" ng-repeat="item in sides | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -424,7 +438,8 @@
                                     <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
-                            </td>                    
+                            </td> 
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -436,13 +451,13 @@
             <!-- DESERTS -->
             <div class="span6 food-container" ng-if="deserts">
                 <div class="food-menu-title"> DESERTS                    
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>                    
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('DESERTS')"> <i class="icon-plus-sign"></i></a>                    
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody ng-repeat="item in deserts" class="food-item-tbl">
+                    <tbody ng-repeat="item in deserts | orderBy :['weight','itemName']" class="food-item-tbl">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -452,7 +467,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
-
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -466,13 +481,13 @@
             <!-- BEVERAGES -->
             <div class="span6 food-container" ng-if="beverages">
                 <div class="food-menu-title">BEVERAGES
-                    <a class="pointer" ng-if='isAdmin'> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('BEVERAGES')"> <i class="icon-plus-sign"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in beverages">
+                    <tbody class="food-item-tbl" ng-repeat="item in beverages | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
@@ -482,6 +497,7 @@
                                     <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
                                 </span>
                             </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
@@ -495,7 +511,7 @@
     <div class="row-fluid" ng-if="showWarning">
         <div class="aside-container">
             <div class="food-menu-container food-menu-container-border aside" style="opacity:1;">
-                <img class="food-menu-container-image" src="{{baseUrl}}resources/img/shark-small.gif" style="opacity: 1;">
+                <img class="food-menu-container-image" src="/resources/img/shark-small.gif" style="opacity: 1;">
                 <div class="aside-text">There is a risk associated with consumption of raw oysters or any raw protein</div>
             </div>
         </div>
@@ -530,6 +546,12 @@
         <label class="control-label" for="itemPrice">Price</label>
         <div class="controls">
         <input type="text" id="itemPrice" ng-model="menuItem.price" required >
+        </div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="itemWeight">Weight</label>
+        <div class="controls">
+        <input type="text" id="itemWeight" ng-model="menuItem.weight" required >
         </div>
         </div>
         </form>                       
@@ -583,6 +605,12 @@
         <label class="control-label" for="itemPrice">Price</label>
         <div class="controls">
         <input type="text" id="itemPrice" ng-model="menuItem.price" required >
+        </div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="itemWeight">Weight</label>
+        <div class="controls">
+        <input type="text" id="itemWeight" ng-model="menuItem.weight" required >
         </div>
         </div>
         </form>                       

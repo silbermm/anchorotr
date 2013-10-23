@@ -1,40 +1,22 @@
 'use strict';
 angular.module('authService', []).factory('authService', function($http) {
-    var auth = {
-        authenticated: false,
-        username: null,
-        role: "anonymous",
-        admin: false
-    };
-    return {
-        getDetails: function(){
-            $http.get('/users/authorities').success(function(data, status, headers, config) {
-                for(var i = 0; i < data.length; i++){
-                    if(data[i].authority === "Administrator"){
-                        auth.admin = true;
-                    }
-                }
-            }).error(function(data, status, headers, config) {
-                auth.admin = false;
-            }); 
-            $http.get('/users/username').success(function(data, status, headers, config){
-               auth.username = data;
-               auth.authenticated = true;
-            }).error(function(data, status, headers, config){
-                auth.username = "";
-                auth.authenticated = false;
+    return {        
+        isAuthenticated : function(){
+            var promise = $http.get('/users/username').then(function(d){
+              return d;
             });
-            
+            return promise;
         },
-        isAdmin: function() {                    
-            return auth.admin;
-        },
-        isAuthenticated: function() {
-            return auth.authenticated;
-        },
-        getUsername: function() {
-            return auth.username;
+        isAdmin : function() {
+            var promise = this.getRoles().then(function(d){
+              if(d.status === 200){                
+                return true;
+              } else {
+                return false;
+              }
+            });
+            return promise;
         }
-    }
-})
+    };
+});
 

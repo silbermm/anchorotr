@@ -17,6 +17,15 @@ public class AccountService {
         userDao.create(username, password, authority);        
         return true;        
     }
+    
+    @Transactional(readOnly=false)
+    public void updateUser(String username, String password, Errors errors){
+        User user = getAccountByUsername(username);
+        if(user != null){
+            userDao.delete(username);
+            userDao.create(username, password, "Administrator");
+        }             
+    }
 
     @Transactional(readOnly = true)
     public User getAccountByUsername(String username) {

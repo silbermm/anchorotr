@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @Table(name="menuitem")
+@DynamicInsert
 public class MenuItem implements Serializable {
     
     private Long id;
@@ -18,6 +20,7 @@ public class MenuItem implements Serializable {
     private String catagory;
     private String price;
     private Long menuId;
+    private int weight;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,6 +75,15 @@ public class MenuItem implements Serializable {
 
     public void setMenu(Long menu) {
         this.menuId = menu;
+    }
+
+    @Column(nullable=false,columnDefinition = "int default 0")
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
     
     
