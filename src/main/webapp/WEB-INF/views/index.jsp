@@ -37,28 +37,28 @@
                             <li class="dropdown">
                                 <ul class="nav">
                                     <li ui-route="/menus/lunch" ng-class="{active:$state.params.id==='lunch'}">
-                                        <a href="#/menus/lunch"> Lunch Menu </a>
+                                        <a href="#!/menus/lunch"> Lunch Menu </a>
                                     </li>
                                     <li ui-route="/menus/dinner" ng-class="{active:$state.params.id==='dinner'}"> 
-                                        <a href="#/menus/dinner"> Dinner Menu </a>
+                                        <a href="#!/menus/dinner"> Dinner Menu </a>
                                     </li>
                                     <li ui-route="/menus/wine" ng-class="{active:$state.params.id==='wine'}">
-                                        <a href="#/menus/wine"> Wine List </a>
+                                        <a href="#!/menus/wine"> Wine List </a>
                                     </li>
                                     <li ui-route="/menus/cocktails" ng-class="{active:$state.params.id==='cocktails'}">
-                                        <a href="#/menus/cocktails"> House Cocktails </a>
+                                        <a href="#!/menus/cocktails"> House Cocktails </a>
                                     </li>
                                     <li ui-route="/menus/happyHour" ng-class="{active:$state.params.id==='happyHour'}">
-                                        <a href="#/menus/happyHour"> Happy Hour </a>
+                                        <a href="#!/menus/happyHour"> Happy Hour </a>
                                     </li>
                                     <li ui-route="/location" ng-class="{active: $state.includes('location')}">
-                                        <a href="#/location"> Location </a>
+                                        <a href="#!/location"> Location </a>
                                     </li>
                                     <li ui-route="/about" ng-class="{active: $state.includes('about')}">
-                                        <a href="#/about">About </a>
+                                        <a href="#!/about">About </a>
                                     </li>
                                     <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}" >
-                                        <a href="#/reservation">Reservations</a>
+                                        <a href="#!/reservation">Reservations</a>
                                     </li>
                                 </ul>			
                             </li>
@@ -146,7 +146,7 @@
                         </ul>	
                     </div>	
                     <div class="span4 text-center" id="center-logo">
-                        <a href="#/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
+                        <a href="#!/home"> <img src="/resources/img/AnchorLarge.png" /> </a>
                     </div>
                     <div class="span4 info-columns" id="right-text">
                         <ul class="inline">
@@ -171,7 +171,7 @@
                                     <a href="" ng-click="toggleMenu()">Menu</a>
                                 </li>
                                 <li ui-route="/location" ng-class="{active: $state.includes('location')}" >
-                                    <a href="#/location"> Location </a>
+                                    <a href="#!/location"> Location </a>
                                 </li>
                             </ul>
                         </div>
@@ -179,10 +179,10 @@
                         <div class="span4">
                             <ul class="inline text-left">
                                 <li ui-route="/about" ng-class="{active: $state.includes('about')}" >
-                                    <a href="#/about"> About </a>
+                                    <a href="#!/about"> About </a>
                                 </li>
                                 <li ui-route="/reservation" ng-class="{active: $state.includes('reservation')}">
-                                    <a href="#/reservation"> Reservations </a>                      
+                                    <a href="#!/reservation"> Reservations </a>                      
                                 </li>
                             </ul>	
                         </div>
@@ -192,19 +192,19 @@
                     <div class="container">	
                         <ul class="inline">
                             <li ng-class="{active:$state.params.id==='lunch'}" >
-                                <a href="#/menus/lunch"> Lunch </a>	
+                                <a href="#!/menus/lunch"> Lunch </a>	
                             </li>
                             <li ng-class="{active:$state.params.id==='dinner'}">
-                                <a href="#/menus/dinner"> Dinner </a>
+                                <a href="#!/menus/dinner"> Dinner </a>
                             </li>	
                             <li ng-class="{active:$state.params.id==='wine'}" >
-                                <a href="#/menus/wine" > Wine List </a>
+                                <a href="#!/menus/wine" > Wine List </a>
                             </li>
                             <li ng-class="{active:$state.params.id==='cocktails'}">
-                                <a href="#/menus/cocktails"> House Cocktails </a>
+                                <a href="#!/menus/cocktails"> House Cocktails </a>
                             </li>
                             <li ng-class="{active:$state.params.id==='happyHour'}">
-                                <a href="#/menus/happyHour"> Happy Hour </a>
+                                <a href="#!/menus/happyHour"> Happy Hour </a>
                             </li>
                         </ul>	
                     </div>
