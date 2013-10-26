@@ -20,13 +20,13 @@
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />" >
         <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />" >
         <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />" > 
-				<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-44977861-1', 'theanchor-otr.com');
-				</script>	
+		<script type="text/javascript">
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	   	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  		ga('create', 'UA-44977861-1', 'theanchor-otr.com');
+		</script>	
 		</head>
     <body>
         <div growl></div>
@@ -177,12 +177,15 @@
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
+        
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/isotope.min.js'/>"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics-google-analytics.min.js' />"></script>
-				<script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
+		<script type="text/javascript" src="<c:url value='/resources/js/vender/ui-bootstrap-tpls-0.6.0.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-route.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/ui-utils.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/app.js' />"></script>        

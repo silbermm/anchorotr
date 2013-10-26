@@ -21,5 +21,10 @@ angular.module('anchorotr.home', [
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
 
-
+    $('#landing-imgs').isotope({
+    	  // options
+    	  itemSelector : '.item',
+    	  layoutMode : 'masonry',    	  
+    });
+    
 })
