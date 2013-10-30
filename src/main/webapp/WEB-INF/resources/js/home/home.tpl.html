@@ -1,6 +1,6 @@
 <div masonry class="ui-view-row container" id="landing-imgs" masonry-options="{ columnWidth: container.querySelector('.grid-sizer')}" >   
 	<div class="grid-sizer"></div>
-	<div class="masonry-brick hidden-phone {{img.className}}" ng-repeat="img in images | orderBy: img.order">
+	<div class="masonry-brick hidden-phone {{img.className}}" ng-repeat="img in images | orderBy:'order'">
 		<img src="{{img.url}}" />
 	</div>		
 </div>
