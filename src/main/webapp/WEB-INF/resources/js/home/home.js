@@ -20,10 +20,12 @@ angular.module('anchorotr.home', [
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
 	
-    //$scope.images = new Array();
+    $scope.images = new Array();
     
     $http.get("/landing/imgs").success(function(data,status,config,other){
-    	$scope.images = data;
+    	for(var i = 0; i< data.length; i++){
+    		$scope.images.push(data[i]);
+    	}
     }).error(function(data,status,config,other){
     	$log.error(data);
     });   
