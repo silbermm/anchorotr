@@ -14,31 +14,31 @@ body,html {
 	background-color: #78FA89;
 }
 
+.masonry-brick {	
+	width: 20%;;
+	float:left;	
+}
+.masonry-brick.w2 { width:  40%; }
+.masonry-brick.h2 {/* height: 510px; */}
+
+.grid-sizer { width: 20%; }
+
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus
 	{
 	color: #ffffff;
 }
-
-#mobile-menubar,#desktop-menubar,#mobile-logo {
-	/*display:none;*/
-	
-}
-
 #desktop-menubar {
 	font-size: 13px;
 	height: 175px;
 }
-
 #desktop-menubar .info-columns {
 	position: relative;
 	top: 13em;
 }
-
 #desktop-menubar #logo-row {
 	position: relative;
 	top: 10px;
 }
-
 .info-columns .hours {
 	position: absolute;
 	list-style: none;
@@ -147,7 +147,6 @@ body,html {
 	position: relative;
 	height: auto;
 	bottom: 1px;
-	/*margin-top: 10px;*/
 }
 
 #lunch-page {
@@ -155,8 +154,8 @@ body,html {
 }
 
 #landing-imgs {
-	max-width: 2080px;
-	width: 100%;
+	/*width: 1275px;*/
+	
 }
 
 .map {
@@ -565,39 +564,4 @@ address {
 	#desktop-menubar .info-columns {
 		top: 9em;
 	}
-}
-
-.isotope,.isotope .isotope-item {
-	/* change duration value to whatever you like */
-	-webkit-transition-duration: 0.8s;
-	-moz-transition-duration: 0.8s;
-	-ms-transition-duration: 0.8s;
-	-o-transition-duration: 0.8s;
-	transition-duration: 0.8s;
-}
-
-.isotope {
-	-webkit-transition-property: height, width;
-	-moz-transition-property: height, width;
-	-ms-transition-property: height, width;
-	-o-transition-property: height, width;
-	transition-property: height, width;
-}
-
-.isotope .isotope-item {
-	-webkit-transition-property: -webkit-transform, opacity;
-	-moz-transition-property: -moz-transform, opacity;
-	-ms-transition-property: -ms-transform, opacity;
-	-o-transition-property: -o-transform, opacity;
-	transition-property: transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-.isotope.no-transition,.isotope.no-transition .isotope-item,.isotope .isotope-item.no-transition
-	{
-	-webkit-transition-duration: 0s;
-	-moz-transition-duration: 0s;
-	-ms-transition-duration: 0s;
-	-o-transition-duration: 0s;
-	transition-duration: 0s;
 }

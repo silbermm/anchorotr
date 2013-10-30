@@ -1,17 +1,27 @@
 package co.silbersoft.anchor.controllers;
 
 import co.silbersoft.anchor.exceptions.GenericDataException;
+import co.silbersoft.anchor.models.FrontPageImage;
 import co.silbersoft.anchor.models.Mail;
 import co.silbersoft.anchor.models.Menu;
 import co.silbersoft.anchor.models.MenuItem;
 import co.silbersoft.anchor.services.MailService;
 import co.silbersoft.anchor.services.MenuService;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import net.tanesha.recaptcha.ReCaptchaImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
+import org.springframework.mobile.device.Device;
+import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +59,7 @@ public class HomeController {
 
     @RequestMapping(value="mail", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody Map<String,String> sendMail(@RequestBody Mail mail){       
+    public @ResponseBody Map<String,String> sendMail(@RequestBody Mail mail){     	    
         mailService.sendMessage(mail.getFrom(), mail.getMessage());        
         Map m = new HashMap();
         m.put("sent", "true");
@@ -84,6 +94,34 @@ public class HomeController {
         return menuService.getCatagoriesForMenu(id);
     }
 
+    @RequestMapping(value = "landing/imgs", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody List<FrontPageImage> getImages(Device device, HttpServletRequest request) {    	
+    	List<FrontPageImage> imgList = new ArrayList<FrontPageImage>();
+    	imgList.add(new FrontPageImage("resources/img/landing/1.jpg", null, 1 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/2.jpg", null, 2 ));    	
+    	imgList.add(new FrontPageImage("resources/img/landing/3.jpg", null, 3 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/4.jpg", "w2", 4 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/5.jpg", "w2", 5 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/6.jpg", null, 6 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/7.jpg", null, 7 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/8.jpg", null, 8 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/10.jpg", null, 9 ));    	
+    	imgList.add(new FrontPageImage("resources/img/landing/11.jpg", null, 10 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/9.jpg", null, 11 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/13.jpg", "w2", 12 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/14.jpg", null, 13 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/16.jpg", null, 14 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/12.jpg", null, 15));
+    	imgList.add(new FrontPageImage("resources/img/landing/15.jpg", null, 16 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/17.jpg", "w2", 17 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/18.jpg", null, 18 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/20.jpg", null, 19 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/21.jpg", null, 20 ));
+    	imgList.add(new FrontPageImage("resources/img/landing/19.jpg", null, 21 ));    	
+    	return imgList;
+    }
+    
     @PreAuthorize("hasRole('Administrator')")
     @RequestMapping(value = "menus/items/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -141,9 +179,8 @@ public class HomeController {
         Map<String, String> error = new HashMap();
         error.put("error", e.getMessage());
         return error;
-    }
-    @Autowired
-    MenuService menuService;
+    }    
     
+    @Autowired MenuService menuService;    
     @Autowired MailService mailService;
 }

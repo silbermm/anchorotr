@@ -5,6 +5,7 @@
 <html ng-app="anchorotr" ng-controller="AppCtrl">
     <head>     
         <title>The Anchor-OTR</title>
+        <meta name="fragment" content="!" />
         <meta name="description=" content="The Anchor-otr brings a classic seafood experience to land locked Cincinnatians. From Maine sea scallops to grilled whole fish
               to fresh oysters flown in from the west and east coast,  chef/owner Derek dos Anjos's team serves high quality and sustainable seafood
               from the countries best suppliers.  Beach food classics such as  hush puppies and lobster rolls will transport you to your favorite spot along
@@ -88,11 +89,10 @@
                     Tue-Thur: 11:30-2:30, 5-10<br/>
                     Fri-Sat:  11:30-2:30, 5-11
                 </address>
-            </div>           
-            <div style="margin-left:20px;margin-right:20px">	
+            </div>              	
                 <div ui-view="main"> </div>
                 <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>
-            </div>
+            
         </div>
 
         <div id="desktop-menubar" class="row-fluid hidden-phone hidden-tablet visible-desktop">
@@ -177,10 +177,11 @@
         <form>
             <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
         </form>
-        
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/isotope.min.js'/>"></script> 
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"> </script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/imagesLoaded.js'/>"></script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/masonry.min.js'/>"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-masonry.min.js'/>"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics.min.js' />"></script>

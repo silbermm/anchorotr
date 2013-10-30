@@ -1,6 +1,5 @@
 package co.silbersoft.anchor.models;
 
-
 public class Mail {
     
     private String from;

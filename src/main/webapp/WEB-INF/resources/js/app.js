@@ -10,7 +10,8 @@ angular.module('anchorotr', [
     "anchorotr.menus",
     "anchorotr.reservation",
     "angulartics",
-    "angulartics.google.analytics"
+    "angulartics.google.analytics",
+		"wu.masonry"
 ]).config(function myAppConfig($locationProvider, growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);

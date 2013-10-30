@@ -15,16 +15,19 @@ angular.module('anchorotr.home', [
             }
         }
     })
-}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService, menuCollapseService, $analytics) {
-	  $analytics.pageTrack('/home');
+}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService, menuCollapseService, $log, $http) {	
     titleService.setTitle("Home");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
-
-    $('#landing-imgs').isotope({
-    	  // options
-    	  itemSelector : '.item',
-    	  layoutMode : 'masonry',    	  
-    });
+	
+    $scope.images = new Array();
+    
+    $http.get("/landing/imgs").success(function(data,status,config,other){
+    	angular.forEach(data, function(val,idx){
+    		$scope.images.push(val);
+    	});
+    }).error(function(data,status,config,other){
+    	$log.error(data);
+    });   
     
 })
