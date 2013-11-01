@@ -1,4 +1,16 @@
-<div masonry class="ui-view-row container hidden-phone" id="landing-imgs" masonry-options="{ columnWidth: container.querySelector('.grid-sizer')}" >   
+<div id="waiting" style="height:200px" ng-if='!imagesLoaded'>
+	<div class="container">
+		<div class="row text-center">
+		<span> <i class="icon-spinner icon-spin icon-large icon-4x"></i> </span>
+		</div>
+	</div>
+</div>
+
+<div masonry 
+	 class="ui-view-row container hidden-phone" 
+	 ng-if="imagesLoaded"
+	 id="landing-imgs" 
+	 masonry-options="{ columnWidth: container.querySelector('.grid-sizer'), transitionTransition: '0.4s'}" >   
 	<div class="grid-sizer"></div>
 	  
 	<div masonry-brick class="masonry-brick {{img.className}}" ng-repeat="img in images">

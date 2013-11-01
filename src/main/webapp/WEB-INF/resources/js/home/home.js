@@ -19,13 +19,15 @@ angular.module('anchorotr.home', [
     titleService.setTitle("Home");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
-	
-    $scope.images = new Array();
-    
+	    
+    $scope.images = new Array();           
+    $scope.imagesLoaded = false;
     $http.get("/landing/imgs").success(function(data,status,config,other){
     	for(var i = 0; i< data.length; i++){
     		$scope.images.push(data[i]);
-    	}
+    	}    	
+    	
+    	$scope.imagesLoaded = true;
     }).error(function(data,status,config,other){
     	$log.error(data);
     });   

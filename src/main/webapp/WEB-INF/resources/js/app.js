@@ -31,8 +31,7 @@ angular.module('anchorotr', [
     $log,
     growl
     ){
-    titleService.setTitle("Home");
-    $scope.baseUrl = document.getElementById("baseUrl").getAttribute("value");
+    titleService.setTitle("Home");    
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();    
     

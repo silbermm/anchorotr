@@ -174,14 +174,14 @@
                 <div ng-include="'/resources/js/partials/footer.tpl.html'"></div>               
             </div>	
         </div>
-        <form>
-            <input id="baseUrl" type="hidden" value="${pageContext.request.contextPath}/" />
-        </form>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"> </script>        
+       
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"> </script> 
+        <script type="text/javascript" src="<c:url value='/resources/js/vender/spinner.js'/>"></script>    
         <script type="text/javascript" src="<c:url value='/resources/js/vender/imagesLoaded.js'/>"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/masonry.min.js'/>"></script> 
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-masonry.min.js'/>"></script> 
+       
         <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>        
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angular-growl.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/vender/angulartics.min.js' />"></script>
