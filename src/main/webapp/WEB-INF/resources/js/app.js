@@ -11,7 +11,7 @@ angular.module('anchorotr', [
     "anchorotr.reservation",
     "angulartics",
     "angulartics.google.analytics",
-		"wu.masonry"
+	"wu.masonry"
 ]).config(function myAppConfig($locationProvider, growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
@@ -20,21 +20,11 @@ angular.module('anchorotr', [
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');    
     $state.transitionTo("home");
-}).controller('AppCtrl', function AppCtrl($scope, 
-    titleService, 
-    menuCollapseService, 
-    authService, 
-    navCollapseService, 
-    $state, 
-    $modal, 
-    $http, 
-    $log,
-    growl
-    ){
-    titleService.setTitle("Home");    
+}).controller('AppCtrl', function AppCtrl($scope,titleService,menuCollapseService,authService,navCollapseService,$state, 
+										  $modal,$http,$log,growl){	
+	titleService.setTitle("Home");    
     $scope.isCollapsed = menuCollapseService.getCollapsed();
-    $scope.isNavCollapsed = navCollapseService.getCollapsed();    
-    
+    $scope.isNavCollapsed = navCollapseService.getCollapsed();        
     authService.isAuthenticated().then(function(d){
        if(d.status === 200){
            $scope.isAuthenticated = true;

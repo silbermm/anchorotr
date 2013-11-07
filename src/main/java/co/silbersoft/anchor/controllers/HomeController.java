@@ -12,11 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
-import net.tanesha.recaptcha.ReCaptchaImpl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
@@ -40,12 +36,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class HomeController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index(@RequestParam(value = "_escaped_fragment_", required = false) String pageToIndex, Model model) {
+    public String index(@RequestParam(value = "_escaped_fragment_", required = false) String pageToIndex, Device device, Model model) {
         if (pageToIndex != null) {
             model.addAttribute("page", pageToIndex);
             return "indexer";
+        } else if(device.isMobile() || device.isTablet()){
+            return "mobile";
         } else {
-            return "index";
+        	return "index";
         }
     }
 

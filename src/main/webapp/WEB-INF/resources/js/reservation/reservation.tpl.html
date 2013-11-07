@@ -13,7 +13,7 @@
 
 
 
-            <div class="span6">
+            <div class="span6" >
                 <div class="span12">
                     <p class="callout">
                         Reservations are recommended, but certainly not required. Walkins are always welcome.
@@ -53,7 +53,9 @@
                         <div class="control-group">
                             <label class="control-label" for="startDate"> Date: </label>
                             <div class="controls">
-                                <input type="text" id="startDate" name="startDate"
+                                
+                                <div class="input-append">
+   		 						<input type="text" id="startDate" name="startDate"
                                        datepicker-popup="MM/dd/yyyy" 
                                        ng-model="dt" 
                                        is-open="opened" 
@@ -61,8 +63,14 @@
                                        max="'2015-06-22'" 
                                        datepicker-options="dateOptions" 
                                        date-disabled="disabled(date, mode)" 
-                                       ng-required="true" />
-
+                                       ng-required="true"
+                                       class="span10"
+                                        />
+   		 							
+    								  <button class="btn" type="button" ng-click="open()"><i class="icon-calendar"></i></button>
+    							</div>
+                                
+                                
                             </div>
                         </div>
                         <div class="control-group">                    

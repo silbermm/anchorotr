@@ -23,6 +23,11 @@ body,html {
 
 .grid-sizer { width: 20%; }
 
+.move-down{
+	margin-top:50px;
+	margin-left: 5px;
+}
+
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus
 	{
 	color: #ffffff;
@@ -563,5 +568,20 @@ address {
 @media ( max-width : 1148px) {
 	#desktop-menubar .info-columns {
 		top: 9em;
+	}
+}
+@media (max-width : 1000px) {
+	#desktop-menubar .info-columns {
+		top: 4em;
+	}	
+	#menu-border {
+		top: -21px;
+	}
+	#main-menu a.btn-reserve {
+		bottom: 24px;
+		left: 72px;
+	}
+	#submenu {
+		bottom: 25px;
 	}
 }

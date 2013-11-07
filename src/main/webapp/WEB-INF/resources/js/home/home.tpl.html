@@ -1,105 +1,19 @@
-<div id="waiting" style="height:200px" ng-if='!imagesLoaded'>
+<div id="waiting" style="height: 400px" ng-if='!imagesLoaded'>
 	<div class="container">
-		<div class="row text-center">
-		<span> <i class="icon-spinner icon-spin icon-large icon-4x"></i> </span>
+		<div class="row text-center move-down">
+			<span> <i class="icon-spinner icon-spin icon-large icon-4x"></i>
+			</span>
 		</div>
 	</div>
 </div>
 
-<div masonry 
-	 class="ui-view-row container hidden-phone" 
-	 ng-if="imagesLoaded"
-	 id="landing-imgs" 
-	 masonry-options="{ columnWidth: container.querySelector('.grid-sizer'), transitionTransition: '0.4s'}" >   
+<div masonry class="ui-view-row container hidden-phone"
+	ng-if="imagesLoaded" id="landing-imgs"
+	masonry-options="{ columnWidth: container.querySelector('.grid-sizer'), transitionTransition: '0.9s'}">
 	<div class="grid-sizer"></div>
-	  
-	<div masonry-brick class="masonry-brick {{img.className}}" ng-repeat="img in images">
-		<img src="{{img.url}}" />
-	</div>
-	
-	<!--
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/1.jpg" />
-	</div>
-			
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/2.jpg" />
-	</div>		
-			
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/3.jpg" />
-	</div>		
-			
-	<div class="masonry-brick hidden-phone w2">
-		<img src="resources/img/landing/4.jpg" />
-	</div>		
-			
-	<div class="masonry-brick hidden-phone w2">
-		<img src="resources/img/landing/5.jpg" />
-	</div>		
-			
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/6.jpg" />
-	</div>		
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/7.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/8.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/10.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/11.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/9.jpg" />
-	</div>
 
-	<div class="masonry-brick hidden-phone w2">
-		<img src="resources/img/landing/13.jpg" />
+	<div masonry-brick class="masonry-brick {{img.className}}"
+		ng-repeat="img in images">
+		<img ng-src="{{img.url}}" />
 	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/14.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/16.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/12.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/15.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone w2">
-		<img src="resources/img/landing/17.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/18.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/20.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/21.jpg" />
-	</div>
-	
-	<div class="masonry-brick hidden-phone">
-		<img src="resources/img/landing/19.jpg" />
-	</div>
-	-->
 </div>
