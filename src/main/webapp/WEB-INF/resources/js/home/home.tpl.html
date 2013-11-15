@@ -7,9 +7,9 @@
 	</div>
 </div>
 
-<div masonry class="ui-view-row container hidden-phone"
+<div masonry class="ui-view-row container"
 	ng-if="imagesLoaded" id="landing-imgs"
-	masonry-options="{ columnWidth: container.querySelector('.grid-sizer'), transitionTransition: '0.9s'}">
+	masonry-options="{ columnWidth: container.querySelector('.grid-sizer'), transitionDuration: '0'}">
 	<div class="grid-sizer"></div>
 
 	<div masonry-brick class="masonry-brick {{img.className}}"

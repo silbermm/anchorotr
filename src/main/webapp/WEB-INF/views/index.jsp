@@ -77,7 +77,7 @@
 		</div>
 
 		<div class="container" id="main-menu">
-			<div class="row-fluid">
+			<div class="row-fluid visible-desktop hidden-phone hidden-tablet">
 				<div class="container">
 					<div class="span4">
 						<ul class="inline text-right">
@@ -103,6 +103,30 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row-fluid visible-phone visible-tablet hidden-desktop">
+				<div class="container">
+					<div class="span12" style="height:60px">
+						<ul class="inline text-center thin">
+							<li ng-class="{active: $state.includes('menus')}"><a href=""
+								ng-click="toggleMenu()">Menu</a></li>
+							<li ui-route="/location"
+								ng-class="{active: $state.includes('location')}"><a
+								href="#!/location"> Location </a></li>
+							<li ui-route="/about"
+								ng-class="{active: $state.includes('about')}" id="about-link">
+								<a href="#!/about"> About </a>
+							</li>
+							<li ui-route="/reservation"
+								ng-class="{active: $state.includes('reservation')}"><a
+								href="#!/reservation" class="btn btn-primary btn-reserve"><i
+									class="icon-food"></i> Reservations </a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			
 			<div id="submenu" class="row-fluid collapse"
 				collapse="isCollapsed.val">
 				<div class="container">

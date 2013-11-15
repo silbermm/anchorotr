@@ -41,7 +41,7 @@ public class HomeController {
             model.addAttribute("page", pageToIndex);
             return "indexer";
         } else if(device.isMobile() || device.isTablet()){
-            return "mobile";
+            return "index";
         } else {
         	return "index";
         }

@@ -59,6 +59,11 @@ body,html {
 	bottom: 4px;
 }
 
+#main-menu ul.thin a.btn-reserve {
+	bottom: 24px;
+	left: 72px;
+}
+
 #main-menu {
 	width: 100%;
 	border-top: 2px solid black;
@@ -72,6 +77,11 @@ body,html {
 #main-menu ul.text-right,#main-menu ul.text-left {
 	position: relative;
 	top: 7px;
+}
+
+#main-menu ul.thin {
+	position: relative;
+	top: 4px;
 }
 
 #main-menu a {
@@ -111,6 +121,11 @@ body,html {
 #about-link {
 	position: relative;
 	bottom: 3px;
+}
+
+.thin #about-link {
+	position:relative;
+	bottom: 0;
 }
 
 #submenu {
@@ -583,5 +598,56 @@ address {
 	}
 	#submenu {
 		bottom: 25px;
+	}
+	body {
+		margin-top:42px;
+	}
+	#center-logo {
+		bottom: 50px;
+	}
+	#main-menu a.btn-reserve, #main-menu ul.thin a.btn-reserve  {
+		left: 0;
+		bottom: 1px;
+	}
+}
+@media (max-width: 716px){
+	body {
+		margin-top:0;
+	}
+	#center-logo {
+		bottom: 0;
+	}
+	#desktop-menubar .info-columns {
+		top: 0;
+	}
+	.text-right {
+		text-align: center;
+	}
+	.info-columns .hours {
+		position: relative;
+	}
+	#right-text {
+		text-align: center;
+	}
+	#main-menu {
+		bottom: 0;
+		height: 55px;
+	}
+	#main-menu a.btn-reserve {
+		bottom: 0;
+		left: 0;
+	}
+	#main-menu ul.thin a.btn-reserve {
+		bottom:0;
+		left:0;
+	}
+	#center-logo img {
+		width:50%;
+	}
+	#menu-border {
+		top:-2px;
+	}
+	#submenu {
+		bottom: 6px;
 	}
 }
