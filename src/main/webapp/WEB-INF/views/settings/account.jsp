@@ -54,7 +54,9 @@
                                         <div class="controls">
                                             <form:password path="password" cssErrorClass="error"/>
                                             <form:errors path="password">
-                                                <span class="help-inline error"><form:errors path="password" htmlEscape="false" /></span>
+                                                <span class="help-inline error">
+                                                <form:errors path="password" htmlEscape="false" />
+                                                </span>
                                             </form:errors>
                                         </div>
                                     </div>
@@ -64,7 +66,9 @@
                                         <div class="controls">
                                             <form:password path="confirmPassword" cssErrorClass="error"/>
                                             <form:errors path="confirmPassword">
-                                                <span class="help-inline error"><form:errors path="confirmPassword" htmlEscape="false" /></span>
+                                                <span class="help-inline error">
+                                                <form:errors path="confirmPassword" htmlEscape="false" />
+                                                </span>
                                             </form:errors>
                                         </div>
                                     </div>                                         
