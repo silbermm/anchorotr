@@ -27,6 +27,7 @@ angular.module('anchorotr.home', [
     		$scope.images.push(data[i]);    		
     	}    	 	
     	$scope.imagesLoaded = true;
+    	
     }).error(function(data,status,config,other){
     	$log.error(data);
     });   

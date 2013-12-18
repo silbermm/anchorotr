@@ -82,7 +82,7 @@
 			<div id="submenu" class="row-fluid collapse"
 				collapse="isCollapsed.val">
 				<div class="container">
-					<ul class="inline">
+					<ul class="inline visible-desktop visible-tablet hidden-phone">
 						<li ng-class="{active:$state.params.id==='lunch'}"><a
 							href="#!/menus/lunch"> Lunch </a></li>
 						<li ng-class="{active:$state.params.id==='dinner'}"><a
@@ -94,6 +94,20 @@
 						<li ng-class="{active:$state.params.id==='happyHour'}"><a
 							href="#!/menus/happyHour"> Happy Hour </a></li>
 					</ul>
+					
+					<ul class="visible-phone hidden-tablet hidden-desktop">
+						<li ng-class="{active:$state.params.id==='lunch'}"><a
+							href="#!/menus/lunch"> Lunch </a></li>
+						<li ng-class="{active:$state.params.id==='dinner'}"><a
+							href="#!/menus/dinner"> Dinner </a></li>
+						<li ng-class="{active:$state.params.id==='wine'}"><a
+							href="#!/menus/wine"> Wine List </a></li>
+						<li ng-class="{active:$state.params.id==='cocktails'}"><a
+							href="#!/menus/cocktails"> House Cocktails </a></li>
+						<li ng-class="{active:$state.params.id==='happyHour'}"><a
+							href="#!/menus/happyHour"> Happy Hour </a></li>
+					</ul>
+					
 				</div>
 			</div>
 			<div class="container" id="menu-border"></div>				
