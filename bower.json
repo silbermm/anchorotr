@@ -1,0 +1,12 @@
+{
+  "name": "anchor-otr",
+  "version": "1.0.1",
+  "dependencies": {
+    "jquery": "~1.9",
+    "bootstrap": "~2.3.2",
+    "font-awesome": "~4.0.3",
+  },
+  "ignore": [
+    "test"
+  ]
+}
