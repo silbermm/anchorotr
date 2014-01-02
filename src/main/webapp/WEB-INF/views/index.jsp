@@ -67,8 +67,8 @@
 						<li>(513) 421-8111</li>
 						<li>
 							<ul class="hours">
-								<li>Tue-Thur: 11:30-2:30, 5-10</li>
-								<li>Fri-Sat: 11:30-2:30, 5-11</li>
+								<li>Tue-Thur: 5-10</li>
+								<li>Fri-Sat: 5-11</li>
 							</ul>
 						</li>
 					</ul>
