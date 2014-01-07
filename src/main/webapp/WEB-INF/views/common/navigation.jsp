@@ -19,8 +19,8 @@
 						<li>(513) 421-8111</li>
 						<li>
 							<ul class="hours">
-								<li>Tue-Thur: 11:30-2:30, 5-10</li>
-								<li>Fri-Sat: 11:30-2:30, 5-11</li>
+								<li>Tue-Thur: 5-10</li>
+								<li>Fri-Sat: 5-11</li>
 							</ul>
 						</li>
 					</ul>
@@ -50,7 +50,7 @@
 							<li ui-route="/reservation"
 								ng-class="{active: $state.includes('reservation')}"><a
 								href="#!/reservation" class="btn btn-primary btn-reserve"><i
-									class="icon-food"></i> Reservations </a></li>
+									class="fa fa-cutlery"></i> Reservations </a></li>
 						</ul>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 							<li ui-route="/reservation"
 								ng-class="{active: $state.includes('reservation')}"><a
 								href="#!/reservation" class="btn btn-primary btn-reserve"><i
-									class="icon-food"></i> Reservations </a></li>
+									class="fa fa-cutlery"></i> Reservations </a></li>
 						</ul>
 					</div>
 				</div>
@@ -83,8 +83,8 @@
 				collapse="isCollapsed.val">
 				<div class="container">
 					<ul class="inline visible-desktop visible-tablet hidden-phone">
-						<li ng-class="{active:$state.params.id==='lunch'}"><a
-							href="#!/menus/lunch"> Lunch </a></li>
+						<!--  <li ng-class="{active:$state.params.id==='lunch'}"><a
+							href="#!/menus/lunch"> Lunch </a></li>  -->
 						<li ng-class="{active:$state.params.id==='dinner'}"><a
 							href="#!/menus/dinner"> Dinner </a></li>
 						<li ng-class="{active:$state.params.id==='wine'}"><a
@@ -96,8 +96,8 @@
 					</ul>
 					
 					<ul class="visible-phone hidden-tablet hidden-desktop">
-						<li ng-class="{active:$state.params.id==='lunch'}"><a
-							href="#!/menus/lunch"> Lunch </a></li>
+						<!-- <li ng-class="{active:$state.params.id==='lunch'}"><a
+							href="#!/menus/lunch"> Lunch </a></li>  -->
 						<li ng-class="{active:$state.params.id==='dinner'}"><a
 							href="#!/menus/dinner"> Dinner </a></li>
 						<li ng-class="{active:$state.params.id==='wine'}"><a
@@ -112,6 +112,7 @@
 			</div>
 			<div class="container" id="menu-border"></div>				
 			<div ui-view="main"></div>
-			<div ng-include="'/resources/js/partials/footer.tpl.html'"></div>
+			<%@ include file="footer.jsp" %>
+
 		</div>
 

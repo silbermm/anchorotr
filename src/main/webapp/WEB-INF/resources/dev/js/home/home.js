@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr.home', [
-    'ui.state',
+    'ui.router.state',
     'titleService',
     'navCollapseService',
     'menuCollapseService',
@@ -11,7 +11,7 @@ angular.module('anchorotr.home', [
         views: {
             "main": {
                 controller: "HomeCtrl",
-                templateUrl: 'resources/js/home/home.tpl.html'
+                templateUrl: 'home/home.tpl.html'
             }
         }
     })

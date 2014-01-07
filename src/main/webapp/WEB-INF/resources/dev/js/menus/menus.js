@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr.menus', [
-    'ui.state',
+    'ui.router.state',
     'titleService',
     'menuCollapseService',
     'authService',
@@ -13,7 +13,7 @@ angular.module('anchorotr.menus', [
         views: {
             "main": {
                 controller: "MenuCtrl",
-                templateUrl: 'resources/js/menus/menus.tpl.html'
+                templateUrl: 'menus/menus.tpl.html'
             }
         }
     })

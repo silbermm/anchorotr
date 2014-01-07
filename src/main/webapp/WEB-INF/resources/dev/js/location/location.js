@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr.location', [
-    'ui.state',
+    'ui.router.state',
     'titleService',
     'menuCollapseService',
     'navCollapseService',
@@ -10,7 +10,7 @@ angular.module('anchorotr.location', [
         views: {
             "main": {
                 controller: "LocationCtrl",
-                templateUrl: 'resources/js/location/location.tpl.html'
+                templateUrl: 'location/location.tpl.html'
             }
         }
     })

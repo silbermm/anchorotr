@@ -9,7 +9,7 @@
   
   <logger name="co.silbersoft.anchor" level="INFO"/>
 
-	<logger name="org.hibernate" level="ERROR" />
+	<logger name="org.hibernate" level="INFO" />
 
  	<logger name="org.springframework">
  		<level value="ERROR" />

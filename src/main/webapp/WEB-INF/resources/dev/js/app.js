@@ -1,7 +1,8 @@
 'use strict';
-angular.module('anchorotr', [
-    "ui.state",
-    "ui.route",
+angular.module('anchorotr', [  
+    "templates-main",
+    "ui.router",
+    "ui.router.state",
     "ui.bootstrap",
     'angular-growl',
     "anchorotr.home",

@@ -14,6 +14,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>co.silbersoft.anchor.config.AppContext</param-value>
 	</context-param>
+	<context-param>
+   	  <param-name>spring.profiles.default</param-name>
+   	  <param-value>production</param-value>
+	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>

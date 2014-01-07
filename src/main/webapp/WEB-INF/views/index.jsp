@@ -14,8 +14,9 @@
   <div id="desktop-menubar" class="row-fluid"> 
     <%@ include file="common/navigation.jsp" %> 
   </div>
-  <script type="text/javascript" src="<c:url value='/resources/js/main.js' />"></script>
-
+  <script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/templates.js' />"></script>
+  <!-- 
   <script type="text/javascript" src="<c:url value='/assets/js/vender/imagesLoaded.js'/>"></script> 
   <script type="text/javascript" src="<c:url value='/resources/js/vender/masonry.min.js'/>"></script> 
   <script type="text/javascript" src="<c:url value='/resources/js/vender/angular.min.js'/>"></script>        
@@ -37,5 +38,6 @@
   <script type="text/javascript" src="<c:url value='/resources/js/location/location.js' />"></script>
   <script type="text/javascript" src="<c:url value='/resources/js/menus/menus.js' />"></script>
   <script type="text/javascript" src="<c:url value='/resources/js/reservation/reservation.js' />"></script>   
+   -->
 </body>
 </html>

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr.reservation', [
-    'ui.state',
+    'ui.router.state',
     'titleService',
     'menuCollapseService',
     'ui.bootstrap',
@@ -11,7 +11,7 @@ angular.module('anchorotr.reservation', [
         views: {
             "main": {
                 controller: "ReservationCtrl",
-                templateUrl: 'resources/js/reservation/reservation.tpl.html'
+                templateUrl: 'reservation/reservation.tpl.html'
             }
         }
     })

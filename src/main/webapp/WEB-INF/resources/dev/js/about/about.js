@@ -1,6 +1,6 @@
 'use strict';
 angular.module('anchorotr.about', [
-    'ui.state',
+    'ui.router.state',
     'titleService',
     'menuCollapseService',
     'navCollapseService',
@@ -11,7 +11,7 @@ angular.module('anchorotr.about', [
         views: {
             "main": {
                 controller: "AboutCtrl",
-                templateUrl: 'resources/js/about/about.tpl.html'
+                templateUrl: 'about/about.tpl.html'
             }
         }
     })

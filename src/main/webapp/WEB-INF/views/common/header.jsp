@@ -10,10 +10,7 @@
               encourage a playful experience.">
 <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
-<link rel="stylesheet" media="screen" href="<c:url value='/resources/css/angular-growl.min.css' />">
+<link rel="stylesheet" media="screen" href="<c:url value='/resources/css/main.css' />">
 <link rel="shortcut icon" href="<c:url value='/resources/img/favicon.ico' />">
 <script type="text/javascript">
 	(function(i, s, o, g, r, a, m) {
