@@ -37785,16 +37785,15 @@ angular.module('anchorotr', [
     "angulartics",
     "angulartics.google.analytics",
 	"wu.masonry"
-]).config(function myAppConfig($locationProvider, growlProvider) {
+]).config(['$locationProvider','growlProvider',function($locationProvider,growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
-}).run(function run(titleService, authService, $rootScope, $state, $stateParams) {
+}]).run(['titleService','authService','$rootScope','$state','$stateParams', function(titleService, authService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');    
     $state.transitionTo("home");
-}).controller('AppCtrl', function AppCtrl($scope,titleService,menuCollapseService,authService,navCollapseService,$state, 
-										  $modal,$http,$log,growl){	
+}]).controller('AppCtrl', ['$scope','titleService','menuCollapseService','authService','navCollapseService','$state','$modal','$http','$log','growl', function($scope,titleService,menuCollapseService,authService,navCollapseService,$state,$modal,$http,$log,growl){
 	titleService.setTitle("Home");    
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();        
@@ -37853,8 +37852,8 @@ angular.module('anchorotr', [
             }
         });        
         
-    };            
-}).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
+    };
+}]).controller('EmailModalInstanceCtrl',['$scope', '$modalInstance', 'items',function($scope,$modalInstance,items){	
     $scope.mail = items;
     $scope.ok = function() {
         $modalInstance.close($scope.mail);
@@ -37862,7 +37861,7 @@ angular.module('anchorotr', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-})
+}])
 ;
 
 
@@ -37877,7 +37876,7 @@ angular.module('anchorotr.about', [
     'menuCollapseService',
     'navCollapseService',
     'authService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('about', {
         url: '/about',
         views: {
@@ -37887,13 +37886,13 @@ angular.module('anchorotr.about', [
             }
         }
     })
-}).controller('AboutCtrl', function LocationController($scope, titleService, menuCollapseService,navCollapseService,authService) {
+}]).controller('AboutCtrl', ['$scope','titleService','menuCollapseService','navCollapseService','authService',function($scope, titleService, menuCollapseService,navCollapseService,authService) {
     titleService.setTitle("About Us");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
     
-})
-
+}])
+;
 
 'use strict';
 angular.module('anchorotr.home', [
@@ -37902,7 +37901,7 @@ angular.module('anchorotr.home', [
     'navCollapseService',
     'menuCollapseService',
     "angulartics.google.analytics"
-]).config(function config($stateProvider) {
+]).config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('home', {
         url: '/home',
         views: {
@@ -37912,7 +37911,7 @@ angular.module('anchorotr.home', [
             }
         }
     })
-}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService, menuCollapseService, $log, $http) {
+}]).controller('HomeCtrl', ['$scope','titleService','navCollapseService','menuCollapseService','$log','$http',function($scope, titleService, navCollapseService, menuCollapseService, $log, $http) {
 	titleService.setTitle("Home");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
@@ -37929,7 +37928,8 @@ angular.module('anchorotr.home', [
     	$log.error(data);
     });   
     
-})
+}])
+;
 
 'use strict';
 angular.module('anchorotr.location', [
@@ -37937,7 +37937,7 @@ angular.module('anchorotr.location', [
     'titleService',
     'menuCollapseService',
     'navCollapseService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('location', {
         url: '/location',
         views: {
@@ -37947,12 +37947,13 @@ angular.module('anchorotr.location', [
             }
         }
     })
-}).controller('LocationCtrl', function LocationController($scope, titleService, menuCollapseService, navCollapseService) {
+}]).controller('LocationCtrl', ['$scope','titleService','menuCollapseService','navCollapseService',function($scope, titleService, menuCollapseService, navCollapseService) {
     titleService.setTitle("Location");
     navCollapseService.setCollapsed(true);
     $scope.isCollapsed = menuCollapseService.setCollapsed(true);
 
-})
+}])
+;
 
 
 'use strict';
@@ -37964,7 +37965,7 @@ angular.module('anchorotr.menus', [
     'angular-growl',
     'ui.bootstrap',
     'navCollapseService',
-]).config(function config($stateProvider, $urlRouterProvider) {
+]).config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('menus', {
         url: '/menus/:id',
         views: {
@@ -37974,7 +37975,7 @@ angular.module('anchorotr.menus', [
             }
         }
     })
-}).controller('ModalInstanceCtrl', function ModalInstanceController($scope, $modalInstance, items) {
+}]).controller('ModalInstanceCtrl', ['$scope','$modalInstance','items',function($scope, $modalInstance, items) {
     $scope.menuItem = items;
     $scope.ok = function() {
         $modalInstance.close($scope.menuItem);
@@ -37982,7 +37983,7 @@ angular.module('anchorotr.menus', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
+}]).controller('MenuCtrl', ['$scope','titleService','menuCollapseService','navCollapseService','authService','$stateParams','$modal','$http','$log','growl',function($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     
@@ -38564,7 +38565,7 @@ angular.module('anchorotr.menus', [
         $scope.happyHour = true;
     }
 
-});
+}]);
 
 
 'use strict';
@@ -38574,7 +38575,7 @@ angular.module('anchorotr.reservation', [
     'menuCollapseService',
     'ui.bootstrap',
     'navCollapseService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('reservation', {
         url: '/reservation',
         views: {
@@ -38584,7 +38585,7 @@ angular.module('anchorotr.reservation', [
             }
         }
     })
-}).controller('ReservationCtrl', function ReservationController($scope, titleService, menuCollapseService, navCollapseService,$timeout) {
+}]).controller('ReservationCtrl', ['$scope', 'titleService', 'menuCollapseService', 'navCollapseService','$timeout',function($scope, titleService, menuCollapseService, navCollapseService,$timeout) {
     titleService.setTitle("Reservations");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
@@ -38614,11 +38615,11 @@ angular.module('anchorotr.reservation', [
         });
     };
 
-})
-
+}])
+;
 
 'use strict';
-angular.module('authService', []).factory('authService', function($http) {
+angular.module('authService', []).factory('authService',['$http',function($http) {
     return {        
         isAuthenticated : function(){
             var promise = $http.get('/users/username').then(function(d){
@@ -38637,7 +38638,7 @@ angular.module('authService', []).factory('authService', function($http) {
             return promise;
         }
     };
-});
+}]);
 
 
 'use strict';
@@ -38693,8 +38694,7 @@ angular.module('searchService', []).factory('searchService', function(){
     }
 });
 'use strict';
-
-angular.module('titleService', []).factory('titleService', function($document){
+angular.module('titleService', []).factory('titleService',['$document',function($document){
     var suffix, title;
     suffix = title = "";
     return {
@@ -38715,7 +38715,6 @@ angular.module('titleService', []).factory('titleService', function($document){
        getSuffix : function() {
         return suffix;
        }
-    }
-    
-})
+    }    
+}]);
 

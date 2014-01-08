@@ -12,9 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Glass+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>        
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
+        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/main.css' />">
         <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
     </head>
     <body>

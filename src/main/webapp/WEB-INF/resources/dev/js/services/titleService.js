@@ -1,6 +1,5 @@
 'use strict';
-
-angular.module('titleService', []).factory('titleService', function($document){
+angular.module('titleService', []).factory('titleService',['$document',function($document){
     var suffix, title;
     suffix = title = "";
     return {
@@ -21,7 +20,6 @@ angular.module('titleService', []).factory('titleService', function($document){
        getSuffix : function() {
         return suffix;
        }
-    }
-    
-})
+    }    
+}]);
 

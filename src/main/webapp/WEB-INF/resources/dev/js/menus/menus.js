@@ -7,7 +7,7 @@ angular.module('anchorotr.menus', [
     'angular-growl',
     'ui.bootstrap',
     'navCollapseService',
-]).config(function config($stateProvider, $urlRouterProvider) {
+]).config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('menus', {
         url: '/menus/:id',
         views: {
@@ -17,7 +17,7 @@ angular.module('anchorotr.menus', [
             }
         }
     })
-}).controller('ModalInstanceCtrl', function ModalInstanceController($scope, $modalInstance, items) {
+}]).controller('ModalInstanceCtrl', ['$scope','$modalInstance','items',function($scope, $modalInstance, items) {
     $scope.menuItem = items;
     $scope.ok = function() {
         $modalInstance.close($scope.menuItem);
@@ -25,7 +25,7 @@ angular.module('anchorotr.menus', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-}).controller('MenuCtrl', function MenuController($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
+}]).controller('MenuCtrl', ['$scope','titleService','menuCollapseService','navCollapseService','authService','$stateParams','$modal','$http','$log','growl',function($scope, titleService, menuCollapseService, navCollapseService, authService, $stateParams, $modal, $http, $log, growl) {
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(false);
     
@@ -607,5 +607,5 @@ angular.module('anchorotr.menus', [
         $scope.happyHour = true;
     }
 
-});
+}]);
 

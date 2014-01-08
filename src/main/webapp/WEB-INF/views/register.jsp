@@ -10,8 +10,8 @@
         <meta name="author" content="Matt Silbernagel" />
         <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet" />
         <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-        <link href="<c:url value='/resources/css/responsive.css'/>" rel="stylesheet" />
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <link href="<c:url value='/resources/css/main.css'/>" rel="stylesheet" />
+        <script type="text/javascript" src="<c:url value='/resources/js/common.min.js' />"></script>
     </head>
     <body>
         <section>

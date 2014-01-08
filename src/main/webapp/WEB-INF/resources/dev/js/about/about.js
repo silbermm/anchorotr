@@ -5,7 +5,7 @@ angular.module('anchorotr.about', [
     'menuCollapseService',
     'navCollapseService',
     'authService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('about', {
         url: '/about',
         views: {
@@ -15,10 +15,10 @@ angular.module('anchorotr.about', [
             }
         }
     })
-}).controller('AboutCtrl', function LocationController($scope, titleService, menuCollapseService,navCollapseService,authService) {
+}]).controller('AboutCtrl', ['$scope','titleService','menuCollapseService','navCollapseService','authService',function($scope, titleService, menuCollapseService,navCollapseService,authService) {
     titleService.setTitle("About Us");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
     
-})
-
+}])
+;

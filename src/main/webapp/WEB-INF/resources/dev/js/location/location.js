@@ -4,7 +4,7 @@ angular.module('anchorotr.location', [
     'titleService',
     'menuCollapseService',
     'navCollapseService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('location', {
         url: '/location',
         views: {
@@ -14,10 +14,11 @@ angular.module('anchorotr.location', [
             }
         }
     })
-}).controller('LocationCtrl', function LocationController($scope, titleService, menuCollapseService, navCollapseService) {
+}]).controller('LocationCtrl', ['$scope','titleService','menuCollapseService','navCollapseService',function($scope, titleService, menuCollapseService, navCollapseService) {
     titleService.setTitle("Location");
     navCollapseService.setCollapsed(true);
     $scope.isCollapsed = menuCollapseService.setCollapsed(true);
 
-})
+}])
+;
 

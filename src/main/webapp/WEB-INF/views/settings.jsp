@@ -8,12 +8,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>The Anchor-OTR Administration Settings </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/responsive.css' />">
+        <link rel="stylesheet" media="screen" href="<c:url value='/resources/css/main.css' />">
         <link rel="shortcut icon" type="image/png" href="<c:url value='img/favicon.png' />">
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script type="text/javascript" src="<c:url value='/resources/js/vender/bootstrap.min.js'/>"></script>         
+        <script type="text/javascript" src="<c:url value='/resources/js/common.min.js' />"></script>       
     </head>
     <body>
         <div id="mobile-logo">

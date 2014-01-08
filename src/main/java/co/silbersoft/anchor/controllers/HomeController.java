@@ -1,23 +1,16 @@
 package co.silbersoft.anchor.controllers;
 
-import co.silbersoft.anchor.exceptions.GenericDataException;
-import co.silbersoft.anchor.models.FrontPageImage;
-import co.silbersoft.anchor.models.Mail;
-import co.silbersoft.anchor.models.Menu;
-import co.silbersoft.anchor.models.MenuItem;
-import co.silbersoft.anchor.services.MailService;
-import co.silbersoft.anchor.services.MenuService;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
 import org.springframework.mobile.device.Device;
-import org.springframework.mobile.device.DeviceHandlerMethodArgumentResolver;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import co.silbersoft.anchor.exceptions.GenericDataException;
+import co.silbersoft.anchor.models.FrontPageImage;
+import co.silbersoft.anchor.models.Mail;
+import co.silbersoft.anchor.models.Menu;
+import co.silbersoft.anchor.models.MenuItem;
+import co.silbersoft.anchor.services.MailService;
+import co.silbersoft.anchor.services.MenuService;
 
 @Controller
 @RequestMapping(value = "/")

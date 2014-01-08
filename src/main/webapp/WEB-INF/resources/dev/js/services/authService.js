@@ -1,5 +1,5 @@
 'use strict';
-angular.module('authService', []).factory('authService', function($http) {
+angular.module('authService', []).factory('authService',['$http',function($http) {
     return {        
         isAuthenticated : function(){
             var promise = $http.get('/users/username').then(function(d){
@@ -18,5 +18,5 @@ angular.module('authService', []).factory('authService', function($http) {
             return promise;
         }
     };
-});
+}]);
 

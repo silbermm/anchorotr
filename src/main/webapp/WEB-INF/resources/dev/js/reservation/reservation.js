@@ -5,7 +5,7 @@ angular.module('anchorotr.reservation', [
     'menuCollapseService',
     'ui.bootstrap',
     'navCollapseService',
-]).config(function config($stateProvider) {
+]).config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('reservation', {
         url: '/reservation',
         views: {
@@ -15,7 +15,7 @@ angular.module('anchorotr.reservation', [
             }
         }
     })
-}).controller('ReservationCtrl', function ReservationController($scope, titleService, menuCollapseService, navCollapseService,$timeout) {
+}]).controller('ReservationCtrl', ['$scope', 'titleService', 'menuCollapseService', 'navCollapseService','$timeout',function($scope, titleService, menuCollapseService, navCollapseService,$timeout) {
     titleService.setTitle("Reservations");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
@@ -45,5 +45,5 @@ angular.module('anchorotr.reservation', [
         });
     };
 
-})
-
+}])
+;

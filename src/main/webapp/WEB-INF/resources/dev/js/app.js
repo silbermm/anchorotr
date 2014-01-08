@@ -13,16 +13,15 @@ angular.module('anchorotr', [
     "angulartics",
     "angulartics.google.analytics",
 	"wu.masonry"
-]).config(function myAppConfig($locationProvider, growlProvider) {
+]).config(['$locationProvider','growlProvider',function($locationProvider,growlProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
-}).run(function run(titleService, authService, $rootScope, $state, $stateParams) {
+}]).run(['titleService','authService','$rootScope','$state','$stateParams', function(titleService, authService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     titleService.setSuffix(' | The Anchor-OTR');    
     $state.transitionTo("home");
-}).controller('AppCtrl', function AppCtrl($scope,titleService,menuCollapseService,authService,navCollapseService,$state, 
-										  $modal,$http,$log,growl){	
+}]).controller('AppCtrl', ['$scope','titleService','menuCollapseService','authService','navCollapseService','$state','$modal','$http','$log','growl', function($scope,titleService,menuCollapseService,authService,navCollapseService,$state,$modal,$http,$log,growl){
 	titleService.setTitle("Home");    
     $scope.isCollapsed = menuCollapseService.getCollapsed();
     $scope.isNavCollapsed = navCollapseService.getCollapsed();        
@@ -81,8 +80,8 @@ angular.module('anchorotr', [
             }
         });        
         
-    };            
-}).controller('EmailModalInstanceCtrl', function EmailModalInstanceController($scope, $modalInstance, items) {
+    };
+}]).controller('EmailModalInstanceCtrl',['$scope', '$modalInstance', 'items',function($scope,$modalInstance,items){	
     $scope.mail = items;
     $scope.ok = function() {
         $modalInstance.close($scope.mail);
@@ -90,7 +89,7 @@ angular.module('anchorotr', [
     $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
     };
-})
+}])
 ;
 
 

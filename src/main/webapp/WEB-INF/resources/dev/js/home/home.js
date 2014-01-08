@@ -5,7 +5,7 @@ angular.module('anchorotr.home', [
     'navCollapseService',
     'menuCollapseService',
     "angulartics.google.analytics"
-]).config(function config($stateProvider) {
+]).config(['$stateProvider', function($stateProvider) {
     $stateProvider.state('home', {
         url: '/home',
         views: {
@@ -15,7 +15,7 @@ angular.module('anchorotr.home', [
             }
         }
     })
-}).controller('HomeCtrl', function HomeController($scope, titleService, navCollapseService, menuCollapseService, $log, $http) {
+}]).controller('HomeCtrl', ['$scope','titleService','navCollapseService','menuCollapseService','$log','$http',function($scope, titleService, navCollapseService, menuCollapseService, $log, $http) {
 	titleService.setTitle("Home");
     navCollapseService.setCollapsed(true);
     menuCollapseService.setCollapsed(true);
@@ -32,4 +32,5 @@ angular.module('anchorotr.home', [
     	$log.error(data);
     });   
     
-})
+}])
+;

@@ -56,7 +56,9 @@ module.exports = function(grunt) {
         build : {
           files : {
             "src/main/webapp/WEB-INF/resources/js/common.min.js" : [
-              "src/main/webapp/WEB-INF/resources/js/common.js" ],
+              "src/main/webapp/WEB-INF/resources/js/common.js",
+              "src/main/webapp/WEB-INF/resources/js/templates.js"
+             ],
           }
         }
       },
@@ -99,7 +101,7 @@ module.exports = function(grunt) {
           files : [ 
             'src/main/webapp/WEB-INF/resources/dev/js/*.js',							
             'src/main/webapp/WEB-INF/resources/dev/js/**/*.js',	
-	    'src/main/webapp/WEB-INF/resources/dev/js/**/*.tpl.html',
+            'src/main/webapp/WEB-INF/resources/dev/js/**/*.tpl.html',
             'src/main/webapp/WEB-INF/resources/dev/less/*.less' 
            ],
           tasks : [ 'default' ],
