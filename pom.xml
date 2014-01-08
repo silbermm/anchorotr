@@ -302,7 +302,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-    </build>
+    	</build>
     <repositories>
         <repository>
             <id>spring-snapshots</id>
