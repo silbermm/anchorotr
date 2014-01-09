@@ -68,8 +68,8 @@ angular.module('anchorotr.menus', [
                     case "WHITE":
                         $scope.whiteWine.push(menuItem);
                         break;
-                    case "RAW BAR":
-                        $scope.rawBar.push(menuItem);
+                    case "SNACKS":
+                        $scope.snacks.push(menuItem);
                         break;
                     case "PLATTERS":
                         $scope.platters.push(menuItem);
@@ -77,8 +77,8 @@ angular.module('anchorotr.menus', [
                     case "STARTERS":
                         $scope.starters.push(menuItem);
                         break;
-                    case "SALADS":
-                        $scope.salads.push(menuItem);
+                    case "OYSTERS":
+                        $scope.oysters.push(menuItem);
                         break;
                     case "COCKTAILS":
                         $scope.cocktailsCol2.push(menuItem);
@@ -170,7 +170,7 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.whiteWine);
                         break;
-                    case "RAW BAR":
+                    case "SNACKS":
                         angular.forEach($scope.rawBar, function(val, key) {
                             $log.debug("val = " + val + ", key = " + key);
                             $log.debug("does " + menuItem.id + " = " + val.id + "?");
@@ -178,7 +178,7 @@ angular.module('anchorotr.menus', [
                                 this.splice(key, 1);
                                 return;
                             }
-                        }, $scope.rawBar);
+                        }, $scope.snacks);
                         break;
                     case "PLATTERS":
                         angular.forEach($scope.platters, function(val, key) {
@@ -200,15 +200,15 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.starters);
                         break;
-                    case "SALADS":
-                        angular.forEach($scope.salads, function(val, key) {
+                    case "OYSTERS":
+                        angular.forEach($scope.oysters, function(val, key) {
                             $log.debug("val = " + val + ", key = " + key);
                             $log.debug("does " + menuItem.id + " = " + val.id + "?");
                             if (menuItem.id === val.id) {
                                 this.splice(key, 1);
                                 return;
                             }
-                        }, $scope.salads);
+                        }, $scope.oysters);
                         break;
                     case "COCKTAILS":
                         angular.forEach($scope.cocktailsCol1, function(val, key) {
@@ -330,13 +330,13 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.whiteWine);
                         break;
-                    case "RAW BAR":
+                    case "SNACKS":
                         angular.forEach($scope.rawBar, function(val, key) {
                             if (val.id === menuItem.id) {
                                 this[key] = menuItem;
                                 return;
                             }
-                        }, $scope.rawBar);
+                        }, $scope.snacks);
                         break;
                     case "PLATTERS":
                         angular.forEach($scope.platters, function(val, key) {
@@ -354,13 +354,13 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.starters);
                         break;
-                    case "SALADS":
-                        angular.forEach($scope.salads, function(val, key) {
+                    case "OYSTERS":
+                        angular.forEach($scope.oysters, function(val, key) {
                             if (val.id === menuItem.id) {
                                 this[key] = menuItem;
                                 return;
                             }
-                        }, $scope.salads);
+                        }, $scope.oysters);
                         break;
                     case "COCKTAILS":
                         angular.forEach($scope.cocktailsCol1, function(val, key) {
@@ -421,85 +421,11 @@ angular.module('anchorotr.menus', [
         });
     };
 
-
-
-
-    if ($stateParams.id === 'lunch') {
-        titleService.setTitle("Lunch Menu");
-        console.log("in the rawbar method");
-        $scope.currentMenu = 1;
-        $http.get('/menus/1/RAW%20BAR').success(function(data, status, headers, config) {
-            $scope.rawBar = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/PLATTERS').success(function(data, status, headers, config) {
-            $scope.platters = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/STARTERS').success(function(data, status, headers, config) {
-            $scope.starters = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/SALADS').success(function(data, status, headers, config) {
-            $scope.salads = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/SIDES').success(function(data, status, headers, config) {
-            $scope.sides = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/DESERTS').success(function(data, status, headers, config) {
-            $scope.deserts = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/BEVERAGES').success(function(data, status, headers, config) {
-            $scope.beverages = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/LUNCH%20SPECIAL').success(function(data, status, headers, config) {
-            $scope.lunchSpecial = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        });
-
-        $http.get('/menus/1/MAINS').success(function(data, status, headers, config) {
-            $scope.mainsCol1 = new Array();
-            $scope.mainsCol2 = new Array();
-            var half = data.length / 2;
-            var leftover = data.length % 2;
-            var firstColumn = half + leftover;
-            for (var i = 0; i < data.length; i++) {
-                if (i + 1 <= firstColumn) {
-                    $scope.mainsCol1.push(data[i]);
-                } else {
-                    $scope.mainsCol2.push(data[i]);
-                }
-            }
-        }).error(function(data, status, headers, config) {
-            console.log(status + " " + data);
-        })
-        $scope.showWarning = true;
-    }
-
     if ($stateParams.id === 'dinner') {
         $scope.currentMenu = 2;
         titleService.setTitle("Dinner Menu");
-        $http.get('/menus/2/RAW%20BAR').success(function(data, status, headers, config) {
-            $scope.rawBar = data;
+        $http.get('/menus/2/SNACKS').success(function(data, status, headers, config) {
+            $scope.snacks = data;
         }).error(function(data, status, headers, config) {
             console.log(status + " " + data);
         });
@@ -516,8 +442,8 @@ angular.module('anchorotr.menus', [
             console.log(status + " " + data);
         });
 
-        $http.get('/menus/2/SALADS').success(function(data, status, headers, config) {
-            $scope.salads = data;
+        $http.get('/menus/2/OYSTERS').success(function(data, status, headers, config) {
+            $scope.oysters = data;
         }).error(function(data, status, headers, config) {
             console.log(status + " " + data);
         });

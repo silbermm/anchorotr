@@ -37,7 +37,7 @@
             <!-- Sparkling and Champagne -->
             <div class="span6 food-menu-container" >
                 <div class="food-menu-title"> Champagne 
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SPARKLING AND CHAMPAGNE')"> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SPARKLING AND CHAMPAGNE')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
@@ -50,8 +50,8 @@
                             <td class="pull-right">{{item.price}}</td>                    
                             <td ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>  
@@ -63,8 +63,8 @@
 
             <!-- ROSE -->
             <div class="span6"  ng-if="roseWine" >
-                <div class="food-menu-title"> ROSÉ                    
-                    <a class="pointer" ng-if='isAdmin'  ng-click="openAddModal('ROSE')"> <i class="icon-plus-sign"></i></a>
+                <div class="food-menu-title"> ROS��                    
+                    <a class="pointer" ng-if='isAdmin'  ng-click="openAddModal('ROSE')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
@@ -77,8 +77,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -92,7 +92,7 @@
         <div class="row-fluid" ng-if="redWine"> 
             <div class="span6 food-menu-container" ng-if="redWine">
                 <div class="food-menu-title"> RED 
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('RED')" > <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('RED')" > <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
@@ -105,8 +105,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td  ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -117,7 +117,7 @@
             </div>
             <div class="span6" ng-if="whiteWine" >
                 <div class="food-menu-title"> WHITE                     
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('WHITE')" > <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('WHITE')" > <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
@@ -130,8 +130,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -147,7 +147,7 @@
             <div class="span12">
                 <div class="food-menu-container food-menu-container-border middle-callout"> 
                     <div class="food-menu-title">LUNCH SPECIAL
-                        <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('LUNCH SPECIAL')"> <i class="icon-plus-sign"></i></a>
+                        <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('LUNCH SPECIAL')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                     </div>
                     <div class="food-menu-title-ornament-container">
                         <div class="food-menu-title-ornament"></div>
@@ -161,8 +161,8 @@
                             <div class="food-item-price">
                                 {{item.price}}
                                 <span ng-if='isAdmin'>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </div>
                         </li>
@@ -171,23 +171,23 @@
             </div>	
         </div>			
 
-        <div class="row-fluid" ng-if="rawBar">
-            <div class="span6 food-menu-container" ng-if="rawBar">
-                <div class="food-menu-title"> RAW BAR 
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('RAW BAR')" > <i class="icon-plus-sign"></i></a>
+        <div class="row-fluid" ng-if="snacks">
+            <div class="span6 food-menu-container" ng-if="snacks">
+                <div class="food-menu-title"> SNACKS
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SNACKS')" > <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>	
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl"  ng-repeat="item in rawBar | orderBy :['weight','itemName']">
+                    <tbody class="food-item-tbl"  ng-repeat="item in snacks | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
                             <td ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -199,83 +199,23 @@
                     </tbody>
                 </table>
             </div>
-            <div class="span6 food-menu-container" ng-if="platters">
-                <div class="food-menu-title"> PLATTERS
-
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('PLATTERS')" > <i class="icon-plus-sign"></i></a>
-
-                </div>
-                <div class="food-menu-title-ornament-container">
-                    <div class="food-menu-title-ornament"></div>
-                </div> 
-                <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in platters | orderBy :['weight','itemName']">
-                        <tr>
-                            <td>{{item.itemName}}</td>
-                            <td class="pull-right">{{item.price}}</td>
-                            <td  ng-if='isAdmin'>
-                                <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
-                                </span>
-                            </td>
-                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
-                        </tr>
-                    </tbody>
-                </table> 
-            </div>		
-        </div>
-
-
-        <div class="row-fluid" ng-if="starters" >
-            <!-- STARTERS -->
-            <div class="span6 food-container" ng-if="starters" >
-                <div class="food-menu-title"> STARTERS 
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('STARTERS')"> <i class="icon-plus-sign"></i></a>
+            <!-- OYSTERS -->
+            <div class="span6 food-container" ng-if="oysters">
+                <div class="food-menu-title"> OYSTERS
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SALADS')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
                 </div>
                 <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in starters | orderBy :['weight','itemName']">
+                    <tbody class="food-item-tbl" ng-repeat="item in oysters | orderBy :['weight','itemName']">
                         <tr>
                             <td>{{item.itemName}}</td>
                             <td class="pull-right">{{item.price}}</td>
                             <td ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
-                                </span>
-                            </td>
-                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>	
-
-            <!-- SALADS -->
-            <div class="span6 food-container" ng-if="salads">
-                <div class="food-menu-title"> SALADS
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SALADS')"> <i class="icon-plus-sign"></i></a>
-                </div>
-                <div class="food-menu-title-ornament-container">
-                    <div class="food-menu-title-ornament"></div>
-                </div>
-                <table class="table table-condensed">
-                    <tbody class="food-item-tbl" ng-repeat="item in salads | orderBy :['weight','itemName']">
-                        <tr>
-                            <td>{{item.itemName}}</td>
-                            <td class="pull-right">{{item.price}}</td>
-                            <td ng-if='isAdmin'>
-                                <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -287,7 +227,38 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div>		
+        </div>
+
+
+        <div class="row-fluid" ng-if="starters" >
+            <!-- STARTERS -->
+            <div class="span6 food-container" ng-if="starters" >
+                <div class="food-menu-title"> STARTERS 
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('STARTERS')"> <i class="fa fa-plus-circle fa-lg"></i></a>
+                </div>
+                <div class="food-menu-title-ornament-container">
+                    <div class="food-menu-title-ornament"></div>
+                </div>
+                <table class="table table-condensed">
+                    <tbody class="food-item-tbl" ng-repeat="item in starters | orderBy :['weight','itemName']">
+                        <tr>
+                            <td>{{item.itemName}}</td>
+                            <td class="pull-right">{{item.price}}</td>
+                            <td ng-if='isAdmin'>
+                                <span>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
+                                </span>
+                            </td>
+                            <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border-top:none"><span class="food-item-tbl-desc">{{item.itemDesc}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>         
         </div>
 
 
@@ -295,7 +266,7 @@
         <div class="row-fluid" ng-if="cocktailsCol1" >
             <div class="span12 food-container">
                 <div class="food-menu-title"> House Cocktails
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('COCKTAILS')"> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('COCKTAILS')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -308,8 +279,8 @@
                                 <td class="pull-right">{{item.price}}</td>
                                 <td ng-if='isAdmin'>
                                     <span>
-                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                     </span>
                                 </td>
                                 <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -328,8 +299,8 @@
                                 <td class="pull-right">{{item.price}}</td>
                                 <td ng-if='isAdmin'>
                                     <span>
-                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                     </span>
                                 </td>
                                 <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -371,7 +342,7 @@
         <div class="row-fluid" ng-if="mainsCol1">
             <div class="span12 food-container" >
                 <div class="food-menu-title"> MAINS
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('MAINS')"> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('MAINS')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -384,8 +355,8 @@
                                 <td class="pull-right">{{item.price}}</td>
                                 <td ng-if='isAdmin'>
                                     <span>
-                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                     </span>
                                 </td> 
                                 <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -404,8 +375,8 @@
                                 <td class="pull-right">{{item.price}}</td>
                                 <td  ng-if='isAdmin'>
                                     <span>
-                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                        <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                        <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                     </span>
                                 </td>
                                 <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -423,7 +394,7 @@
             <!-- SIDES -->
             <div class="span6 food-container" ng-if="sides">
                 <div class="food-menu-title"> SIDES
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SIDES')"> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('SIDES')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -435,8 +406,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td   ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td> 
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -451,7 +422,7 @@
             <!-- DESERTS -->
             <div class="span6 food-container" ng-if="deserts">
                 <div class="food-menu-title"> DESERTS                    
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('DESERTS')"> <i class="icon-plus-sign"></i></a>                    
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('DESERTS')"> <i class="fa fa-plus-circle fa-lg"></i></a>                    
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -463,8 +434,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td  ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
@@ -481,7 +452,7 @@
             <!-- BEVERAGES -->
             <div class="span6 food-container" ng-if="beverages">
                 <div class="food-menu-title">BEVERAGES
-                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('BEVERAGES')"> <i class="icon-plus-sign"></i></a>
+                    <a class="pointer" ng-if='isAdmin' ng-click="openAddModal('BEVERAGES')"> <i class="fa fa-plus-circle fa-lg"></i></a>
                 </div>
                 <div class="food-menu-title-ornament-container">
                     <div class="food-menu-title-ornament"></div>
@@ -493,8 +464,8 @@
                             <td class="pull-right">{{item.price}}</td>
                             <td  ng-if='isAdmin'>
                                 <span>
-                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="icon-edit-sign"></i> </a> 
-                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="icon-remove-sign red"></i></a>
+                                    <a class="pointer" ng-click="openEditModal(item,$index)"> <i class="fa fa-edit-sign"></i> </a> 
+                                    <a class="pointer" ng-click="openDeleteModal(item,$index)"> <i class="fa fa-remove-sign red"></i></a>
                                 </span>
                             </td>
                             <td class='item-weight' ng-if='isAdmin'>{{item.weight}}</td>
