@@ -12,6 +12,9 @@ INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator
 INSERT INTO users (username, password, enabled) VALUES('admin', '7f6a223111da9f8831925b172a8976a70ae9192491dd993f8f7384cf2e849b87',1);
 INSERT INTO authorities (username, authority) VALUES ('admin', 'Administrator');
 
+DELETE FROM mailsettings;
+INSERT INTO mailsettings (id,fromaddress,password,smtpauth,smtphost,smtpport,starttls,subject,toaddress,username) VALUES(1,'info@theanchor-otr.com','',1,'smtpout.secureserver.net','465',1,'Website Mail','info@theanchor-otr.com','info@theanchor-otr.com');
+
 DELETE FROM menu;
 INSERT INTO menu (menu_id,name) VALUEs (1,'lunch');
 INSERT INTO menu (menu_id,name) VALUEs (2,'dinner');
