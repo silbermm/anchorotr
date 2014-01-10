@@ -71,11 +71,11 @@ angular.module('anchorotr.menus', [
                     case "SNACKS":
                         $scope.snacks.push(menuItem);
                         break;
-                    case "PLATTERS":
-                        $scope.platters.push(menuItem);
+                    case "SANDWICHES":
+                        $scope.sandwiches.push(menuItem);
                         break;
-                    case "STARTERS":
-                        $scope.starters.push(menuItem);
+                    case "APPETIZERS":
+                        $scope.appetizers.push(menuItem);
                         break;
                     case "OYSTERS":
                         $scope.oysters.push(menuItem);
@@ -89,12 +89,13 @@ angular.module('anchorotr.menus', [
                     case "SIDES":
                         $scope.sides.push(menuItem);
                         break;
-                    case "DESERTS":
-                        $scope.deserts.push(menuItem);
+                    case "DAILY SPECIALS":
+                        $scope.dailySpecials.push(menuItem);
                         break;
                     case "BEVERAGES":
                         $scope.beverages.push(menuItem);
                         break;
+                     
                 }
                 growl.addSuccessMessage("Successfully added " + menuItem.itemName);
             }).error(function(data, status, headers, config) {
@@ -180,25 +181,25 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.snacks);
                         break;
-                    case "PLATTERS":
-                        angular.forEach($scope.platters, function(val, key) {
+                    case "SANDWICHES":
+                        angular.forEach($scope.sandwiches, function(val, key) {
                             $log.debug("val = " + val + ", key = " + key);
                             $log.debug("does " + menuItem.id + " = " + val.id + "?");
                             if (menuItem.id === val.id) {
                                 this.splice(key, 1);
                                 return;
                             }
-                        }, $scope.platters);
+                        }, $scope.sandwiches);
                         break;
-                    case "STARTERS":
-                        angular.forEach($scope.starters, function(val, key) {
+                    case "APPETIZERS":
+                        angular.forEach($scope.appetizers, function(val, key) {
                             $log.debug("val = " + val + ", key = " + key);
                             $log.debug("does " + menuItem.id + " = " + val.id + "?");
                             if (menuItem.id === val.id) {
                                 this.splice(key, 1);
                                 return;
                             }
-                        }, $scope.starters);
+                        }, $scope.appetizers);
                         break;
                     case "OYSTERS":
                         angular.forEach($scope.oysters, function(val, key) {
@@ -244,15 +245,15 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.sides);
                         break;
-                    case "DESERTS":
-                        angular.forEach($scope.deserts, function(val,key){
+                    case "DAILY SPECIALS":
+                        angular.forEach($scope.dailySpecials, function(val,key){
                             $log.debug("val = " + val + ", key = " + key);
                             $log.debug("does " + menuItem.id + " = " + val.id + "?");                             
                             if(menuItem.id === val.id){                              
                                this.splice(key, 1);
                                return;
                             }
-                        }, $scope.deserts);
+                        }, $scope.dailySpecials);
                         break;
                     case "BEVERAGES":
                         angular.forEach($scope.beverages, function(val,key){
@@ -338,21 +339,21 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.snacks);
                         break;
-                    case "PLATTERS":
-                        angular.forEach($scope.platters, function(val, key) {
+                    case "SANDWICHES":
+                        angular.forEach($scope.sandwiches, function(val, key) {
                             if (val.id === menuItem.id) {
                                 this[key] = menuItem;
                                 return;
                             }
-                        }, $scope.platters);
+                        }, $scope.sandwiches);
                         break;
-                    case "STARTERS":
-                        angular.forEach($scope.starters, function(val, key) {
+                    case "APPETIZERS":
+                        angular.forEach($scope.appetizers, function(val, key) {
                             if (val.id === menuItem.id) {
                                 this[key] = menuItem;
                                 return;
                             }
-                        }, $scope.starters);
+                        }, $scope.appetizers);
                         break;
                     case "OYSTERS":
                         angular.forEach($scope.oysters, function(val, key) {
@@ -394,13 +395,13 @@ angular.module('anchorotr.menus', [
                             }
                         }, $scope.sides);
                         break;
-                    case "DESERTS":
-                        angular.forEach($scope.deserts, function(val, key) {
+                    case "DAILY SPECIALS":
+                        angular.forEach($scope.dailySpecials, function(val, key) {
                             if (val.id === menuItem.id) {
                                 this[key] = menuItem;
                                 return;
                             }
-                        }, $scope.deserts);
+                        }, $scope.dailySpecials);
                         break;
                     case "BEVERAGES":
                         angular.forEach($scope.beverages, function(val, key) {
@@ -430,14 +431,14 @@ angular.module('anchorotr.menus', [
             console.log(status + " " + data);
         });
 
-        $http.get('/menus/2/PLATTERS').success(function(data, status, headers, config) {
-            $scope.platters = data;
+        $http.get('/menus/2/SANDWICHES').success(function(data, status, headers, config) {
+            $scope.sandwiches = data;
         }).error(function(data, status, headers, config) {
             console.log(status + " " + data);
         });
 
-        $http.get('/menus/2/STARTERS').success(function(data, status, headers, config) {
-            $scope.starters = data;
+        $http.get('/menus/2/APPETIZERS').success(function(data, status, headers, config) {
+            $scope.appetizers = data;
         }).error(function(data, status, headers, config) {
             console.log(status + " " + data);
         });
@@ -454,8 +455,8 @@ angular.module('anchorotr.menus', [
             console.log(status + " " + data);
         });
 
-        $http.get('/menus/2/DESERTS').success(function(data, status, headers, config) {
-            $scope.deserts = data;
+        $http.get('/menus/2/DAILY%20SPECIALS').success(function(data, status, headers, config) {
+            $scope.dailySpecials = data;
         }).error(function(data, status, headers, config) {
             console.log(status + " " + data);
         });
