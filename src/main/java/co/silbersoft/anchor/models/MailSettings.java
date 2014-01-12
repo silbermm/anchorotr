@@ -13,7 +13,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table
 public class MailSettings implements Serializable {
-    @Id
+
+	private static final long serialVersionUID = -431088017897320796L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     

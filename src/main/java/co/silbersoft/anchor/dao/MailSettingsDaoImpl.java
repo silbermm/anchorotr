@@ -1,6 +1,9 @@
 package co.silbersoft.anchor.dao;
 
+import java.util.List;
+
 import co.silbersoft.anchor.models.MailSettings;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,12 @@ public class MailSettingsDaoImpl extends AbstractDao<MailSettings> implements Ma
     @Override
     public MailSettings getSettings() {
         Query q = getSession().createQuery("from MailSettings");
-        q.setFirstResult(0);
-        q.setMaxResults(1);
-        return (MailSettings) q.uniqueResult();
+        List<MailSettings> mlist = (List<MailSettings>) q.list();
+        if (mlist.isEmpty()){
+        	return null;
+        } else {
+        	return (MailSettings) mlist.get(0);
+        }
     }
     
 }

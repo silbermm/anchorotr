@@ -1,10 +1,14 @@
 package co.silbersoft.anchor.services;
 
 import co.silbersoft.anchor.dao.MailSettingsDao;
+import co.silbersoft.anchor.exceptions.GenericDataException;
 import co.silbersoft.anchor.models.MailSettings;
+
 import java.util.Properties;
+
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +63,13 @@ public class MailService {
 
     @Transactional
     public MailSettings getMailSettings() {
-        return mailSettingsDao.getSettings();
+    	try{
+    		return mailSettingsDao.getSettings();
+    	}catch (RuntimeException e){
+    		throw new GenericDataException(e.getMessage());
+    	}catch (Exception e){
+    		throw new GenericDataException(e.getMessage());
+    	}
     }
     
     
