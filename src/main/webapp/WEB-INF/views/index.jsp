@@ -15,7 +15,7 @@
     <%@ include file="common/navigation.jsp" %> 
   </div>
   <script type="text/javascript" src="<c:url value='/resources/js/common.min.js' />"></script>
-  <!--  <script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script> 
-  <script type="text/javascript" src="<c:url value='/resources/js/templates.js' />"></script>  -->
+  <!-- <script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script> 
+  <script type="text/javascript" src="<c:url value='/resources/js/templates.js' />"></script> -->
 </body>
 </html>
