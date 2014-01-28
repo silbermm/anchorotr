@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<!-- WINE LIST -->
-		<div class="row-fluid" ng-if="sparklingWine">
+		<div class="row-fluid" ng-if="sparklingWine || isAdmin">
 			<!-- Sparkling and Champagne -->
 			<div class="span6 food-menu-container">
 				<div class="food-menu-title">
@@ -61,7 +61,7 @@
 			</div>
 
 			<!-- ROSE -->
-			<div class="span6" ng-if="roseWine">
+			<div class="span6" ng-if="roseWine || isAdmin">
 				<div class="food-menu-title">
 					ROSE <a class="pointer" ng-if='isAdmin'
 						ng-click="openAddModal('ROSE')"> <i
@@ -93,7 +93,7 @@
 			</div>
 		</div>
 		<!-- RED -->
-		<div class="row-fluid" ng-if="redWine">
+		<div class="row-fluid" ng-if="redWine || isAdmin">
 			<div class="span6 food-menu-container" ng-if="redWine">
 				<div class="food-menu-title">
 					RED <a class="pointer" ng-if='isAdmin'
@@ -125,7 +125,7 @@
 				</table>
 			</div>
 			<!-- WHITE -->
-			<div class="span6" ng-if="whiteWine">
+			<div class="span6" ng-if="isAdmin">
 				<div class="food-menu-title">
 					WHITE <a class="pointer" ng-if='isAdmin'
 						ng-click="openAddModal('WHITE')"> <i

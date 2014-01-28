@@ -47,8 +47,7 @@
                                         <label class="control-label" for="smtpHost"> SMTP Host </label>
                                         <div class="controls">
                                             <form:input path="smtpHost" cssErrorClass="error"/>
-                                            <form:errors path="smtpHost">
-                                                <span class="help-inline error"><form:errors path="smtpHost" htmlEscape="false" /></span>
+                                            <form:errors path="smtpHost" cssErrorClass="help-inline error" htmlEscape="false">                                               
                                             </form:errors>
                                         </div>
                                     </div>
@@ -57,8 +56,7 @@
                                         <label class="control-label" for="smtpPort"> SMTP Port </label>
                                         <div class="controls">
                                             <form:input path="smtpPort" cssErrorClass="error"/>
-                                            <form:errors path="smtpPort">
-                                                <span class="help-inline error"><form:errors path="smtpPort" htmlEscape="false" /></span>
+                                            <form:errors path="smtpPort" cssErrorClass="help-inline error" htmlEscape="false">                                             
                                             </form:errors>
                                         </div>
                                     </div>
@@ -67,8 +65,7 @@
                                         <div class="controls">
                                             <label class="checkbox">
                                                 StartTLS <form:checkbox id="starttls" path="starttls" cssErrorClass="error"/>
-                                                <form:errors path="starttls">
-                                                    <span class="help-inline error"><form:errors path="starttls" htmlEscape="false" /></span>
+                                                <form:errors path="starttls" cssErrorClass="help-inline error" htmlEscape="false">                                                       
                                                 </form:errors>
                                             </label>
                                         </div>
@@ -78,8 +75,7 @@
                                         <div class="controls">
                                             <label class="checkbox">
                                                 SMTP Auth <form:checkbox id="smtpAuth" path="smtpAuth" cssErrorClass="error"/>
-                                                <form:errors path="smtpAuth">
-                                                    <span class="help-inline error"><form:errors path="smtpAuth" htmlEscape="false" /></span>
+                                                <form:errors path="smtpAuth" cssErrorClass="help-inline error" htmlEscape="false">
                                                 </form:errors>
                                             </label>
                                         </div>
@@ -89,8 +85,7 @@
                                         <label class="control-label" for="username"> Username </label>
                                         <div class="controls">
                                             <form:input path="username" cssErrorClass="error"/>
-                                            <form:errors path="username">
-                                                <span class="help-inline error"><form:errors path="username" htmlEscape="false" /></span>
+                                            <form:errors path="username" cssErrorClass="help-inline error" htmlEscape="false">
                                             </form:errors>
                                         </div>
                                     </div>
@@ -100,7 +95,6 @@
                                         <div class="controls">
                                             <form:password path="password" cssErrorClass="error"/>
                                             <form:errors path="password">
-                                                <span class="help-inline error"><form:errors path="password" htmlEscape="false" /></span>
                                             </form:errors>
                                         </div>
                                     </div>        
@@ -109,8 +103,7 @@
                                         <label class="control-label" for="fromAddress"> From Address </label>
                                         <div class="controls">
                                             <form:input path="fromAddress" cssErrorClass="error"/>
-                                            <form:errors path="fromAddress">
-                                                <span class="help-inline error"><form:errors path="fromAddress" htmlEscape="false" /></span>
+                                            <form:errors path="fromAddress" cssErrorClass="help-inline error" htmlEscape="false">
                                             </form:errors>
                                         </div>
                                     </div>         
@@ -119,8 +112,7 @@
                                         <label class="control-label" for="toAddress"> To Address </label>
                                         <div class="controls">
                                             <form:input path="toAddress" cssErrorClass="error"/>
-                                            <form:errors path="toAddress">
-                                                <span class="help-inline error"><form:errors path="toAddress" htmlEscape="false" /></span>
+                                            <form:errors path="toAddress" cssErrorClass="help-inline error" htmlEscape="false">
                                             </form:errors>
                                         </div>
                                     </div>    
@@ -129,8 +121,7 @@
                                         <label class="control-label" for="Subject"> Subject </label>
                                         <div class="controls">
                                             <form:input path="subject" cssErrorClass="error"/>
-                                            <form:errors path="subject">
-                                                <span class="help-inline error"><form:errors path="subject" htmlEscape="false" /></span>
+                                            <form:errors path="subject" cssErrorClass="help-inline error" htmlEscape="false">                                                
                                             </form:errors>
                                         </div>
                                     </div>
