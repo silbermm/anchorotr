@@ -7,13 +7,13 @@ create table users(username varchar(50) not null primary key,password varchar(20
 create table authorities (username varchar(50) not null,authority varchar(50) not null,constraint fk_authorities_users foreign key(username) references users(username));
 create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62',1);
+INSERT INTO users (username, password, enabled) VALUES('silbermm','51375db7e11864e35ba2c9df43df2ef8185ef8f3c12ddff400890065d05f0f62','t');
 INSERT INTO authorities (username, authority) VALUES ('silbermm', 'Administrator');
-INSERT INTO users (username, password, enabled) VALUES('admin', '7f6a223111da9f8831925b172a8976a70ae9192491dd993f8f7384cf2e849b87',1);
+INSERT INTO users (username, password, enabled) VALUES('admin', '7f6a223111da9f8831925b172a8976a70ae9192491dd993f8f7384cf2e849b87','t');
 INSERT INTO authorities (username, authority) VALUES ('admin', 'Administrator');
 
 DELETE FROM mailsettings;
-INSERT INTO mailsettings (id,fromaddress,password,smtpauth,smtphost,smtpport,starttls,subject,toaddress,username) VALUES(1,'info@theanchor-otr.com','',1,'smtpout.secureserver.net','465',1,'Website Mail','info@theanchor-otr.com','info@theanchor-otr.com');
+INSERT INTO mailsettings (id,fromaddress,password,smtpauth,smtphost,smtpport,starttls,subject,toaddress,username) VALUES(1,'info@theanchor-otr.com','','t','smtpout.secureserver.net','465','t','Website Mail','info@theanchor-otr.com','info@theanchor-otr.com');
 
 DELETE FROM menu;
 INSERT INTO menu (menu_id,name) VALUEs (1,'lunch');
