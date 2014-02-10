@@ -13,14 +13,14 @@ angular.module('anchorotr', [
     "angulartics",
     "angulartics.google.analytics",
 	"wu.masonry"
-]).config(['$locationProvider','growlProvider',function($locationProvider,growlProvider) {
+]).config(['$locationProvider','growlProvider','$stateProvider', '$urlRouterProvider',function($locationProvider,growlProvider,$stateProvider, $urlRouterProvider) {
     $locationProvider.hashPrefix('!');
     growlProvider.globalTimeToLive(5000);
+    $urlRouterProvider.otherwise('/home');
 }]).run(['titleService','authService','$rootScope','$state','$stateParams', function(titleService, authService, $rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    titleService.setSuffix(' | The Anchor-OTR');    
-    $state.transitionTo("home");
+    titleService.setSuffix(' | The Anchor-OTR');     
 }]).controller('AppCtrl', ['$scope','titleService','menuCollapseService','authService','navCollapseService','$state','$modal','$http','$log','growl', function($scope,titleService,menuCollapseService,authService,navCollapseService,$state,$modal,$http,$log,growl){
 	titleService.setTitle("Home");    
     $scope.isCollapsed = menuCollapseService.getCollapsed();
