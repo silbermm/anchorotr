@@ -26,9 +26,9 @@
 			</div>
 		</div>
 		<!-- WINE LIST -->
-		<div class="row-fluid" ng-if="sparklingWine || isAdmin">
+		<div ng-if="$state.includes('menus', {id: 'wine'})">
 			<!-- Sparkling and Champagne -->
-			<div class="span6 food-menu-container">
+			<div class="span6 food-menu-container" ng-if="sparklingWine || isAdmin">
 				<div class="food-menu-title">
 					Champagne <a class="pointer" ng-if='isAdmin'
 						ng-click="openAddModal('SPARKLING AND CHAMPAGNE')"> <i
@@ -93,8 +93,8 @@
 			</div>
 		</div>
 		<!-- RED -->
-		<div class="row-fluid" ng-if="redWine || isAdmin">
-			<div class="span6 food-menu-container" ng-if="redWine">
+		<div ng-if="$state.includes('menus', {id: 'wine'})">
+			<div class="span6 food-menu-container" ng-if="redWine || isAdmin">
 				<div class="food-menu-title">
 					RED <a class="pointer" ng-if='isAdmin'
 						ng-click="openAddModal('RED')"> <i
@@ -236,9 +236,8 @@
 					<div class="food-menu-title-ornament"></div>
 				</div>
 				<table class="table table-condensed">
-					<tbody class="food-item-tbl"
-						ng-repeat="item in oysters | orderBy :['weight','itemName']">
-						<tr>
+					<tbody class="food-item-tbl">
+						<tr ng-repeat="item in oysters | orderBy :['weight','itemName']">
 							<td>{{item.itemName}}</td>
 							<td class="pull-right">{{item.price}}</td>
 							<td ng-if='isAdmin'><span> <a class="pointer"
