@@ -480,6 +480,66 @@ angular.module('anchorotr.menus', [
         $scope.showWarning = true;
     }
 
+    if($stateParams.id === 'lunch'){
+        $scope.currentMenu = 1;
+
+        titleService.setTitle("Lunch Menu");
+        $http.get('/menus/1/SNACKS').success(function(data, status, headers, config) {
+            $scope.snacks = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/DESSERTS').success(function(data, status, headers, config) {
+            $scope.desserts = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/SALADS').success(function(data, status, headers, config) {
+            $scope.salads = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/APPETIZERS').success(function(data, status, headers, config) {
+            $scope.appetizers = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/OYSTERS').success(function(data, status, headers, config) {
+            $scope.oysters = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/SIDES').success(function(data, status, headers, config) {
+            $scope.sides = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        });
+
+        $http.get('/menus/1/MAINS').success(function(data, status, headers, config) {
+            $scope.mainsCol1 = new Array();
+            $scope.mainsCol2 = new Array();
+            var half = data.length / 2;
+            var leftover = data.length % 2;
+            var firstColumn = half + leftover;
+            for (var i = 0; i < data.length; i++) {
+                if (i + 1 <= firstColumn) {
+                    $scope.mainsCol1.push(data[i]);
+                } else {
+                    $scope.mainsCol2.push(data[i]);
+                }
+            }
+        }).error(function(data, status, headers, config) {
+            console.log(status + " " + data);
+        })
+        $scope.showWarning = true;
+
+    }
+
     if ($stateParams.id == 'wine') {
         $scope.currentMenu = 3;
         titleService.setTitle("Wine Menu");

@@ -6,3 +6,6 @@ nb-configuration.xml
 .settings/
 node_modules/
 /target
+.idea/
+anchor.iml
+atlassian-ide-plugin.xml

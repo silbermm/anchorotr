@@ -9,7 +9,7 @@
   <meta name="fragment" content="!" />
   <%@ include file="common/header.jsp" %>
 </head>
-<body> 
+<body ng-cloak>
 <div growl></div> 
   <div id="desktop-menubar" class="row-fluid"> 
     <%@ include file="common/navigation.jsp" %> 

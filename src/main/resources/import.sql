@@ -23,6 +23,45 @@ INSERT INTO menu (menu_id,name) VALUES (4,'house cocktails');
 INSERT INTO menu (menu_id,name) VALUES (5, 'happy hour');
 
 DELETE FROM menuitem;
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Deviled Eggs', 'with smoked salmon', 'SNACKS', '$4', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('House Made pickled veg', '', 'SNACKS', '$4', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Pulled Pork Slider', 'with Pickled Red Onion', 'SNACKS', '$5', 1, 3);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Boquerones Brushetta', 'with olive + almond + orange', 'SNACKS', '$7', 1, 4);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Peel + Eat Shrimp', 'with old bay seasoning', 'SNACKS', '$12', 1, 5);
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Oysters on the half shell*', 'Daily selection with Mignonette + Cocktail + Fresh Horseradish + Granita', 'OYSTERS', 'M/P', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Lemon Escarole Salad', 'with peaches + feta', 'SALADS', '$10', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Broccoli Carpaccio', 'with Honey mustard dressing', 'SALADS', '$8', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Southern Cobb Salad', 'with shrimp + bleu cheese + bacon + roasted onion dressing', 'SALADS', '$15', 1, 3);
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Hush Puppies', '', 'SIDES', '$6', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('French Fries', '', 'SIDES', '$6', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Cauliflower', '', 'SIDES', '$7', 1, 3);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Elotes', '', 'SIDES', '$7', 1, 1);
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Mini Seasonal Fruit Crisp', 'ala mode', 'DESSERTS', '$4', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Mini Salted Caramel Pudding', '', 'DESSERTS', '$4', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Mini Hot Fudge Sundae', '', 'DESSERTS', '$5', 1, 3);
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('New England Clam Chowder', 'with Quahog clams + bacon', 'APPETIZERS', '$5', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Crawfish Beignets', 'with rooster aioli', 'APPETIZERS', '$10', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Pei Mussels', 'with burnt orange + shallots', 'APPETIZERS', '$11', 1, 3);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Salted Crusted Shrimp', 'with celery root slaw', 'APPETIZERS', '$10', 1, 4);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Fried Calamari', 'with sweet pickles + peppadew + mustard aioli', 'APPETIZERS', '$11', 1, 5);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Fried Oysters + Clams', 'with House Made TarTar Sauce', 'APPETIZERS', '$12', 1, 6);
+
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Grilled Shrimp Tacos', 'with avocado crema', 'MAINS', '$12', 1, 1);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Burger*', 'on Brioche Bun. Add Oyster +$2', 'MAINS', '$12', 1, 2);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Trout BLT', 'on Blue oven focaccia with bacon aioli', 'MAINS', '$13', 1, 3);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Sardine Bahn Mi', 'on blue oven ciabatta', 'MAINS', '$13', 1, 4);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Catfish Po Boy', 'on blue oven ciabatta', 'MAINS', '$13', 1, 5);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Pan Fried Cod Sandwich', 'on blue oven ciabatta', 'MAINS', '$14', 1, 6);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Fried Soft Belly Clam Roll', 'with House Tartar sauce + fries', 'MAINS', '$15', 1, 7);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Fish & Chips', 'with Malt Vinegar Aioli', 'MAINS', '$15', 1, 8);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Pan Seared Salmon Filet', 'with Miso Corn Salad', 'MAINS', '$15', 1, 9);
+INSERT INTO menuitem(itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Whole Grilled Porgy', 'with Sauteed Kale + Grilled Lemon', 'MAINS', '$19', 1, 10);
+
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Deviled Eggs','with smoked trout','SNACKS','$4',2,1);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id,weight) VALUES('Jonah Crab Claw','Snap + Eat','SNACKS','$3.5 EACH',2,2);
 INSERT INTO menuitem (itemName,itemDesc,catagory,price,menu_id,weight) VALUES('House Made Pickles',NULL,'SNACKS','$4',2,3);
