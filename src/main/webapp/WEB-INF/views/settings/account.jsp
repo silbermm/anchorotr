@@ -53,10 +53,7 @@
                                         <label class="control-label" for="password"> New Password </label>
                                         <div class="controls">
                                             <form:password path="password" cssErrorClass="error"/>
-                                            <form:errors path="password">
-                                                <span class="help-inline error">
-                                                <form:errors path="password" htmlEscape="false" />
-                                                </span>
+                                            <form:errors path="password" cssErrorClass="help-inline error" htmlEscape="false">                                                
                                             </form:errors>
                                         </div>
                                     </div>
@@ -65,10 +62,7 @@
                                         <label class="control-label" for="confirmPassword"> Confirm Password </label>
                                         <div class="controls">
                                             <form:password path="confirmPassword" cssErrorClass="error"/>
-                                            <form:errors path="confirmPassword">
-                                                <span class="help-inline error">
-                                                <form:errors path="confirmPassword" htmlEscape="false" />
-                                                </span>
+                                            <form:errors path="confirmPassword" cssErrorClass="help-inline error" htmlEscape="false">                                                
                                             </form:errors>
                                         </div>
                                     </div>                                         

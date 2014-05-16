@@ -34,7 +34,7 @@ module.exports = function(grunt) {
               'src/main/webapp/WEB-INF/resources/dev/angular-growl/build/angular-growl.js',
               'src/main/webapp/WEB-INF/resources/dev/angular-masonry/angular-masonry.js',
               'src/main/webapp/WEB-INF/resources/dev/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
-              'src/main/webapp/WEB-INF/resources/dev/angular-ui-router/release/angular-ui-router.js',
+              'src/main/webapp/WEB-INF/resources/dev/angular-ui-router.js',
               'src/main/webapp/WEB-INF/resources/dev/angulartics/dist/angulartics.min.js',
               'src/main/webapp/WEB-INF/resources/dev/angulartics/dist/angulartics-google-analytics.min.js',                                
               'src/main/webapp/WEB-INF/resources/dev/js/app.js',
