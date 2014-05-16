@@ -19,8 +19,8 @@
 						<li>(513) 421-8111</li>
 						<li>
 							<ul class="hours">
-								<li>Tue-Thur: 5-10</li>
-								<li>Fri-Sat: 5-11</li>
+								<li>Tue-Thur: 11:30-2:30 and 5-10</li>
+								<li>Fri-Sat: 11:30-2:30 and 5-11</li>
 							</ul>
 						</li>
 					</ul>
@@ -83,8 +83,8 @@
 				collapse="isCollapsed.val">
 				<div class="container">
 					<ul class="inline visible-desktop visible-tablet hidden-phone">
-						<!--  <li ng-class="{active:$state.params.id==='lunch'}"><a
-							href="#!/menus/lunch"> Lunch </a></li>  -->
+						<li ng-class="{active:$state.params.id==='lunch'}"><a
+							href="#!/menus/lunch"> Lunch </a></li>
 						<li ng-class="{active:$state.params.id==='dinner'}"><a
 							href="#!/menus/dinner"> Dinner </a></li>
 						<li ng-class="{active:$state.params.id==='wine'}"><a
