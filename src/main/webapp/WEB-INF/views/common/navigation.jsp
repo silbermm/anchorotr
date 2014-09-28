@@ -84,9 +84,11 @@
 				collapse="isCollapsed.val">
 				<div class="container">
 					<ul class="inline visible-desktop visible-tablet hidden-phone">
-						<li ng-class="{active:$state.params.id==='lunch'}"><a
-							href="#!/menus/lunch"> Lunch </a></li>
-						<li ng-class="{active:$state.params.id==='dinner'}"><a
+					  <!--	
+            <li ng-class="{active:$state.params.id==='lunch'}"><a
+               href="#!/menus/lunch"> Lunch </a></li>
+					  -->	
+            <li ng-class="{active:$state.params.id==='dinner'}"><a
 							href="#!/menus/dinner"> Dinner </a></li>
 						<li ng-class="{active:$state.params.id==='wine'}"><a
 							href="#!/menus/wine"> Wine List </a></li>
