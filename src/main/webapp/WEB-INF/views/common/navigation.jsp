@@ -20,8 +20,8 @@
 						<li>
 							<ul class="hours">
                 <li>Tue-Wed: 5-10</li>
-                <li>Thurs: 11:30-2:30 and 5-10 </li>
-								<li>Fri-Sat: 11:30-2:30 and 5-11</li>
+                <li>Thurs: 5-10 </li>
+								<li>Fri-Sat: 5-11</li>
 							</ul>
 						</li>
 					</ul>
