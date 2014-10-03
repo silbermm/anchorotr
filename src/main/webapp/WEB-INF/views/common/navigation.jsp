@@ -99,8 +99,10 @@
 					</ul>
 					
 					<ul class="visible-phone hidden-tablet hidden-desktop">
-						<li ng-class="{active:$state.params.id==='lunch'}"><a
+						<!-- 
+              <li ng-class="{active:$state.params.id==='lunch'}"><a
 							href="#!/menus/lunch"> Lunch </a></li>
+            -->
 						<li ng-class="{active:$state.params.id==='dinner'}"><a
 							href="#!/menus/dinner"> Dinner </a></li>
 						<li ng-class="{active:$state.params.id==='wine'}"><a
