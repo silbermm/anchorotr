@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 	  files: [{
             expand: true, 
 	      cwd: 'src/main/webapp/WEB-INF/resources/dev/img/',
-	      src: ['**/*.{png,jpg,gif,ico}'],
+	      src: ['**/*.{png,jpg,jpeg,gif,ico}'],
 	      dest: 'src/main/webapp/WEB-INF/resources/img/'
 	   }]
     	}
