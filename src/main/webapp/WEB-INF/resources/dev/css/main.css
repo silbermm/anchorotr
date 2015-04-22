@@ -7711,7 +7711,7 @@ html {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   position: relative;
-  bottom: 50px;
+  bottom: 28px;
   z-index: 2;
   height: 36px;
 }
@@ -7799,6 +7799,12 @@ html {
 }
 #landing-imgs {
   /*width: 1275px;*/
+}
+.best-of-img {
+  height: 80px;
+  position: relative;
+  bottom: 18em;
+  left: 28em;
 }
 .map {
   width: 640px;
@@ -8050,6 +8056,7 @@ html {
 #center-logo {
   position: relative;
   z-index: 10;
+  height: 267px;
 }
 #map-canvas {
   min-height: 100px;
@@ -8135,6 +8142,18 @@ address {
   #desktop-menubar .info-columns {
     top: 9em;
   }
+  .best-of-img {
+    postion: relative;
+    bottom: 15em;
+    left: 24em;
+  }
+}
+@media (max-width: 979px) {
+  .best-of-img {
+    postion: relative;
+    bottom: 11.5em;
+    left: 21.5em;
+  }
 }
 @media (max-width: 1000px) {
   #desktop-menubar .info-columns {
@@ -8163,6 +8182,11 @@ address {
   }
 }
 @media (max-width: 716px) {
+  .best-of-img {
+    postion: relative;
+    bottom: 0em;
+    left: 0em;
+  }
   body {
     margin-top: 0;
   }

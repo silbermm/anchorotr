@@ -5,16 +5,21 @@
 		<div class="container">
 			<div class="row-fluid" id="logo-row">
 				<div class="span4 info-columns text-right" id="left-text">
+          <span class="span12"> </span>
 					<ul class="inline">
 						<li>1401 Race Street,</li>
 						<li>Cincinnati, OH 45202</li>
 					</ul>
 				</div>
 				<div class="span4 text-center" id="center-logo">
-					<a href="#!/home"> <img src="/resources/img/AnchorLarge.png" />
-					</a>
+           
+          <a href="#!/home"> <img src="/resources/img/AnchorLarge.png" />
+          </a>
+          <img src="/resources/img/bestOfHorizontal.png" class="best-of-img" />
 				</div>
 				<div class="span4 info-columns" id="right-text">
+          <span class="span12"> 
+          </span>
 					<ul class="inline">
 						<li>(513) 421-8111</li>
 						<li>
@@ -96,7 +101,9 @@
 							href="#!/menus/cocktails"> House Cocktails </a></li>
 						<li ng-class="{active:$state.params.id==='happyHour'}"><a
 							href="#!/menus/happyHour"> Happy Hour </a></li>
-					</ul>
+            <li ng-class="{active:$state.params.id==='oysterMania'}"><a
+							href="#!/menus/oysterMania"> Oyster Mania </a></li>
+          </ul>
 					
 					<ul class="visible-phone hidden-tablet hidden-desktop">
 						<!-- 
@@ -111,7 +118,9 @@
 							href="#!/menus/cocktails"> House Cocktails </a></li>
 						<li ng-class="{active:$state.params.id==='happyHour'}"><a
 							href="#!/menus/happyHour"> Happy Hour </a></li>
-					</ul>
+            <li ng-class="{active:$state.params.id==='oysterMania'}"><a
+							href="#!/menus/oysterMania">Oyster Mania </a></li>
+          </ul>
 					
 				</div>
 			</div>

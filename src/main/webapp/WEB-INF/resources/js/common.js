@@ -39440,6 +39440,11 @@ angular.module('anchorotr.menus', [
         $scope.happyHour = true;
     }
 
+    if ($stateParams.id == 'oysterMania') {
+      titleService.setTitle("Oyster Mania");
+      $scope.oysterMania = true;
+    }
+
 }]);
 
 

@@ -1,5 +1,7 @@
 <div class="row-fluid ui-view-row" id="lunch-page">
-<div class="container">
+  <div class="container">
+
+  <!-- HAPPY HOUR -->
   <div class="row-fluid" ng-if="happyHour">
     <div class="container">
       <div class="about-photos">
@@ -25,6 +27,22 @@
       </div>
     </div>
   </div>
+
+  <!-- OYSTER MANIA -->
+  <div class="row-fluid" ng-if="oysterMania">
+    <div class="container">
+      <div class="about-photos">
+        <h2 class=" text-center">Join us for Oyster Mania Every Thursday</h2>
+        <ul class="inline text-center">
+          <li>$1 Oysters</li>
+          <li>$1 Cans of Beer</li>
+          <li>$6 Martinis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
   <!-- WINE LIST -->
   <div ng-if="$state.includes('menus', {id: 'wine'})">
     <!-- Sparkling and Champagne -->
